@@ -1,3 +1,11 @@
+import { createTextInputComponent } from '@components/text-input.ts';
+
 import './styles/globals.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = ` <div>hello world</div> `;
+const app = document.querySelector<HTMLDivElement>('#app');
+
+const textInputComponent = createTextInputComponent();
+
+if (app) {
+    app.appendChild(textInputComponent);
+}
