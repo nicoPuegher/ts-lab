@@ -44,6 +44,10 @@ input[type='text'] {
     background-color: var(--gray10);
 }
 
+input[type='text']::placeholder {
+    color: var(--gray100);
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
