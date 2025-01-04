@@ -1,14 +1,11 @@
-import { createButtonComponent } from '@components/button.ts';
-import { createTextInputComponent } from '@components/text-input.ts';
+import { createFormComponent } from '@components/form.ts';
 
 import './styles/globals.css';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 
-const textInputComponent = createTextInputComponent();
-const buttonComponent = createButtonComponent('Add');
+const formComponent = createFormComponent();
 
 if (app) {
-    app.appendChild(textInputComponent);
-    app.appendChild(buttonComponent);
+    app.appendChild(formComponent);
 }
