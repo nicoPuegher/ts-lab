@@ -57,6 +57,13 @@ button {
     background-color: var(--gray100);
 }
 
+form {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    background-color: red;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
