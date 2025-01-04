@@ -30,7 +30,8 @@
 
 #app {
     min-width: 320px;
-    height: 100vh;
+    height: 100dvh;
+    padding-inline: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
