@@ -45,4 +45,8 @@ function handleSubmit(event: SubmitEvent): void {
         console.error('Task description can only contain letters, numbers, and spaces.');
         return;
     }
+
+    // TODO: Submit data to the application's state
+    const sanitizedValue = trimmedValue.replace(/\s+/g, ' ');
+    console.log(sanitizedValue);
 }
