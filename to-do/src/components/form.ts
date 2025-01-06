@@ -34,4 +34,9 @@ function handleSubmit(event: SubmitEvent): void {
         console.error('Task description must be at least 3 characters long.');
         return;
     }
+
+    if (trimmedValue.length > 25) {
+        console.error('Task description cannot exceed 25 characters.');
+        return;
+    }
 }
