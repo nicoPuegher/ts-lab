@@ -39,4 +39,10 @@ function handleSubmit(event: SubmitEvent): void {
         console.error('Task description cannot exceed 25 characters.');
         return;
     }
+
+    const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+    if (!alphanumericRegex.test(trimmedValue)) {
+        console.error('Task description can only contain letters, numbers, and spaces.');
+        return;
+    }
 }
