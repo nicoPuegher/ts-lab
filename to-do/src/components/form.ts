@@ -16,4 +16,7 @@ export function createFormComponent(): HTMLFormElement {
 
 function handleSubmit(event: SubmitEvent): void {
     event.preventDefault();
+
+    const formElement = event.target as HTMLFormElement;
+    const formData = new FormData(formElement);
 }
