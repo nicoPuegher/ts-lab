@@ -43,7 +43,8 @@ function handleSubmit(
     }
 
     if (trimmedValue.length > 25) {
-        console.error('Task description cannot exceed 25 characters.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Cannot exceed 25 characters.';
         return;
     }
 
