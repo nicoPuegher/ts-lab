@@ -1,4 +1,5 @@
 import { createButtonComponent } from './button.ts';
+import { createTextFeedbackComponent } from './text-feedback.ts';
 import { createTextInputComponent } from './text-input.ts';
 
 export function createFormComponent(): HTMLFormElement {
@@ -8,8 +9,9 @@ export function createFormComponent(): HTMLFormElement {
 
     const textInputComponent = createTextInputComponent();
     const buttonComponent = createButtonComponent('Add');
+    const textFeedbackComponent = createTextFeedbackComponent('');
 
-    form.append(textInputComponent, buttonComponent);
+    form.append(textInputComponent, buttonComponent, textFeedbackComponent);
 
     return form;
 }
