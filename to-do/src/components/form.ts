@@ -5,18 +5,21 @@ import { createTextInputComponent } from './text-input.ts';
 export function createFormComponent(): HTMLFormElement {
     const form = document.createElement('form');
 
-    form.addEventListener('submit', handleSubmit);
-
     const textInputComponent = createTextInputComponent();
     const buttonComponent = createButtonComponent('Add');
     const textFeedbackComponent = createTextFeedbackComponent('');
 
     form.append(textInputComponent, buttonComponent, textFeedbackComponent);
+    form.addEventListener('submit', (event) => handleSubmit(event, textInputComponent, textFeedbackComponent));
 
     return form;
 }
 
-function handleSubmit(event: SubmitEvent): void {
+function handleSubmit(
+    event: SubmitEvent,
+    textInputComponent: HTMLInputElement,
+    textFeedbackComponent: HTMLParagraphElement,
+): void {
     event.preventDefault();
 
     const formElement = event.target as HTMLFormElement;
