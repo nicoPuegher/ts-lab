@@ -50,7 +50,8 @@ function handleSubmit(
 
     const alphanumericRegex = /^[a-zA-Z0-9]+$/;
     if (!alphanumericRegex.test(trimmedValue)) {
-        console.error('Task description can only contain letters, numbers, and spaces.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Only letters, numbers, and spaces allowed.';
         return;
     }
 
