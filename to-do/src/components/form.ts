@@ -31,7 +31,8 @@ function handleSubmit(
     const trimmedValue = textInputValue.trim();
 
     if (trimmedValue.length == 0) {
-        console.error('Task description cannot be empty.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Cannot be empty.';
         return;
     }
 
