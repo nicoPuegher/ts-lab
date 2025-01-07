@@ -37,7 +37,8 @@ function handleSubmit(
     }
 
     if (trimmedValue.length < 3) {
-        console.error('Task description must be at least 3 characters long.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Must be at least 3 characters long.';
         return;
     }
 
