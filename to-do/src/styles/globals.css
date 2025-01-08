@@ -16,6 +16,8 @@
     --gray10: hsl(0deg, 0%, 10%);
     --gray0: hsl(0deg, 0%, 0%);
 
+    --error: hsl(360deg, 100%, 70%);
+
     color-scheme: light dark;
     color: var(--gray100);
     background-color: var(--gray0);
