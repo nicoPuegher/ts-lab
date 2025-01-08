@@ -12,6 +12,8 @@ export function createFormComponent(): HTMLFormElement {
     textInputComponent.addEventListener('input', (event) => handleInput(event as InputEvent, textFeedbackComponent));
     form.addEventListener('submit', (event) => handleSubmit(event, textInputComponent, textFeedbackComponent));
 
+    form.append(textInputComponent, buttonComponent, textFeedbackComponent);
+
     return form;
 }
 
