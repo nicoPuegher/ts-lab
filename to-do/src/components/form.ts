@@ -9,7 +9,7 @@ export function createFormComponent(): HTMLFormElement {
     const buttonComponent = createButtonComponent('Add');
     const textFeedbackComponent = createTextFeedbackComponent('');
 
-    form.append(textInputComponent, buttonComponent, textFeedbackComponent);
+    textInputComponent.addEventListener('input', (event) => handleInput(event as InputEvent, textFeedbackComponent));
     form.addEventListener('submit', (event) => handleSubmit(event, textInputComponent, textFeedbackComponent));
 
     return form;
