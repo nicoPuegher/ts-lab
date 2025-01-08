@@ -15,6 +15,10 @@ export function createFormComponent(): HTMLFormElement {
     return form;
 }
 
+function handleInput(_: InputEvent, textFeedbackComponent: HTMLParagraphElement): void {
+    textFeedbackComponent.textContent = '';
+}
+
 function handleSubmit(
     event: SubmitEvent,
     textInputComponent: HTMLInputElement,
