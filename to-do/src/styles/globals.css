@@ -66,6 +66,10 @@ form {
     flex-wrap: wrap;
 }
 
+form input {
+    flex: 1;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
