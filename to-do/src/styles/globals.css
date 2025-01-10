@@ -70,6 +70,11 @@ form input {
     flex: 1;
 }
 
+form button {
+    margin-left: 0.5rem;
+    flex-shrink: 0;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
