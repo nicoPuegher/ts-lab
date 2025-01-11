@@ -1,20 +1,31 @@
 import { createButtonComponent } from './button.ts';
+import { createTextFeedbackComponent } from './text-feedback.ts';
 import { createTextInputComponent } from './text-input.ts';
 
 export function createFormComponent(): HTMLFormElement {
     const form = document.createElement('form');
 
-    form.addEventListener('submit', handleSubmit);
-
     const textInputComponent = createTextInputComponent();
     const buttonComponent = createButtonComponent('Add');
+    const textFeedbackComponent = createTextFeedbackComponent('');
 
-    form.append(textInputComponent, buttonComponent);
+    textInputComponent.addEventListener('input', (event) => handleInput(event as InputEvent, textFeedbackComponent));
+    form.addEventListener('submit', (event) => handleSubmit(event, textInputComponent, textFeedbackComponent));
+
+    form.append(textInputComponent, buttonComponent, textFeedbackComponent);
 
     return form;
 }
 
-function handleSubmit(event: SubmitEvent): void {
+function handleInput(_: InputEvent, textFeedbackComponent: HTMLParagraphElement): void {
+    textFeedbackComponent.textContent = '';
+}
+
+function handleSubmit(
+    event: SubmitEvent,
+    textInputComponent: HTMLInputElement,
+    textFeedbackComponent: HTMLParagraphElement,
+): void {
     event.preventDefault();
 
     const formElement = event.target as HTMLFormElement;
@@ -26,23 +37,27 @@ function handleSubmit(event: SubmitEvent): void {
     const trimmedValue = textInputValue.trim();
 
     if (trimmedValue.length == 0) {
-        console.error('Task description cannot be empty.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Cannot be empty.';
         return;
     }
 
     if (trimmedValue.length < 3) {
-        console.error('Task description must be at least 3 characters long.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Must be at least 3 characters long.';
         return;
     }
 
     if (trimmedValue.length > 25) {
-        console.error('Task description cannot exceed 25 characters.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Cannot exceed 25 characters.';
         return;
     }
 
     const alphanumericRegex = /^[a-zA-Z0-9]+$/;
     if (!alphanumericRegex.test(trimmedValue)) {
-        console.error('Task description can only contain letters, numbers, and spaces.');
+        textInputComponent.focus();
+        textFeedbackComponent.textContent = 'Only letters, numbers, and spaces allowed.';
         return;
     }
 
