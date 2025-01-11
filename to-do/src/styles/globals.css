@@ -75,6 +75,12 @@ form button {
     flex-shrink: 0;
 }
 
+form p {
+    font: var(--p2);
+    flex-basis: 100%;
+    color: var(--error);
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
