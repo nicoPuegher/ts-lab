@@ -5,7 +5,7 @@ export default {
     quoteProps: 'consistent',
     singleAttributePerLine: true,
     plugins: ['@trivago/prettier-plugin-sort-imports'],
-    importOrder: ['^@components/(.*)$', '^[./]'],
+    importOrder: ['^@components/(.*)$', '^@features/(.*)$', '^[./]'],
     importOrderSeparation: true,
     importOrderSortSpecifiers: true,
 };
