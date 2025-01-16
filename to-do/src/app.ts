@@ -1,11 +1,9 @@
-import { createFormComponent } from '@components/form.ts';
+import { submitTaskFeature } from '@features/submit-task/index.ts';
 
 import './styles/globals.css';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 
-const formComponent = createFormComponent();
-
 if (app) {
-    app.appendChild(formComponent);
+    app.appendChild(submitTaskFeature());
 }

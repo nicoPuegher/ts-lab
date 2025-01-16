@@ -1,7 +1,5 @@
-export function createTextFeedbackComponent(textContent: string): HTMLParagraphElement {
+export function createTextFeedbackComponent(): HTMLParagraphElement {
     const textFeedback = document.createElement('p');
-
-    textFeedback.textContent = textContent;
 
     return textFeedback;
 }

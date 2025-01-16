@@ -4,6 +4,7 @@ export function createTextInputComponent(): HTMLInputElement {
     textInput.type = 'text';
     textInput.name = 'textInput';
     textInput.placeholder = 'Write a task...';
+    textInput.autocomplete = 'off';
     textInput.required = true;
 
     return textInput;
