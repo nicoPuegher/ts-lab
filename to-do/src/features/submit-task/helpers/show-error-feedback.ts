@@ -2,7 +2,3 @@ export function showErrorFeedback(input: HTMLInputElement, feedback: HTMLParagra
     input.focus();
     feedback.textContent = message;
 }
-
-export function clearErrorFeedback(feedback: HTMLParagraphElement): void {
-    feedback.textContent = '';
-}
