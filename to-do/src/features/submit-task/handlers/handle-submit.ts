@@ -1,4 +1,4 @@
-import { clearErrorFeedback, showErrorFeedback } from '@features/submit-task/helpers/error-feedback.ts';
+import { showErrorFeedback } from '@features/submit-task/helpers/error-feedback.ts';
 import { sanitizeInput } from '@features/submit-task/helpers/sanitize-input.ts';
 import { submitInput } from '@features/submit-task/helpers/submit-input.ts';
 import { validateInput } from '@features/submit-task/helpers/validate-input.ts';
@@ -19,8 +19,6 @@ export function handleSubmit(
         showErrorFeedback(input, feedback, errorMessage);
         return;
     }
-
-    clearErrorFeedback(feedback);
 
     form.reset();
 
