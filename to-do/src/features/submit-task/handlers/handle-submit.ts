@@ -1,5 +1,5 @@
-import { showErrorFeedback } from '@features/submit-task/helpers/error-feedback.ts';
 import { sanitizeInput } from '@features/submit-task/helpers/sanitize-input.ts';
+import { showErrorFeedback } from '@features/submit-task/helpers/show-error-feedback.ts';
 import { submitInput } from '@features/submit-task/helpers/submit-input.ts';
 import { validateInput } from '@features/submit-task/helpers/validate-input.ts';
 
