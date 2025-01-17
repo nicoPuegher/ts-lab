@@ -21,6 +21,7 @@ export function handleSubmit(
     }
 
     form.reset();
+    input.focus();
 
     submitInput(sanitizeInput(value));
 }
