@@ -3,7 +3,12 @@ import { sanitizeInput } from '@features/submit-task/helpers/sanitize-input.ts';
 import { submitInput } from '@features/submit-task/helpers/submit-input.ts';
 import { validateInput } from '@features/submit-task/helpers/validate-input.ts';
 
-export function handleSubmit(event: SubmitEvent, input: HTMLInputElement, feedback: HTMLParagraphElement): void {
+export function handleSubmit(
+    event: SubmitEvent,
+    form: HTMLFormElement,
+    input: HTMLInputElement,
+    feedback: HTMLParagraphElement,
+): void {
     event.preventDefault();
 
     const data = new FormData(event.target as HTMLFormElement);
@@ -16,6 +21,8 @@ export function handleSubmit(event: SubmitEvent, input: HTMLInputElement, feedba
     }
 
     clearErrorFeedback(feedback);
+
+    form.reset();
 
     submitInput(sanitizeInput(value));
 }

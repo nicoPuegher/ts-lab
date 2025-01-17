@@ -13,7 +13,7 @@ export function submitTaskFeature() {
     const feedback = createTextFeedbackComponent();
 
     input.addEventListener('input', (event) => handleInput(event as InputEvent, feedback));
-    form.addEventListener('submit', (event) => handleSubmit(event, input, feedback));
+    form.addEventListener('submit', (event) => handleSubmit(event, form, input, feedback));
 
     form.append(input, button, feedback);
 
