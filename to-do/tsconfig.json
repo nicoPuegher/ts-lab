@@ -23,8 +23,9 @@
 
         "baseUrl": ".",
         "paths": {
-            "@features/*": ["./src/features/*"],
+            "@state/*": ["./src/state/*"],
             "@components/*": ["./src/components/*"],
+            "@features/*": ["./src/features/*"],
             "@/*": ["./src/*"]
         }
     },
