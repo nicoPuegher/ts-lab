@@ -6,4 +6,8 @@ class StateManager {
     constructor(initialState: AppState) {
         this.state = initialState;
     }
+
+    getState(): AppState {
+        return this.state;
+    }
 }
