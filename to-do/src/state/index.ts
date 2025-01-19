@@ -20,4 +20,12 @@ class StateManager {
 
         this.state.todos.push(newTodo);
     }
+
+    toggleTodo(id: number): void {
+        const todo = this.state.todos.find((todo) => todo.id == id);
+
+        if (todo) {
+            todo.completed = !todo.completed;
+        }
+    }
 }
