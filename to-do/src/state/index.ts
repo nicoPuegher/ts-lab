@@ -28,4 +28,8 @@ class StateManager {
             todo.completed = !todo.completed;
         }
     }
+
+    deleteTodo(id: number): void {
+        this.state.todos = this.state.todos.filter((todo) => todo.id != id);
+    }
 }
