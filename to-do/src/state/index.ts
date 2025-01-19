@@ -1,4 +1,4 @@
-import type { AppState } from '@state/types/index.ts';
+import type { AppState, Todo } from '@state/types/index.ts';
 
 class StateManager {
     private state: AppState;
@@ -9,5 +9,15 @@ class StateManager {
 
     getState(): AppState {
         return this.state;
+    }
+
+    addTodo(text: string): void {
+        const newTodo: Todo = {
+            id: Date.now(),
+            text,
+            completed: false,
+        };
+
+        this.state.todos.push(newTodo);
     }
 }
