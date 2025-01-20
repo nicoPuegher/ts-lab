@@ -33,3 +33,7 @@ class StateManager {
         this.state.todos = this.state.todos.filter((todo) => todo.id != id);
     }
 }
+
+const initialState: AppState = {
+    todos: [],
+};
