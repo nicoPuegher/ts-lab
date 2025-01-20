@@ -37,3 +37,5 @@ class StateManager {
 const initialState: AppState = {
     todos: [],
 };
+
+export const stateManager = new StateManager(initialState);
