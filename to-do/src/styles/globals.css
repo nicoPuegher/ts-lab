@@ -87,6 +87,14 @@ form p {
     color: var(--error);
 }
 
+.task {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: var(--gray10);
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
