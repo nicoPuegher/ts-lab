@@ -10,5 +10,12 @@ export function createTaskComponent(id: string, description: string): HTMLDivEle
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `label-${id}`);
 
+    const paragraph = document.createElement('p');
+
+    paragraph.id = `label-${id}`;
+    paragraph.textContent = description;
+
+    div.append(checkbox, paragraph);
+
     return div;
 }
