@@ -2,6 +2,7 @@ import type { AppState, Todo } from '@state/types/index.ts';
 
 class StateManager {
     private state: AppState;
+    private subscribers: (() => void)[] = [];
 
     constructor(initialState: AppState) {
         this.state = initialState;
