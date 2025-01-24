@@ -30,7 +30,7 @@ class StateManager {
         }
     }
 
-    deleteTodo(id: number): void {
+    deleteTodo(id: string): void {
         this.state.todos = this.state.todos.filter((todo) => todo.id != id);
     }
 }
