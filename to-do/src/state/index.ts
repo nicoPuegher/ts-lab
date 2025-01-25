@@ -25,9 +25,7 @@ class StateManager {
     toggleTodo(id: string): void {
         const todo = this.state.todos.find((todo) => todo.id == id);
 
-        if (todo) {
-            todo.completed = !todo.completed;
-        }
+        todo.completed = !todo.completed;
     }
 
     deleteTodo(id: string): void {
