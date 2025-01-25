@@ -8,6 +8,10 @@ class StateManager {
         this.state = initialState;
     }
 
+    subscribe(callback: () => void): void {
+        this.subscribers.push(callback);
+    }
+
     getState(): AppState {
         return this.state;
     }
