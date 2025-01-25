@@ -22,7 +22,7 @@ class StateManager {
         this.state.todos.push(newTodo);
     }
 
-    toggleTodo(id: number): void {
+    toggleTodo(id: string): void {
         const todo = this.state.todos.find((todo) => todo.id == id);
 
         if (todo) {
