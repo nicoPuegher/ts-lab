@@ -22,7 +22,7 @@ class StateManager {
 
     addTodo(text: string): void {
         const newTodo: Todo = {
-            id: Date.now(),
+            id: Date.now().toString(),
             text,
             completed: false,
         };
