@@ -28,6 +28,7 @@ class StateManager {
         };
 
         this.state.todos.push(newTodo);
+        this.notifySubscribers();
     }
 
     toggleTodo(id: string): void {
@@ -38,6 +39,7 @@ class StateManager {
 
     deleteTodo(id: string): void {
         this.state.todos = this.state.todos.filter((todo) => todo.id != id);
+        this.notifySubscribers();
     }
 }
 
