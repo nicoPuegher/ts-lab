@@ -12,6 +12,10 @@ class StateManager {
         this.subscribers.push(callback);
     }
 
+    private notifySubscribers(): void {
+        this.subscribers.forEach((callback) => callback());
+    }
+
     getState(): AppState {
         return this.state;
     }
