@@ -88,11 +88,9 @@ form p {
 }
 
 .task {
-    width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    background-color: var(--gray10);
     /* This is repetition from input type text */
     padding: 0.5rem 0.75rem;
     border: none;
