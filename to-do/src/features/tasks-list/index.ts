@@ -13,6 +13,10 @@ export function createTasksList(): HTMLUListElement {
         todos.forEach((todo) => {
             const task = createTaskComponent(todo.id, todo.text);
 
+            const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
+            checkbox.checked = todo.completed;
+            checkbox.addEventListener('change', () => stateManager.toggleTodo(todo.id));
+
             ul.appendChild(task);
         });
     }
