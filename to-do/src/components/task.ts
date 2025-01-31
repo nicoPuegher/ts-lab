@@ -9,6 +9,13 @@ export function createTaskComponent(id: string, description: string): HTMLDivEle
     checkbox.type = 'checkbox';
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `label-${id}`);
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            div.classList.add('completed');
+        } else {
+            div.classList.remove('completed');
+        }
+    });
 
     const paragraph = document.createElement('p');
 
