@@ -15,6 +15,9 @@ export function createTasksList(): HTMLUListElement {
 
             const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
             checkbox.checked = todo.completed;
+            if (checkbox.checked) {
+                task.classList.add('completed');
+            }
             checkbox.addEventListener('change', () => stateManager.toggleTodo(todo.id));
 
             ul.appendChild(task);
