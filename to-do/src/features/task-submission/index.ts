@@ -6,14 +6,14 @@ import { createTextInputComponent } from '@components/text-input.ts';
 import { handleInput } from './handlers/handle-input.ts';
 import { handleSubmit } from './handlers/handle-submit.ts';
 
-export function createTaskSubmission() {
-    const form = createFormComponent();
-    const input = createTextInputComponent();
-    const button = createButtonComponent('Add');
-    const feedback = createTextFeedbackComponent();
+export function createTaskSubmission(): HTMLFormElement {
+    const form: HTMLFormElement = createFormComponent();
+    const input: HTMLInputElement = createTextInputComponent();
+    const button: HTMLButtonElement = createButtonComponent('Add');
+    const feedback: HTMLParagraphElement = createTextFeedbackComponent();
 
-    input.addEventListener('input', (event) => handleInput(event as InputEvent, feedback));
-    form.addEventListener('submit', (event) => handleSubmit(event, form, input, feedback));
+    input.addEventListener('input', (event: InputEvent) => handleInput(event as InputEvent, feedback));
+    form.addEventListener('submit', (event: SubmitEvent) => handleSubmit(event as SubmitEvent, form, input, feedback));
 
     form.append(input, button, feedback);
 
