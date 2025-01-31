@@ -17,5 +17,9 @@ export function validateInput(input: string): string | null {
         return 'Only letters, numbers, and spaces allowed.';
     }
 
+    if (/^\d+$/.test(trimmedValue)) {
+        return 'Cannot contain only numbers.';
+    }
+
     return null;
 }
