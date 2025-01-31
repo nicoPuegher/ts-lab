@@ -6,7 +6,7 @@ import { createTextInputComponent } from '@components/text-input.ts';
 import { handleInput } from './handlers/handle-input.ts';
 import { handleSubmit } from './handlers/handle-submit.ts';
 
-export function submitTaskFeature() {
+export function createTaskSubmission() {
     const form = createFormComponent();
     const input = createTextInputComponent();
     const button = createButtonComponent('Add');
