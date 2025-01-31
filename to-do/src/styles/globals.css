@@ -68,6 +68,7 @@ ul {
 }
 
 form {
+    position: relative;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -84,6 +85,8 @@ form button {
 
 form p {
     font: var(--p2);
+    position: absolute;
+    bottom: -20px;
     flex-basis: 100%;
     color: var(--error);
 }
