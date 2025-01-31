@@ -11,10 +11,10 @@ export function handleSubmit(
 ): void {
     event.preventDefault();
 
-    const data = new FormData(event.target as HTMLFormElement);
-    const value = data.get(input.name) as string;
+    const data: FormData = new FormData(event.target as HTMLFormElement);
+    const value: string = data.get(input.name) as string;
 
-    const errorMessage = validateInput(value);
+    const errorMessage: string = validateInput(value);
     if (errorMessage) {
         showErrorFeedback(input, feedback, errorMessage);
         return;
