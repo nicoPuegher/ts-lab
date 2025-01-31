@@ -1,5 +1,5 @@
 export function validateInput(input: string): string | null {
-    const trimmedValue = input.trim();
+    const trimmedValue: string = input.trim();
 
     if (trimmedValue.length === 0) {
         return 'Cannot be empty.';
