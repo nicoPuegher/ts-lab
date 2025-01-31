@@ -1,7 +1,7 @@
-import { sanitizeInput } from '@features/submit-task/helpers/sanitize-input.ts';
-import { showErrorFeedback } from '@features/submit-task/helpers/show-error-feedback.ts';
-import { submitInput } from '@features/submit-task/helpers/submit-input.ts';
-import { validateInput } from '@features/submit-task/helpers/validate-input.ts';
+import { sanitizeInput } from '@features/task-submission/helpers/sanitize-input.ts';
+import { showErrorFeedback } from '@features/task-submission/helpers/show-error-feedback.ts';
+import { submitInput } from '@features/task-submission/helpers/submit-input.ts';
+import { validateInput } from '@features/task-submission/helpers/validate-input.ts';
 
 export function handleSubmit(
     event: SubmitEvent,
