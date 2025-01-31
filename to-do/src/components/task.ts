@@ -1,21 +1,15 @@
 export function createTaskComponent(id: string, description: string): HTMLDivElement {
-    const div = document.createElement('div');
+    const div: HTMLDivElement = document.createElement('div');
     div.classList.add('task', 'shared');
 
-    const checkbox = document.createElement('input');
+    const checkbox: HTMLInputElement = document.createElement('input');
     checkbox.id = id;
     checkbox.type = 'checkbox';
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `label-${id}`);
-    checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-            div.classList.add('completed');
-        } else {
-            div.classList.remove('completed');
-        }
-    });
+    checkbox.addEventListener('change', (event: Event) => handleChange(div, event));
 
-    const paragraph = document.createElement('p');
+    const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.id = `label-${id}`;
     paragraph.textContent = description;
 
