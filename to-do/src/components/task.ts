@@ -23,3 +23,13 @@ export function createTaskComponent(id: string, description: string): HTMLDivEle
 
     return div;
 }
+
+function handleChange(task: HTMLDivElement, event: Event): void {
+    const checkbox = event.target as HTMLInputElement;
+
+    if (checkbox.checked) {
+        task.classList.add('completed');
+    } else {
+        task.classList.remove('completed');
+    }
+}
