@@ -6,6 +6,7 @@ export function createTextInputComponent(): HTMLInputElement {
     textInput.placeholder = 'Write a task...';
     textInput.autocomplete = 'off';
     textInput.required = true;
+    textInput.classList.add('shared');
 
     return textInput;
 }
