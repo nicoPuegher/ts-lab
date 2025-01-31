@@ -1,5 +1,5 @@
 export function createFormComponent(): HTMLFormElement {
-    const form = document.createElement('form');
+    const form: HTMLFormElement = document.createElement('form');
 
     return form;
 }

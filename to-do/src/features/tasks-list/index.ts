@@ -1,4 +1,5 @@
 import { stateManager } from '@state/index.ts';
+import type { Todo } from '@state/types';
 
 import { createTaskComponent } from '@components/task.ts';
 
@@ -6,12 +7,12 @@ export function createTasksList(): HTMLUListElement {
     const ul: HTMLUListElement = document.createElement('ul');
 
     function appendTasks(): void {
-        const { todos } = stateManager.getState();
+        const { todos }: { todos: Todo[] } = stateManager.getState();
 
         ul.replaceChildren();
 
         todos.forEach((todo) => {
-            const task = createTaskComponent(todo.id, todo.text);
+            const task: HTMLDivElement = createTaskComponent(todo.id, todo.text);
 
             const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
             checkbox.checked = todo.completed;
