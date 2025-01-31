@@ -1,7 +1,7 @@
 export function createTaskComponent(id: string, description: string): HTMLDivElement {
     const div = document.createElement('div');
 
-    div.className = 'task';
+    div.classList.add('task', 'shared');
 
     const checkbox = document.createElement('input');
 
