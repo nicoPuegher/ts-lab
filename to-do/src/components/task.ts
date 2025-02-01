@@ -1,3 +1,5 @@
+import { createIcons, icons } from 'lucide';
+
 export function createTaskComponent(id: string, description: string): HTMLDivElement {
     const div: HTMLDivElement = document.createElement('div');
     div.classList.add('task', 'shared');
