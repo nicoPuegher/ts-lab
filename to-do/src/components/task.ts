@@ -20,6 +20,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     icon.classList.add('icon');
 
     li.append(checkbox, paragraph, icon);
+    setTimeout(() => createIcons({ icons }), 0);
 
     return li;
 }
