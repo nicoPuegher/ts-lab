@@ -15,7 +15,11 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     paragraph.id = `label-${id}`;
     paragraph.textContent = description;
 
-    li.append(checkbox, paragraph);
+    const icon: HTMLElement = document.createElement('i');
+    icon.setAttribute('data-lucide', 'thas');
+    icon.classList.add('icon');
+
+    li.append(checkbox, paragraph, icon);
 
     return li;
 }
