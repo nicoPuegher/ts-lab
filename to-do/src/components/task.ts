@@ -30,7 +30,9 @@ function handleChange(task: HTMLLIElement, event: Event): void {
 
     if (checkbox.checked) {
         task.classList.add('completed');
+        task.lastElementChild.classList.add('removed');
     } else {
         task.classList.remove('completed');
+        task.lastElementChild.classList.remove('removed');
     }
 }
