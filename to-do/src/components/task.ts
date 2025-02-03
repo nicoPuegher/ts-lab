@@ -16,7 +16,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     paragraph.textContent = description;
 
     const icon: HTMLElement = document.createElement('i');
-    icon.setAttribute('data-lucide', 'thas');
+    icon.setAttribute('data-lucide', 'trash');
     icon.classList.add('icon');
 
     li.append(checkbox, paragraph, icon);
