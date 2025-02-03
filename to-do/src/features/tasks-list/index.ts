@@ -18,6 +18,7 @@ export function createTasksList(): HTMLUListElement {
             checkbox.checked = todo.completed;
             if (checkbox.checked) {
                 task.classList.add('completed');
+                task.lastElementChild.classList.add('removed');
             }
             checkbox.addEventListener('change', () => stateManager.toggleTodo(todo.id));
 
