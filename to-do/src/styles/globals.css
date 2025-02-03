@@ -106,6 +106,16 @@ button {
     margin-right: 1rem;
 }
 
+.task p {
+    flex-grow: 1;
+}
+
+.icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--gray100);
+}
+
 .shared {
     padding: 0.5rem 0.75rem;
     border: none;
@@ -115,6 +125,10 @@ button {
 
 .completed {
     opacity: 0.5;
+}
+
+.removed {
+    display: none;
 }
 
 @media (prefers-color-scheme: light) {

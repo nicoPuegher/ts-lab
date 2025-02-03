@@ -1,29 +1,38 @@
-export function createTaskComponent(id: string, description: string): HTMLDivElement {
-    const div: HTMLDivElement = document.createElement('div');
-    div.classList.add('task', 'shared');
+import { createIcons, icons } from 'lucide';
+
+export function createTaskComponent(id: string, description: string): HTMLLIElement {
+    const li: HTMLLIElement = document.createElement('li');
+    li.classList.add('task', 'shared');
 
     const checkbox: HTMLInputElement = document.createElement('input');
     checkbox.id = id;
     checkbox.type = 'checkbox';
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `label-${id}`);
-    checkbox.addEventListener('change', (event: Event) => handleChange(div, event));
+    checkbox.addEventListener('change', (event: Event) => handleChange(li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.id = `label-${id}`;
     paragraph.textContent = description;
 
-    div.append(checkbox, paragraph);
+    const icon: HTMLElement = document.createElement('i');
+    icon.setAttribute('data-lucide', 'trash');
+    icon.classList.add('icon');
 
-    return div;
+    li.append(checkbox, paragraph, icon);
+    setTimeout(() => createIcons({ icons }), 0);
+
+    return li;
 }
 
-function handleChange(task: HTMLDivElement, event: Event): void {
+function handleChange(task: HTMLLIElement, event: Event): void {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
         task.classList.add('completed');
+        task.lastElementChild.classList.add('removed');
     } else {
         task.classList.remove('completed');
+        task.lastElementChild.classList.remove('removed');
     }
 }

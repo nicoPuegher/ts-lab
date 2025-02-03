@@ -12,12 +12,13 @@ export function createTasksList(): HTMLUListElement {
         ul.replaceChildren();
 
         todos.forEach((todo) => {
-            const task: HTMLDivElement = createTaskComponent(todo.id, todo.text);
+            const task: HTMLLIElement = createTaskComponent(todo.id, todo.text);
 
             const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
             checkbox.checked = todo.completed;
             if (checkbox.checked) {
                 task.classList.add('completed');
+                task.lastElementChild.classList.add('removed');
             }
             checkbox.addEventListener('change', () => stateManager.toggleTodo(todo.id));
 
