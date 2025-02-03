@@ -106,6 +106,10 @@ button {
     margin-right: 1rem;
 }
 
+.task p {
+    flex-grow: 1;
+}
+
 .shared {
     padding: 0.5rem 0.75rem;
     border: none;
