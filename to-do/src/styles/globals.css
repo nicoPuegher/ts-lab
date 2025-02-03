@@ -127,6 +127,10 @@ button {
     opacity: 0.5;
 }
 
+.removed {
+    display: none;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
