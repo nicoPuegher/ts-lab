@@ -1,3 +1,4 @@
+import { stateManager } from '@state/index.ts';
 import { createIcons, icons } from 'lucide';
 
 export function createTaskComponent(id: string, description: string): HTMLLIElement {
@@ -9,7 +10,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     checkbox.type = 'checkbox';
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `checkbox-${id}`);
-    checkbox.addEventListener('change', (event: Event) => handleChange(li, event));
+    checkbox.addEventListener('change', (event: Event) => handleChange(id, li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.textContent = description;
@@ -28,7 +29,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     return li;
 }
 
-function handleChange(task: HTMLLIElement, event: Event): void {
+function handleChange(id: string, task: HTMLLIElement, event: Event): void {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
@@ -38,4 +39,6 @@ function handleChange(task: HTMLLIElement, event: Event): void {
         task.classList.remove('completed');
         task.lastElementChild.classList.remove('removed');
     }
+
+    stateManager.toggleTodo(id);
 }
