@@ -9,12 +9,20 @@ export function createTasksList(): HTMLUListElement {
     function appendTasks(): void {
         const { todos }: { todos: Todo[] } = stateManager.getState();
 
-        if (todos.length > ul.children.length) {
-            const newTodo = todos.at(-1);
-            const task: HTMLLIElement = createTaskComponent(newTodo.id, newTodo.text);
+        ul.replaceChildren();
+
+        todos.forEach((todo) => {
+            const task: HTMLLIElement = createTaskComponent(todo.id, todo.text);
+
+            const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
+            checkbox.checked = todo.completed;
+            if (checkbox.checked) {
+                task.classList.add('completed');
+                task.lastElementChild.classList.add('removed');
+            }
 
             ul.appendChild(task);
-        }
+        });
     }
 
     stateManager.subscribe(appendTasks);
