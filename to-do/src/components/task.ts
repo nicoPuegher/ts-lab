@@ -5,19 +5,18 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     li.classList.add('task', 'shared');
 
     const checkbox: HTMLInputElement = document.createElement('input');
-    checkbox.id = id;
+    checkbox.id = `checkbox-${id}`;
     checkbox.type = 'checkbox';
     checkbox.checked = false;
-    checkbox.setAttribute('aria-labelledby', `label-${id}`);
+    checkbox.setAttribute('aria-labelledby', `checkbox-${id}`);
     checkbox.addEventListener('change', (event: Event) => handleChange(li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
-    paragraph.id = `label-${id}`;
     paragraph.textContent = description;
 
     const icon: HTMLElement = document.createElement('i');
-    icon.setAttribute('data-lucide', 'trash');
     icon.classList.add('icon');
+    icon.setAttribute('data-lucide', 'trash');
 
     li.append(checkbox, paragraph, icon);
     setTimeout(() => createIcons({ icons }), 0);
