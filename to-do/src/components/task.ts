@@ -15,6 +15,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     paragraph.textContent = description;
 
     const iconContainer: HTMLDivElement = document.createElement('div');
+    iconContainer.addEventListener('click', () => handleClick(id));
 
     const icon: HTMLElement = document.createElement('i');
     icon.classList.add('icon');
