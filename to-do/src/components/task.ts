@@ -1,3 +1,4 @@
+import { stateManager } from '@state/index.ts';
 import { createIcons, icons } from 'lucide';
 
 export function createTaskComponent(id: string, description: string): HTMLLIElement {
@@ -9,22 +10,26 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     checkbox.type = 'checkbox';
     checkbox.checked = false;
     checkbox.setAttribute('aria-labelledby', `checkbox-${id}`);
-    checkbox.addEventListener('change', (event: Event) => handleChange(li, event));
+    checkbox.addEventListener('change', (event: Event) => handleChange(id, li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.textContent = description;
+
+    const iconContainer: HTMLDivElement = document.createElement('div');
+    iconContainer.addEventListener('click', () => handleClick(id));
 
     const icon: HTMLElement = document.createElement('i');
     icon.classList.add('icon');
     icon.setAttribute('data-lucide', 'trash');
 
-    li.append(checkbox, paragraph, icon);
+    iconContainer.appendChild(icon);
+    li.append(checkbox, paragraph, iconContainer);
     setTimeout(() => createIcons({ icons }), 0);
 
     return li;
 }
 
-function handleChange(task: HTMLLIElement, event: Event): void {
+function handleChange(id: string, task: HTMLLIElement, event: Event): void {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
@@ -34,4 +39,10 @@ function handleChange(task: HTMLLIElement, event: Event): void {
         task.classList.remove('completed');
         task.lastElementChild.classList.remove('removed');
     }
+
+    stateManager.toggleTodo(id);
+}
+
+function handleClick(id: string) {
+    stateManager.deleteTodo(id);
 }
