@@ -42,3 +42,7 @@ function handleChange(id: string, task: HTMLLIElement, event: Event): void {
 
     stateManager.toggleTodo(id);
 }
+
+function handleClick(id: string) {
+    stateManager.deleteTodo(id);
+}
