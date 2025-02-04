@@ -14,11 +14,14 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.textContent = description;
 
+    const iconContainer: HTMLDivElement = document.createElement('div');
+
     const icon: HTMLElement = document.createElement('i');
     icon.classList.add('icon');
     icon.setAttribute('data-lucide', 'trash');
 
-    li.append(checkbox, paragraph, icon);
+    iconContainer.appendChild(icon);
+    li.append(checkbox, paragraph, iconContainer);
     setTimeout(() => createIcons({ icons }), 0);
 
     return li;
