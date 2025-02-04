@@ -12,7 +12,6 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
     checkbox.addEventListener('change', (event: Event) => handleChange(li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
-    paragraph.id = `label-${id}`;
     paragraph.textContent = description;
 
     const icon: HTMLElement = document.createElement('i');
