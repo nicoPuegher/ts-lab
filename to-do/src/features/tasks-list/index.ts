@@ -8,20 +8,6 @@ export function createTasksList(): HTMLUListElement {
 
     function appendTasks(): void {
         const { todos }: { todos: Todo[] } = stateManager.getState();
-
-        todos.forEach((todo) => {
-            const task: HTMLLIElement = createTaskComponent(todo.id, todo.text);
-
-            const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
-            checkbox.checked = todo.completed;
-            if (checkbox.checked) {
-                task.classList.add('completed');
-                task.lastElementChild.classList.add('removed');
-            }
-            checkbox.addEventListener('change', () => stateManager.toggleTodo(todo.id));
-
-            ul.appendChild(task);
-        });
     }
 
     stateManager.subscribe(appendTasks);
