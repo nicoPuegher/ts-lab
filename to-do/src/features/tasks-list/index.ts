@@ -9,8 +9,6 @@ export function createTasksList(): HTMLUListElement {
     function appendTasks(): void {
         const { todos }: { todos: Todo[] } = stateManager.getState();
 
-        ul.replaceChildren();
-
         todos.forEach((todo) => {
             const task: HTMLLIElement = createTaskComponent(todo.id, todo.text);
 
