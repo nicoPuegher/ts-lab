@@ -63,6 +63,10 @@ export function createTasksList(): HTMLUListElement {
                 const li: HTMLLIElement = elementsMap.get(todo.id);
                 if (li) fragment.appendChild(li);
             });
+
+            ul.replaceChildren(fragment);
+
+            currentTodos = [...newTodos];
         });
     }
 
