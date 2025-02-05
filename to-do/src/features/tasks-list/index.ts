@@ -37,6 +37,12 @@ export function createTasksList(): HTMLUListElement {
                     if (oldTodo.text != todo.text) {
                         paragraph.textContent = todo.text;
                     }
+
+                    if (oldTodo.completed != todo.completed) {
+                        checkbox.checked = todo.completed;
+                        existingLi.classList.toggle('completed', todo.completed);
+                        existingLi.lastElementChild.classList.toggle('removed', todo.completed);
+                    }
                 }
             }
         });
