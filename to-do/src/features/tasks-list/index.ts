@@ -10,7 +10,7 @@ export function createTasksList(): HTMLUListElement {
     const ul: HTMLUListElement = document.createElement('ul');
 
     function appendTasks(): void {
-        const { todos }: { todos: Todo[] } = stateManager.getState();
+        const { todos: newTodos }: { todos: Todo[] } = stateManager.getState();
 
         ul.replaceChildren();
 
