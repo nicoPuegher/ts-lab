@@ -23,6 +23,14 @@ export function createTasksList(): HTMLUListElement {
                 elementsMap.delete(id);
             }
         });
+
+        newTodos.forEach((todo) => {
+            const existingLi: HTMLLIElement = elementsMap.get(todo.id);
+
+            if (existingLi) {
+                // TODO: handle existing li
+            }
+        });
     }
 
     stateManager.subscribe(appendTasks);
