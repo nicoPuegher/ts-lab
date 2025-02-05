@@ -28,7 +28,16 @@ export function createTasksList(): HTMLUListElement {
             const existingLi: HTMLLIElement = elementsMap.get(todo.id);
 
             if (existingLi) {
-                // TODO: handle existing li
+                const oldTodo: Todo = currentTodos.find((currentTodo) => currentTodo.id === todo.id);
+
+                if (oldTodo) {
+                    const checkbox: HTMLInputElement = existingLi.querySelector('input[type="checkbox"]');
+                    const paragraph: HTMLParagraphElement = existingLi.querySelector('p');
+
+                    if (oldTodo.text != todo.text) {
+                        paragraph.textContent = todo.text;
+                    }
+                }
             }
         });
     }
