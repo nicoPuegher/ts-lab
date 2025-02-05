@@ -4,6 +4,9 @@ import type { Todo } from '@state/types';
 import { createTaskComponent } from '@components/task.ts';
 
 export function createTasksList(): HTMLUListElement {
+    const elementsMap = new Map<string, HTMLLIElement>();
+    let currentTodos: Todo[] = [];
+
     const ul: HTMLUListElement = document.createElement('ul');
 
     function appendTasks(): void {
