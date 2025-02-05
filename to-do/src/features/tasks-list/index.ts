@@ -56,6 +56,13 @@ export function createTasksList(): HTMLUListElement {
 
                 elementsMap.set(todo.id, li);
             }
+
+            const fragment: DocumentFragment = document.createDocumentFragment();
+
+            newTodos.forEach((todo) => {
+                const li: HTMLLIElement = elementsMap.get(todo.id);
+                if (li) fragment.appendChild(li);
+            });
         });
     }
 
