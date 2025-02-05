@@ -44,6 +44,12 @@ export function createTasksList(): HTMLUListElement {
                         existingLi.lastElementChild.classList.toggle('removed', todo.completed);
                     }
                 }
+            } else {
+                const li: HTMLLIElement = createTaskComponent(todo.id, todo.text);
+                if (todo.completed) {
+                    li.classList.add('completed');
+                    li.lastElementChild.classList.add('removed');
+                }
             }
         });
     }
