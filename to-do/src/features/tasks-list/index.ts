@@ -50,6 +50,11 @@ export function createTasksList(): HTMLUListElement {
                     li.classList.add('completed');
                     li.lastElementChild.classList.add('removed');
                 }
+
+                const checkbox: HTMLInputElement = li.querySelector('input[type="checkbox"]');
+                checkbox.checked = todo.completed;
+
+                elementsMap.set(todo.id, li);
             }
         });
     }
