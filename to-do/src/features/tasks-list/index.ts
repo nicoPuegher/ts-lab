@@ -12,20 +12,8 @@ export function createTasksList(): HTMLUListElement {
     function appendTasks(): void {
         const { todos: newTodos }: { todos: Todo[] } = stateManager.getState();
 
-        ul.replaceChildren();
-
-        todos.forEach((todo) => {
-            const task: HTMLLIElement = createTaskComponent(todo.id, todo.text);
-
-            const checkbox: HTMLInputElement = task.querySelector('input[type="checkbox"]');
-            checkbox.checked = todo.completed;
-            if (checkbox.checked) {
-                task.classList.add('completed');
-                task.lastElementChild.classList.add('removed');
-            }
-
-            ul.appendChild(task);
-        });
+        const currentIds = new Set<string>(currentTodos.map((currentTodo) => currentTodo.id));
+        const newIds = new Set<string>(newTodos.map((newTodo) => newTodo.id));
     }
 
     stateManager.subscribe(appendTasks);
