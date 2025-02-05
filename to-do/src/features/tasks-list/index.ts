@@ -16,6 +16,13 @@ export function createTasksList(): HTMLUListElement {
         const newIds = new Set<string>(newTodos.map((newTodo) => newTodo.id));
 
         const idsToRemove: string[] = Array.from(currentIds).filter((id) => !newIds.has(id));
+        idsToRemove.forEach((id) => {
+            const li: HTMLLIElement = elementsMap.get(id);
+            if (li) {
+                li.remove();
+                elementsMap.delete(id);
+            }
+        });
     }
 
     stateManager.subscribe(appendTasks);
