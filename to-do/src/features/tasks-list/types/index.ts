@@ -14,3 +14,9 @@ export type newTodoProps = {
 export type extendedTodoProps = todoProps & {
     ul: HTMLUListElement;
 };
+
+export type updateExistingTodoProps = {
+    existingLi: HTMLLIElement;
+    currentTodos: Todo[];
+    todo: Todo;
+};
