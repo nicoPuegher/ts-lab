@@ -4,9 +4,11 @@ import type { Todo } from '@state/types/index.ts';
 import { createTaskComponent } from '@components/task.ts';
 
 import { removeIds } from '@features/tasks-list/helpers/remove-ids.ts';
+import { updateTodos } from '@features/tasks-list/helpers/update-todos.ts';
 
 export function createTasksList(): HTMLUListElement {
     const elementsMap = new Map<string, HTMLLIElement>();
+    // eslint-disable-next-line prefer-const
     let currentTodos: Todo[] = [];
 
     const ul: HTMLUListElement = document.createElement('ul');
@@ -14,7 +16,7 @@ export function createTasksList(): HTMLUListElement {
     function appendTasks(): void {
         const { todos: newTodos }: { todos: Todo[] } = stateManager.getState();
 
-        removeIds({ currentTodos, newTodos, elementsMap });
+        removeIds({ elementsMap, currentTodos, newTodos });
 
         newTodos.forEach((todo) => {
             const existingLi: HTMLLIElement = elementsMap.get(todo.id);
@@ -49,16 +51,7 @@ export function createTasksList(): HTMLUListElement {
                 elementsMap.set(todo.id, li);
             }
 
-            const fragment: DocumentFragment = document.createDocumentFragment();
-
-            newTodos.forEach((todo) => {
-                const li: HTMLLIElement = elementsMap.get(todo.id);
-                if (li) fragment.appendChild(li);
-            });
-
-            ul.replaceChildren(fragment);
-
-            currentTodos = [...newTodos];
+            updateTodos({ elementsMap, currentTodos, newTodos, ul });
         });
     }
 
