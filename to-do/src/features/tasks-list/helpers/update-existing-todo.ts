@@ -1,10 +1,6 @@
 import type { Todo } from '@state/types/index.ts';
 
-type updateExistingTodoProps = {
-    existingLi: HTMLLIElement;
-    currentTodos: Todo[];
-    todo: Todo;
-};
+import type { updateExistingTodoProps } from '@features/tasks-list/types/index.ts';
 
 export function updateExistingTodo(props: updateExistingTodoProps): void {
     const oldTodo: Todo = props.currentTodos.find((currentTodo) => currentTodo.id === props.todo.id);
