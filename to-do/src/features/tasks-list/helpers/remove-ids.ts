@@ -1,12 +1,6 @@
-import type { Todo } from '@state/types/index.ts';
+import type { todoProps } from '@features/tasks-list/types/index.ts';
 
-type removeIdsProps = {
-    currentTodos: Todo[];
-    newTodos: Todo[];
-    elementsMap: Map<string, HTMLLIElement>;
-};
-
-export function removeIds(props: removeIdsProps): void {
+export function removeIds(props: todoProps): void {
     const currentIds = new Set<string>(props.currentTodos.map((currentTodo) => currentTodo.id));
     const newIds = new Set<string>(props.newTodos.map((newTodo) => newTodo.id));
 
