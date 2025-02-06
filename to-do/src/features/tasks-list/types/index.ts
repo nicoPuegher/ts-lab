@@ -5,3 +5,8 @@ export type todoProps = {
     currentTodos: Todo[];
     newTodos: Todo[];
 };
+
+export type newTodoProps = {
+    elementsMap: Map<string, HTMLLIElement>;
+    todo: Todo;
+};
