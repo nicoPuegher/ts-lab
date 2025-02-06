@@ -10,3 +10,7 @@ export type newTodoProps = {
     elementsMap: Map<string, HTMLLIElement>;
     todo: Todo;
 };
+
+export type extendedTodoProps = todoProps & {
+    ul: HTMLUListElement;
+};
