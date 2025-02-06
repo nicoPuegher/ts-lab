@@ -1,9 +1,8 @@
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
-import { createTaskComponent } from '@components/task.ts';
-
 import { removeIds } from '@features/tasks-list/helpers/remove-ids.ts';
+import { setNewTodo } from '@features/tasks-list/helpers/setNewTodo.ts';
 import { updateTodos } from '@features/tasks-list/helpers/update-todos.ts';
 
 export function createTasksList(): HTMLUListElement {
@@ -39,16 +38,7 @@ export function createTasksList(): HTMLUListElement {
                     }
                 }
             } else {
-                const li: HTMLLIElement = createTaskComponent(todo.id, todo.text);
-                if (todo.completed) {
-                    li.classList.add('completed');
-                    li.lastElementChild.classList.add('removed');
-                }
-
-                const checkbox: HTMLInputElement = li.querySelector('input[type="checkbox"]');
-                checkbox.checked = todo.completed;
-
-                elementsMap.set(todo.id, li);
+                setNewTodo({ elementsMap, todo });
             }
 
             updateTodos({ elementsMap, currentTodos, newTodos, ul });
