@@ -3,6 +3,7 @@ import type { Todo } from '@state/types/index.ts';
 
 import { processTodos } from '@features/tasks-list/helpers/process-todos.ts';
 import { removeIds } from '@features/tasks-list/helpers/remove-ids.ts';
+import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
 
 export function createTasksList(): HTMLUListElement {
     const elementsMap = new Map<string, HTMLLIElement>();
@@ -16,6 +17,7 @@ export function createTasksList(): HTMLUListElement {
 
         removeIds({ elementsMap, currentTodos, newTodos });
         processTodos({ elementsMap, currentTodos, newTodos, ul });
+        scrollToLast(ul);
     }
 
     stateManager.subscribe(appendTasks);
