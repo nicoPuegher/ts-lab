@@ -8,6 +8,16 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src:
+        url('/fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('/fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --ff: 'Montserrat', serif;
     font-synthesis: none;
