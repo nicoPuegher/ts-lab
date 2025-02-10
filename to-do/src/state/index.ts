@@ -46,6 +46,7 @@ class StateManager {
 
     deleteTodo(id: string): void {
         this.state.todos = this.state.todos.filter((todo) => todo.id != id);
+        this.saveState();
         this.notifySubscribers();
     }
 }
