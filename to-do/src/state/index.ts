@@ -40,6 +40,8 @@ class StateManager {
     toggleTodo(id: string): void {
         const todo = this.state.todos.find((todo) => todo.id == id);
         todo.completed = !todo.completed;
+        this.saveState();
+        this.notifySubscribers();
     }
 
     deleteTodo(id: string): void {
