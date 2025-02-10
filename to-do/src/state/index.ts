@@ -33,6 +33,7 @@ class StateManager {
         };
 
         this.state.todos.push(newTodo);
+        this.saveState();
         this.notifySubscribers();
     }
 
