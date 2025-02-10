@@ -17,6 +17,10 @@ class StateManager {
         this.subscribers.forEach((callback) => callback());
     }
 
+    private saveState(): void {
+        localStorage.setItem('tasksList', JSON.stringify(this.state));
+    }
+
     getState(): AppState {
         return this.state;
     }
