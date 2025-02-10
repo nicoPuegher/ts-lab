@@ -5,7 +5,8 @@ class StateManager {
     private subscribers: (() => void)[] = [];
 
     constructor(initialState: AppState) {
-        this.state = initialState;
+        const savedState = localStorage.getItem('tasksList');
+        this.state = savedState ? JSON.parse(savedState) : initialState;
     }
 
     subscribe(callback: () => void): void {
