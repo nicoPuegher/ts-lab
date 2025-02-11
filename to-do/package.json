@@ -3,15 +3,17 @@
     "private": true,
     "version": "1.0.0",
     "type": "module",
+    "homepage": "https://nicopuegher.github.io/ts-lab/to-do",
     "scripts": {
         "dev": "vite --host",
         "build": "tsc && vite build",
-        "preview": "vite preview"
+        "deploy": "gh-pages -d dist"
     },
     "devDependencies": {
         "@eslint/js": "^9.18.0",
         "@trivago/prettier-plugin-sort-imports": "^5.2.1",
         "eslint": "^9.18.0",
+        "gh-pages": "^6.3.0",
         "globals": "^15.14.0",
         "prettier": "^3.4.2",
         "typescript": "~5.6.2",
