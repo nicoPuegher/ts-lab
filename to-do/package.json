@@ -3,11 +3,11 @@
     "private": true,
     "version": "1.0.0",
     "type": "module",
-    "homepage": "https://nicopuegher.github.io/ts-lab/to-do",
     "scripts": {
         "dev": "vite --host",
         "build": "tsc && vite build",
-        "deploy": "gh-pages -d dist"
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist -b gh-pages"
     },
     "devDependencies": {
         "@eslint/js": "^9.18.0",
