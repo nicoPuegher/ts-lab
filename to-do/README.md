@@ -24,7 +24,7 @@ In v1.0.0, users should be able to:
 
 ### Link
 
-Live web application: [To-do app](https://nicopuegher.github.io/ts-lab/to-do/){:target="_blank"}
+[To-do app](https://nicopuegher.github.io/ts-lab/to-do/) (Right-click and select "Open in new tab")
 
 ## What I learned
 
