@@ -1,5 +1,5 @@
 import { stateManager } from '@state/index.ts';
-import { createIcons, icons } from 'lucide';
+import { Trash, createIcons } from 'lucide';
 
 export function createTaskComponent(id: string, description: string): HTMLLIElement {
     const li: HTMLLIElement = document.createElement('li');
@@ -24,7 +24,7 @@ export function createTaskComponent(id: string, description: string): HTMLLIElem
 
     iconContainer.appendChild(icon);
     li.append(checkbox, paragraph, iconContainer);
-    setTimeout(() => createIcons({ icons }), 0);
+    setTimeout(() => createIcons({ icons: { Trash } }), 0);
 
     return li;
 }
