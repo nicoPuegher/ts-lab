@@ -1,0 +1,3 @@
+# Ignore deployment script and generated files
+/deploy.sh
+/gh-pages/
