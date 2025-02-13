@@ -14,5 +14,7 @@ export function createCalendarCarousel(): HTMLDivElement {
         });
     }
 
+    const dates = generateWeek();
+
     return container;
 }
