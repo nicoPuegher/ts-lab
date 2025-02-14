@@ -1,5 +1,4 @@
-import { createCalendarItemComponent } from '@components/calendar-item.ts';
-
+import { appendCalendarItems } from '@features/calendar-carousel/helpers/append-calendar-items.ts';
 import { generateWeek } from '@features/calendar-carousel/helpers/generate-week.ts';
 
 export function createCalendarCarousel(): HTMLDivElement {
@@ -7,14 +6,7 @@ export function createCalendarCarousel(): HTMLDivElement {
     container.classList.add('calendar-carousel');
 
     const dates = generateWeek();
-
-    dates.forEach((date) => {
-        const day = date.toLocaleString('en-US', { weekday: 'short' });
-        const dateNumber = date.getDate();
-        const calendarItem = createCalendarItemComponent(day, dateNumber);
-
-        container.appendChild(calendarItem);
-    });
+    appendCalendarItems(dates, container);
 
     return container;
 }
