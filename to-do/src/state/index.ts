@@ -25,6 +25,14 @@ class StateManager {
         return this.state;
     }
 
+    setSelectedDate(date: Date): void {
+        const dateKey = date.toISOString().split('T')[0];
+        this.state.selectedDate = dateKey;
+
+        this.saveState();
+        this.notifySubscribers();
+    }
+
     addTodo(text: string): void {
         const newTodo: Todo = {
             id: Date.now().toString(),
