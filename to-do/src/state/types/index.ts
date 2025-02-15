@@ -5,5 +5,8 @@ export type Todo = {
 };
 
 export type AppState = {
-    todos: Todo[];
+    selectedDate: string;
+    todosByDate: {
+        [date: string]: Todo[];
+    };
 };
