@@ -40,7 +40,12 @@ class StateManager {
             completed: false,
         };
 
-        this.state.todos.push(newTodo);
+        const dateKey = this.state.selectedDate;
+        if (!this.state.todosByDate[dateKey]) {
+            this.state.todosByDate[dateKey] = [];
+        }
+
+        this.state.todosByDate[dateKey].push(newTodo);
         this.saveState();
         this.notifySubscribers();
     }
