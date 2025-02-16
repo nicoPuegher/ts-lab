@@ -51,10 +51,15 @@ class StateManager {
     }
 
     toggleTodo(id: string): void {
-        const todo = this.state.todos.find((todo) => todo.id == id);
-        todo.completed = !todo.completed;
-        this.saveState();
-        this.notifySubscribers();
+        const dateKey = this.state.selectedDate;
+        const todos = this.state.todosByDate[dateKey] || [];
+        const todo = todos.find((t) => t.id === id);
+
+        if (todo) {
+            todo.completed = !todo.completed;
+            this.saveState();
+            this.notifySubscribers();
+        }
     }
 
     deleteTodo(id: string): void {
