@@ -25,6 +25,14 @@ class StateManager {
         return this.state;
     }
 
+    setSelectedDate(date: Date): void {
+        const dateKey = date.toISOString().split('T')[0];
+        this.state.selectedDate = dateKey;
+
+        this.saveState();
+        this.notifySubscribers();
+    }
+
     addTodo(text: string): void {
         const newTodo: Todo = {
             id: Date.now().toString(),
@@ -32,27 +40,41 @@ class StateManager {
             completed: false,
         };
 
-        this.state.todos.push(newTodo);
+        const dateKey = this.state.selectedDate;
+        if (!this.state.todosByDate[dateKey]) {
+            this.state.todosByDate[dateKey] = [];
+        }
+
+        this.state.todosByDate[dateKey].push(newTodo);
         this.saveState();
         this.notifySubscribers();
     }
 
     toggleTodo(id: string): void {
-        const todo = this.state.todos.find((todo) => todo.id == id);
-        todo.completed = !todo.completed;
-        this.saveState();
-        this.notifySubscribers();
+        const dateKey = this.state.selectedDate;
+        const todos = this.state.todosByDate[dateKey] || [];
+        const todo = todos.find((t) => t.id === id);
+
+        if (todo) {
+            todo.completed = !todo.completed;
+            this.saveState();
+            this.notifySubscribers();
+        }
     }
 
     deleteTodo(id: string): void {
-        this.state.todos = this.state.todos.filter((todo) => todo.id != id);
+        const dateKey = this.state.selectedDate;
+        const todos = this.state.todosByDate[dateKey] || [];
+        this.state.todosByDate[dateKey] = todos.filter((t) => t.id !== id);
+
         this.saveState();
         this.notifySubscribers();
     }
 }
 
 const initialState: AppState = {
-    todos: [],
+    selectedDate: new Date().toISOString().split('T')[0],
+    todosByDate: {},
 };
 
 export const stateManager = new StateManager(initialState);

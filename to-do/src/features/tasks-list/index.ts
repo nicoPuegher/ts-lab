@@ -7,17 +7,18 @@ import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
 
 export function createTasksList(): HTMLUListElement {
     const elementsMap = new Map<string, HTMLLIElement>();
-    // eslint-disable-next-line prefer-const
     let currentTodos: Todo[] = [];
-
-    const ul: HTMLUListElement = document.createElement('ul');
+    const ul = document.createElement('ul');
 
     function appendTasks(): void {
-        const { todos: newTodos }: { todos: Todo[] } = stateManager.getState();
+        const state = stateManager.getState();
+        const selectedDate = state.selectedDate;
+        const newTodos = state.todosByDate[selectedDate] || [];
 
         removeIds({ elementsMap, currentTodos, newTodos });
         processTodos({ elementsMap, currentTodos, newTodos, ul });
         scrollToLast(ul);
+        currentTodos = newTodos;
     }
 
     stateManager.subscribe(appendTasks);
