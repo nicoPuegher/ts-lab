@@ -1,6 +1,6 @@
 import { stateManager } from '@state/index.ts';
 
-import { createCalendarItemComponent } from '@components/calendar-item';
+import { createCalendarItemComponent } from '@components/calendar-item.ts';
 
 export function appendCalendarItems(dates: Date[], container: HTMLDivElement): void {
     dates.forEach((date) => {
