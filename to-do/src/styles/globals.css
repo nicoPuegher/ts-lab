@@ -55,6 +55,7 @@
     max-width: 1200px;
     height: 100dvh;
     padding: 1.25rem 1rem;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
