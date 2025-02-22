@@ -52,6 +52,7 @@
 
 #app {
     min-width: 320px;
+    max-width: 1200px;
     height: 100dvh;
     padding: 1.25rem 1rem;
     display: flex;
