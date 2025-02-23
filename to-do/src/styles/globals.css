@@ -173,6 +173,14 @@ button {
     overflow-x: auto;
 }
 
+.calendar-carousel.at-start {
+    --left-fade: 0%;
+}
+
+.calendar-carousel.at-end {
+    --right-fade: 0%;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
