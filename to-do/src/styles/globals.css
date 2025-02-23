@@ -171,6 +171,9 @@ button {
     display: flex;
     gap: 16px;
     overflow-x: auto;
+
+    --left-fade: 10%;
+    --right-fade: 10%;
 }
 
 .calendar-carousel.at-start {
