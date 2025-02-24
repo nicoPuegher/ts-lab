@@ -178,6 +178,14 @@ button {
     transition:
         mask 0.4s ease,
         -webkit-mask 0.4s ease;
+
+    mask: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        transparent 100%
+    );
 }
 
 .calendar-carousel.at-start {
