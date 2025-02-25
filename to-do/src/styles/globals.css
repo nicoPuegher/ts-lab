@@ -52,8 +52,10 @@
 
 #app {
     min-width: 320px;
+    max-width: 1200px;
     height: 100dvh;
     padding: 1.25rem 1rem;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -169,6 +171,35 @@ button {
     display: flex;
     gap: 16px;
     overflow-x: auto;
+
+    --left-fade: 10%;
+    --right-fade: 10%;
+
+    transition:
+        mask 0.4s ease,
+        -webkit-mask 0.4s ease;
+    -webkit-mask: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        transparent 100%
+    );
+    mask: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        transparent 100%
+    );
+}
+
+.calendar-carousel.at-start {
+    --left-fade: 0%;
+}
+
+.calendar-carousel.at-end {
+    --right-fade: 0%;
 }
 
 @media (prefers-color-scheme: light) {
