@@ -7,4 +7,8 @@ function updateScrollState() {
 
     const leftFade = Math.min((scrollLeft / fadeDistance) * 10, 10);
     carousel.style.setProperty('--left-fade', `${leftFade}%`);
+
+    const remainingScroll = maxScroll - scrollLeft;
+    const rightFade = Math.min((remainingScroll / fadeDistance) * 10, 10);
+    carousel.style.setProperty('--right-fade', `${rightFade}%`);
 }
