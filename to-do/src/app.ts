@@ -1,3 +1,4 @@
+import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
 
 import { createCalendarCarousel } from '@features/calendar-carousel/index.ts';
@@ -10,5 +11,6 @@ const app = document.querySelector<HTMLDivElement>('#app');
 
 app.appendChild(createCalendarCarousel());
 scrollToToday();
+addCarouselGradient();
 app.appendChild(createTasksList());
 app.appendChild(createTaskSubmission());
