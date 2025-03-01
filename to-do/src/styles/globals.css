@@ -30,6 +30,17 @@
     --p: normal 1rem/1.4em var(--ff);
     --p2: normal 0.875rem/1.4em var(--ff);
 
+    --text-xlarge-bold: bold 1.25rem/1.3em var(--ff);
+    --text-xlarge: normal 1.25rem/1.3em var(--ff);
+    --text-large-bold: bold 1.125rem/1.333em var(--ff);
+    --text-large: normal 1.125rem/1.333em var(--ff);
+    --text-normal-bold: bold 1rem/1.375em var(--ff);
+    --text-normal: normal 1rem/1.375em var(--ff);
+    --text-small-bold: bold 0.875rem/1.428em var(--ff);
+    --text-small: normal 0.875rem/1.428em var(--ff);
+    --text-xsmall-bold: bold 0.75rem/1.5em var(--ff);
+    --text-xsmall: normal 0.75rem/1.5em var(--ff);
+
     --gray100: hsl(0deg, 0%, 100%);
     --gray70: hsl(0deg, 0%, 70%);
     --gray50: hsl(0deg, 0%, 50%);
