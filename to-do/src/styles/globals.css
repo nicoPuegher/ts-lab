@@ -50,6 +50,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: var(--ff);
+}
+
 #app {
     min-width: 320px;
     max-width: 1200px;
