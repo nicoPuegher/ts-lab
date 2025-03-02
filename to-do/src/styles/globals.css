@@ -25,11 +25,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --h1: bold 1.125rem/1.4em var(--ff);
-    --h2: bold 1rem/1.4em var(--ff);
-    --p: normal 1rem/1.4em var(--ff);
-    --p2: normal 0.875rem/1.4em var(--ff);
-
     --text-xlarge-bold: bold 1.25rem/1.3em var(--ff);
     --text-xlarge: normal 1.25rem/1.3em var(--ff);
     --text-large-bold: bold 1.125rem/1.333em var(--ff);
