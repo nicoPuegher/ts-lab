@@ -5,7 +5,7 @@
         url('/fonts/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
@@ -15,7 +15,7 @@
         url('/fonts/Montserrat-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 :root {
@@ -25,10 +25,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --h1: bold 1.125rem/1.4em var(--ff);
-    --h2: bold 1rem/1.4em var(--ff);
-    --p: normal 1rem/1.4em var(--ff);
-    --p2: normal 0.875rem/1.4em var(--ff);
+    --text-xlarge-bold: bold 1.25rem/1.3em var(--ff);
+    --text-xlarge: normal 1.25rem/1.3em var(--ff);
+    --text-large-bold: bold 1.125rem/1.333em var(--ff);
+    --text-large: normal 1.125rem/1.333em var(--ff);
+    --text-normal-bold: bold 1rem/1.375em var(--ff);
+    --text-normal: normal 1rem/1.375em var(--ff);
+    --text-small-bold: bold 0.875rem/1.428em var(--ff);
+    --text-small: normal 0.875rem/1.428em var(--ff);
+    --text-xsmall-bold: bold 0.75rem/1.5em var(--ff);
+    --text-xsmall: normal 0.75rem/1.5em var(--ff);
 
     --gray100: hsl(0deg, 0%, 100%);
     --gray70: hsl(0deg, 0%, 70%);
@@ -44,10 +50,14 @@
 }
 
 * {
-    font: var(--p);
+    font: var(--text-normal);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: var(--ff);
 }
 
 #app {
