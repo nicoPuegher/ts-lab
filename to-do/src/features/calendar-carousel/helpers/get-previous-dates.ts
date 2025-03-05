@@ -9,6 +9,7 @@ export function getPreviousDates(storedLists: string | null): Date[] {
     const lists: AppState = JSON.parse(storedLists);
 
     return Object.keys(lists.todosByDate)
-        .map((date) => new Date(date))
-        .filter((date) => date < new Date());
+        .filter((date) => date < today)
+        .map((date) => new Date(date + DEFAULT_TIME))
+        .sort((a, b) => a.getTime() - b.getTime());
 }
