@@ -72,9 +72,4 @@ class StateManager {
     }
 }
 
-const initialState: AppState = {
-    selectedDate: new Date().toISOString().split('T')[0],
-    todosByDate: {},
-};
-
-export const stateManager = new StateManager(initialState);
+export const stateManager = new StateManager();
