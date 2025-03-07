@@ -4,9 +4,20 @@ class StateManager {
     private state: AppState;
     private subscribers: (() => void)[] = [];
 
-    constructor(initialState: AppState) {
-        const savedState = localStorage.getItem('tasksList');
-        this.state = savedState ? JSON.parse(savedState) : initialState;
+    constructor() {
+        const initialState: AppState = {
+            selectedDate: new Date().toISOString().split('T')[0],
+            todosByDate: {},
+        };
+
+        const storedState = localStorage.getItem('tasksList');
+
+        if (storedState) {
+            const previousState: AppState = JSON.parse(storedState);
+            initialState.todosByDate = previousState.todosByDate;
+        }
+
+        this.state = initialState;
     }
 
     subscribe(callback: () => void): void {
@@ -72,9 +83,4 @@ class StateManager {
     }
 }
 
-const initialState: AppState = {
-    selectedDate: new Date().toISOString().split('T')[0],
-    todosByDate: {},
-};
-
-export const stateManager = new StateManager(initialState);
+export const stateManager = new StateManager();
