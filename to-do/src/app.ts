@@ -17,6 +17,6 @@ app.appendChild(createTaskSubmission());
 
 let resizeTimeout: number;
 window.addEventListener('resize', () => {
-    console.log('resize detected');
+    clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(scrollToToday, 200);
 });
