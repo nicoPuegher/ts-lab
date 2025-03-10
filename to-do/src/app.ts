@@ -14,3 +14,9 @@ scrollToToday();
 addCarouselGradient();
 app.appendChild(createTasksList());
 app.appendChild(createTaskSubmission());
+
+let resizeTimeout: number;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(scrollToToday, 200);
+});
