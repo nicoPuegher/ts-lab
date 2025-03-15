@@ -132,6 +132,10 @@ button {
     background: none;
 }
 
+.filter-container {
+    margin-top: 16px;
+}
+
 .task {
     display: flex;
     justify-content: start;
