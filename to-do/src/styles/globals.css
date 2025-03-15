@@ -127,6 +127,11 @@ button {
     background-color: var(--gray100);
 }
 
+.filter {
+    color: var(--gray100);
+    background: none;
+}
+
 .task {
     display: flex;
     justify-content: start;
