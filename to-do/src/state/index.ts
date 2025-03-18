@@ -45,6 +45,10 @@ class StateManager {
         this.notifySubscribers();
     }
 
+    setFilter(filter: string): void {
+        this.state.currentFilter = filter;
+    }
+
     addTodo(text: string): void {
         const newTodo: Todo = {
             id: Date.now().toString(),
