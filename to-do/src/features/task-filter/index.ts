@@ -6,5 +6,9 @@ export function createTaskFilter(): HTMLDivElement {
     const activeButton = createButtonComponent('Active', 'filter');
     const completedButton = createButtonComponent('Completed', 'filter');
 
+    allButton.addEventListener('click', () => stateManager.setFilter('all'));
+    activeButton.addEventListener('click', () => stateManager.setFilter('click'));
+    completedButton.addEventListener('click', () => stateManager.setFilter('completed'));
+
     return container;
 }
