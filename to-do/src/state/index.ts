@@ -25,8 +25,8 @@ class StateManager {
         this.stateChangeSubscribers.push(callback);
     }
 
-    private notifySubscribers(): void {
-        this.subscribers.forEach((callback) => callback());
+    private notifyStateChangeSubscribers(newTodo?: Todo): void {
+        this.stateChangeSubscribers.forEach((callback) => callback(newTodo));
     }
 
     private saveState(): void {
