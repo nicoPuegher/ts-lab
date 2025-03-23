@@ -65,7 +65,6 @@ class StateManager {
 
         this.state.todosByDate[dateKey].push(newTodo);
         this.saveState();
-        this.notifySubscribers();
     }
 
     toggleTodo(id: string): void {
