@@ -8,19 +8,7 @@ import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
 export function createTasksList(): HTMLUListElement {
     const ul = document.createElement('ul');
 
-    function appendTasks(): void {
-        const state = stateManager.getState();
-        const selectedDate = state.selectedDate;
-        const newTodos = state.todosByDate[selectedDate] || [];
-
-        removeIds({ elementsMap, currentTodos, newTodos });
-        processTodos({ elementsMap, currentTodos, newTodos, ul });
-        scrollToLast(ul);
-        currentTodos = newTodos;
-    }
-
-    stateManager.subscribe(appendTasks);
-    appendTasks();
+    stateManager.subscribeStateChange((newTodo?: Todo) => appendTasks(ul, newTodo));
 
     return ul;
 }
