@@ -6,7 +6,6 @@ import { removeIds } from '@features/tasks-list/helpers/remove-ids.ts';
 import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
 
 export function createTasksList(): HTMLUListElement {
-    let currentTodos: Todo[] = [];
     const ul = document.createElement('ul');
 
     function appendTasks(): void {
