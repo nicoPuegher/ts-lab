@@ -13,6 +13,10 @@ export function createTasksList(): HTMLUListElement {
     return ul;
 }
 
+function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
+    const state = stateManager.getState();
+}
+
 function filterTodos(todos: Todo[], filter: string): Todo[] {
     switch (filter) {
         case 'active':
