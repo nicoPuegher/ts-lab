@@ -15,6 +15,11 @@ export function createTasksList(): HTMLUListElement {
 
 function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
     const state = stateManager.getState();
+
+    if (newTodo) {
+        const li = createTaskComponent(newTodo);
+        ul.appendChild(li);
+    }
 }
 
 function filterTodos(todos: Todo[], filter: string): Todo[] {
