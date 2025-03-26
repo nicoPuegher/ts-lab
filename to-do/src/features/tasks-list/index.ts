@@ -19,6 +19,17 @@ function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
     if (newTodo) {
         const li = createTaskComponent(newTodo);
         ul.appendChild(li);
+    } else {
+        const currentTodos = state.todosByDate[state.selectedDate] || [];
+        const fragment = document.createDocumentFragment();
+
+        const filteredTodos = filterTodos(currentTodos, state.currentFilter);
+        filteredTodos.forEach((todo) => {
+            const li = createTaskComponent(todo);
+            fragment.appendChild(li);
+        });
+
+        ul.replaceChildren(fragment);
     }
 }
 
