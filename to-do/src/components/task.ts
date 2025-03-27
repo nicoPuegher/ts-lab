@@ -1,7 +1,8 @@
 import { stateManager } from '@state/index.ts';
+import type { Todo } from '@state/types/index.ts';
 import { Trash, createIcons } from 'lucide';
 
-export function createTaskComponent(id: string, description: string): HTMLLIElement {
+export function createTaskComponent(todo: Todo): HTMLLIElement {
     const li: HTMLLIElement = document.createElement('li');
     li.classList.add('task', 'shared');
 
