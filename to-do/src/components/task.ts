@@ -4,6 +4,7 @@ import { Trash, createIcons } from 'lucide';
 
 export function createTaskComponent(todo: Todo): HTMLLIElement {
     const li: HTMLLIElement = document.createElement('li');
+    li.id = todo.id;
     li.classList.add('task', 'shared');
 
     const checkbox: HTMLInputElement = document.createElement('input');
