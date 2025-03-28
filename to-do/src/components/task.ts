@@ -8,11 +8,11 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     li.classList.add('task', 'shared');
 
     const checkbox: HTMLInputElement = document.createElement('input');
-    checkbox.id = `checkbox-${id}`;
+    checkbox.id = `checkbox-${todo.id}`;
     checkbox.type = 'checkbox';
-    checkbox.checked = false;
-    checkbox.setAttribute('aria-labelledby', `checkbox-${id}`);
-    checkbox.addEventListener('change', (event: Event) => handleChange(id, li, event));
+    checkbox.checked = todo.completed;
+    checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
+    checkbox.addEventListener('change', (event: Event) => handleChange(todo.id, li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.textContent = description;
