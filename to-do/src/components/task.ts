@@ -15,7 +15,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     checkbox.addEventListener('change', (event: Event) => handleChange(todo.id, li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
-    paragraph.textContent = description;
+    paragraph.textContent = todo.text;
 
     const iconContainer: HTMLDivElement = document.createElement('div');
     iconContainer.addEventListener('click', () => handleClick(id));
