@@ -46,5 +46,8 @@ function handleChange(id: string, task: HTMLLIElement, event: Event): void {
 }
 
 function handleClick(id: string) {
+    const li = document.getElementById(id);
+
     stateManager.deleteTodo(id);
+    li.remove();
 }
