@@ -18,7 +18,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     paragraph.textContent = todo.text;
 
     const iconContainer: HTMLDivElement = document.createElement('div');
-    iconContainer.addEventListener('click', () => handleClick(todo.id));
+    iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
 
     const icon: HTMLElement = document.createElement('i');
     icon.classList.add('icon');
@@ -45,7 +45,7 @@ function handleCheckboxChange(id: string, task: HTMLLIElement, event: Event): vo
     stateManager.toggleTodo(id);
 }
 
-function handleClick(id: string) {
+function handleDeleteTodo(id: string) {
     const li = document.getElementById(id);
 
     stateManager.deleteTodo(id);
