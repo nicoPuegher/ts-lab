@@ -12,7 +12,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
-    checkbox.addEventListener('change', (event: Event) => handleChange(todo.id, li, event));
+    checkbox.addEventListener('change', (event: Event) => handleCheckboxChange(todo.id, li, event));
 
     const paragraph: HTMLParagraphElement = document.createElement('p');
     paragraph.textContent = todo.text;
@@ -31,7 +31,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     return li;
 }
 
-function handleChange(id: string, task: HTMLLIElement, event: Event): void {
+function handleCheckboxChange(id: string, task: HTMLLIElement, event: Event): void {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
