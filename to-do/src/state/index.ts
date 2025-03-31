@@ -76,7 +76,6 @@ class StateManager {
         if (todo) {
             todo.completed = !todo.completed;
             this.saveState();
-            this.notifySubscribers();
         }
     }
 
