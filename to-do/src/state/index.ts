@@ -83,10 +83,9 @@ class StateManager {
     deleteTodo(id: string): void {
         const dateKey = this.state.selectedDate;
         const todos = this.state.todosByDate[dateKey] || [];
-        this.state.todosByDate[dateKey] = todos.filter((t) => t.id !== id);
 
+        this.state.todosByDate[dateKey] = todos.filter((t) => t.id !== id);
         this.saveState();
-        this.notifySubscribers();
     }
 }
 
