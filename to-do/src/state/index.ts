@@ -42,7 +42,7 @@ class StateManager {
         this.state.selectedDate = dateKey;
 
         this.saveState();
-        this.notifySubscribers();
+        this.notifyStateChangeSubscribers();
     }
 
     setFilter(filter: string): void {
