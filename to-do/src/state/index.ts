@@ -48,7 +48,7 @@ class StateManager {
     setFilter(filter: string): void {
         this.state.currentFilter = filter;
 
-        this.notifySubscribers();
+        this.notifyStateChangeSubscribers();
     }
 
     addTodo(text: string): void {
