@@ -10,6 +10,8 @@ export function createTasksList(): HTMLUListElement {
 
     stateManager.subscribeStateChange((newTodo?: Todo) => appendTasks(ul, newTodo));
 
+    appendTasks(ul);
+
     return ul;
 }
 
