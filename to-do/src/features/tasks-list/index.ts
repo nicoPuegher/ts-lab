@@ -3,7 +3,7 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTaskComponent } from '@components/task';
 
-//import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
+type TodoFilters = 'all' | 'active' | 'completed';
 
 export function createTasksList(): HTMLUListElement {
     const ul = document.createElement('ul');
