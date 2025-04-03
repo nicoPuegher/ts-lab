@@ -25,7 +25,7 @@ function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
         const currentTodos = state.todosByDate[state.selectedDate] || [];
         const fragment = document.createDocumentFragment();
 
-        const filteredTodos = filterTodos(currentTodos, state.currentFilter);
+        const filteredTodos = filterTodos(currentTodos, state.currentFilter as TodoFilters);
         filteredTodos.forEach((todo) => {
             const li = createTaskComponent(todo);
             fragment.appendChild(li);
@@ -35,7 +35,7 @@ function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
     }
 }
 
-function filterTodos(todos: Todo[], filter: string): Todo[] {
+function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
     switch (filter) {
         case 'active':
             return todos.filter((todo) => !todo.completed);
