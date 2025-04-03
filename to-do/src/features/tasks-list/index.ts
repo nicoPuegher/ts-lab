@@ -3,12 +3,22 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTaskComponent } from '@components/task';
 
+import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
+
 type TodoFilters = 'all' | 'active' | 'completed';
 
+let scrollTimeout: number | null = null;
 export function createTasksList(): HTMLUListElement {
     const ul = document.createElement('ul');
 
-    stateManager.subscribeStateChange((newTodo?: Todo) => appendTasks(ul, newTodo));
+    stateManager.subscribeStateChange((newTodo?: Todo) => {
+        appendTasks(ul, newTodo);
+
+        if (newTodo) {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => scrollToLast(ul), 10);
+        }
+    });
 
     appendTasks(ul);
 
