@@ -6,6 +6,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     const li: HTMLLIElement = document.createElement('li');
     li.id = todo.id;
     li.classList.add('task', 'shared');
+    li.classList.toggle('completed', todo.completed);
 
     const checkbox: HTMLInputElement = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
