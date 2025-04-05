@@ -39,8 +39,10 @@ class StateManager {
 
     setSelectedDate(date: Date): void {
         const dateKey = date.toISOString().split('T')[0];
-        this.state.selectedDate = dateKey;
 
+        if (this.state.selectedDate == dateKey) return;
+
+        this.state.selectedDate = dateKey;
         this.saveState();
         this.notifyStateChangeSubscribers();
     }
