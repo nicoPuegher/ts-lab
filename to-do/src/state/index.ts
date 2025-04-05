@@ -48,8 +48,9 @@ class StateManager {
     }
 
     setFilter(filter: string): void {
-        this.state.currentFilter = filter;
+        if (this.state.currentFilter == filter) return;
 
+        this.state.currentFilter = filter;
         this.notifyStateChangeSubscribers();
     }
 
