@@ -134,7 +134,8 @@ button {
     background: none;
 }
 
-.filter-container {
+.filters-container {
+    width: 100%;
     margin-top: 16px;
 }
 
