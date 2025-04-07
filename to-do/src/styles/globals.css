@@ -139,6 +139,12 @@ button {
     margin-top: 16px;
 }
 
+.filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .task {
     display: flex;
     justify-content: start;
