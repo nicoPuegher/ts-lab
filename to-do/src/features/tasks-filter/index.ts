@@ -16,3 +16,10 @@ export function createTasksFilter(): HTMLDivElement {
 
     return container;
 }
+
+function createSeparator(): HTMLSpanElement {
+    const separator = document.createElement('span');
+    separator.textContent = '|';
+
+    return separator;
+}
