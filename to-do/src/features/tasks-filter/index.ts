@@ -14,6 +14,11 @@ export function createTasksFilter(): HTMLDivElement {
     activeButton.addEventListener('click', () => stateManager.setFilter('active'));
     completedButton.addEventListener('click', () => stateManager.setFilter('completed'));
 
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('filter-buttons');
+    buttonsContainer.append(allButton, createSeparator(), activeButton, createSeparator(), completedButton);
+    container.append(buttonsContainer);
+
     return container;
 }
 
