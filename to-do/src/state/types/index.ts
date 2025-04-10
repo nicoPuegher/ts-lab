@@ -9,4 +9,5 @@ export type AppState = {
     todosByDate: {
         [date: string]: Todo[];
     };
+    currentFilter: string;
 };

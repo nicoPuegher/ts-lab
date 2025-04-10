@@ -1,28 +1,57 @@
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
-import { processTodos } from '@features/tasks-list/helpers/process-todos.ts';
-import { removeIds } from '@features/tasks-list/helpers/remove-ids.ts';
+import { createTaskComponent } from '@components/task';
+
 import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
 
+type TodoFilters = 'all' | 'active' | 'completed';
+
+let scrollTimeout: number | null = null;
 export function createTasksList(): HTMLUListElement {
-    const elementsMap = new Map<string, HTMLLIElement>();
-    let currentTodos: Todo[] = [];
     const ul = document.createElement('ul');
 
-    function appendTasks(): void {
-        const state = stateManager.getState();
-        const selectedDate = state.selectedDate;
-        const newTodos = state.todosByDate[selectedDate] || [];
+    stateManager.subscribeStateChange((newTodo?: Todo) => {
+        appendTasks(ul, newTodo);
 
-        removeIds({ elementsMap, currentTodos, newTodos });
-        processTodos({ elementsMap, currentTodos, newTodos, ul });
-        scrollToLast(ul);
-        currentTodos = newTodos;
-    }
+        if (newTodo) {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => scrollToLast(ul), 10);
+        }
+    });
 
-    stateManager.subscribe(appendTasks);
-    appendTasks();
+    appendTasks(ul);
 
     return ul;
+}
+
+function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
+    const state = stateManager.getState();
+
+    if (newTodo) {
+        const li = createTaskComponent(newTodo);
+        ul.appendChild(li);
+    } else {
+        const currentTodos = state.todosByDate[state.selectedDate] || [];
+        const fragment = document.createDocumentFragment();
+
+        const filteredTodos = filterTodos(currentTodos, state.currentFilter as TodoFilters);
+        filteredTodos.forEach((todo) => {
+            const li = createTaskComponent(todo);
+            fragment.appendChild(li);
+        });
+
+        ul.replaceChildren(fragment);
+    }
+}
+
+function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
+    switch (filter) {
+        case 'active':
+            return todos.filter((todo) => !todo.completed);
+        case 'completed':
+            return todos.filter((todo) => todo.completed);
+        default:
+            return todos;
+    }
 }
