@@ -1,6 +1,5 @@
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
-import { Trash, createIcons } from 'lucide';
 
 export function createTaskComponent(todo: Todo): HTMLLIElement {
     const li: HTMLLIElement = document.createElement('li');
@@ -27,7 +26,6 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
 
     iconContainer.appendChild(icon);
     li.append(checkbox, paragraph, iconContainer);
-    setTimeout(() => createIcons({ icons: { Trash } }), 0);
 
     return li;
 }
