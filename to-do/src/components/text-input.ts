@@ -1,5 +1,6 @@
 export function createTextInputComponent(): HTMLInputElement {
     const textInput: HTMLInputElement = document.createElement('input');
+    textInput.id = 'text-input-id';
     textInput.type = 'text';
     textInput.name = 'text-input';
     textInput.placeholder = 'Write a task...';
