@@ -97,6 +97,18 @@ ul {
     overflow-y: scroll;
 }
 
+label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip-path: 'insert(50%)';
+    white-space: 'nowrap';
+    overflow: hidden;
+}
+
 form {
     position: relative;
     width: 100%;
