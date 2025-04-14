@@ -81,6 +81,12 @@ input[type='text']::placeholder {
     color: var(--gray100);
 }
 
+input[type='search'] {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
 ul {
     width: 100%;
     height: 100%;
