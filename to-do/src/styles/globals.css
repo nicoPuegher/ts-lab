@@ -247,6 +247,10 @@ button {
     --right-fade: 0%;
 }
 
+.close-icon {
+    visibility: hidden;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
