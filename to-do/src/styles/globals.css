@@ -251,6 +251,10 @@ button {
     visibility: hidden;
 }
 
+.show-close-icon {
+    visibility: visible;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
