@@ -57,6 +57,9 @@ class StateManager {
 
     setSearchTerm(term: string): void {
         if (this.state.searchTerm == term) return;
+
+        this.state.searchTerm = term;
+        this.notifyStateChangeSubscribers();
     }
 
     addTodo(text: string): void {
