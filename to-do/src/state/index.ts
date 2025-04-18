@@ -9,6 +9,7 @@ class StateManager {
             selectedDate: new Date().toISOString().split('T')[0],
             todosByDate: {},
             currentFilter: 'all',
+            searchTerm: '',
         };
 
         const storedState = localStorage.getItem('tasksList');
