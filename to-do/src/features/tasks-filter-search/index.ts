@@ -6,5 +6,10 @@ export function createTasksFilterSearch(): HTMLDivElement {
     searchIcon.setAttribute('data-lucide', 'search');
     searchIcon.classList.add('search-icon');
 
+    const closeIcon = document.createElement('i');
+    closeIcon.id = 'close-icon';
+    closeIcon.setAttribute('data-lucide', 'x');
+    closeIcon.classList.add('close-icon');
+
     return searchContainer;
 }
