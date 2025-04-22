@@ -14,6 +14,13 @@ export function createTasksFilterSearch(): HTMLDivElement {
     return searchContainer;
 }
 
+function handleRemoveSearchContent(id: string) {
+    const searchInput = document.getElementById(id) as HTMLInputElement;
+    searchInput.value = '';
+    searchInput.dispatchEvent(new Event('input'));
+    searchInput.focus();
+}
+
 function debounce(callback: (arg: string) => void, delay: number): (arg: string) => void {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
