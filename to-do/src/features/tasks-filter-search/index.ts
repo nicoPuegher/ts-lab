@@ -13,3 +13,12 @@ export function createTasksFilterSearch(): HTMLDivElement {
 
     return searchContainer;
 }
+
+function debounce(callback: (arg: string) => void, delay: number): (arg: string) => void {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    return (arg: string) => {
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => callback(arg), delay);
+    };
+}
