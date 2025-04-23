@@ -1,3 +1,5 @@
+import { stateManager } from '@state/index.ts';
+
 export function createTasksFilterSearch(): HTMLDivElement {
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('search-container');
@@ -10,6 +12,8 @@ export function createTasksFilterSearch(): HTMLDivElement {
     closeIcon.id = 'close-icon';
     closeIcon.setAttribute('data-lucide', 'x');
     closeIcon.classList.add('close-icon');
+
+    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 2000);
 
     return searchContainer;
 }
