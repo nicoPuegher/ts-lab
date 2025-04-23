@@ -1,5 +1,7 @@
 import { stateManager } from '@state/index.ts';
 
+import { createSearchInputComponent } from '@components/search-input';
+
 export function createTasksFilterSearch(): HTMLDivElement {
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('search-container');
@@ -14,6 +16,8 @@ export function createTasksFilterSearch(): HTMLDivElement {
     closeIcon.classList.add('close-icon');
 
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 2000);
+
+    const searchInput = createSearchInputComponent();
 
     return searchContainer;
 }
