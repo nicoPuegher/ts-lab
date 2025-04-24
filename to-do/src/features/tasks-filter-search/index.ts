@@ -18,7 +18,11 @@ export function createTasksFilterSearch(): HTMLDivElement {
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 2000);
 
     const searchInput = createSearchInputComponent();
-    searchInput.addEventListener('input', (event) => {});
+    searchInput.addEventListener('input', (event) => {
+        const inputText = event.target as HTMLInputElement;
+        const trimmedValue = inputText.value.trim();
+        const closeIcon = document.getElementById('close-icon');
+    });
 
     return searchContainer;
 }
