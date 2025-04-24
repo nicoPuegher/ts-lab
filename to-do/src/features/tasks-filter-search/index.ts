@@ -18,6 +18,7 @@ export function createTasksFilterSearch(): HTMLDivElement {
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 2000);
 
     const searchInput = createSearchInputComponent();
+    searchInput.addEventListener('input', (event) => {});
 
     return searchContainer;
 }
