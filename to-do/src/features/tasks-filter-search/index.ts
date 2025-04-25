@@ -26,6 +26,9 @@ export function createTasksFilterSearch(): HTMLDivElement {
         if (trimmedValue !== '') {
             debouncedCallback(trimmedValue);
             closeIcon?.classList.add('show-close-icon');
+        } else {
+            stateManager.setSearchTerm('');
+            closeIcon?.classList.remove('show-close-icon');
         }
     });
 
