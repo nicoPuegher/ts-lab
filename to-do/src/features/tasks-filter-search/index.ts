@@ -22,6 +22,11 @@ export function createTasksFilterSearch(): HTMLDivElement {
         const inputText = event.target as HTMLInputElement;
         const trimmedValue = inputText.value.trim();
         const closeIcon = document.getElementById('close-icon');
+
+        if (trimmedValue !== '') {
+            debouncedCallback(trimmedValue);
+            closeIcon?.classList.add('show-close-icon');
+        }
     });
 
     return searchContainer;
