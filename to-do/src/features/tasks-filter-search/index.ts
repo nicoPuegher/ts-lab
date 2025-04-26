@@ -1,5 +1,6 @@
 import { stateManager } from '@state/index.ts';
 
+import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
 export function createTasksFilterSearch(): HTMLDivElement {
@@ -31,6 +32,8 @@ export function createTasksFilterSearch(): HTMLDivElement {
             closeIcon?.classList.remove('show-close-icon');
         }
     });
+
+    const label = createLabelComponent(searchInput.id, 'Search todo');
 
     return searchContainer;
 }
