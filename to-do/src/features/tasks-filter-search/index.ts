@@ -35,6 +35,8 @@ export function createTasksFilterSearch(): HTMLDivElement {
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
 
+    searchContainer.append(searchIcon, label, searchInput, closeIcon);
+
     return searchContainer;
 }
 
