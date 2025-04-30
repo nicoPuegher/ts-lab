@@ -46,12 +46,21 @@ function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
 }
 
 function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
+    const state = stateManager.getState();
+    let filteredTodos: Todo[] = [];
+
     switch (filter) {
         case 'active':
-            return todos.filter((todo) => !todo.completed);
+            filteredTodos = todos.filter((todo) => !todo.completed);
+            break;
         case 'completed':
-            return todos.filter((todo) => todo.completed);
+            filteredTodos = todos.filter((todo) => todo.completed);
+            break;
         default:
-            return todos;
+            filteredTodos = todos;
     }
+
+    filteredTodos = filteredTodos.filter((todo) => todo.text.includes(state.searchTerm));
+
+    return filteredTodos;
 }
