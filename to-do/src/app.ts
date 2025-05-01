@@ -3,7 +3,6 @@ import { scrollToToday } from '@/helpers/scroll-to-today.ts';
 
 import { createCalendarCarousel } from '@features/calendar-carousel/index.ts';
 import { createTaskSubmission } from '@features/task-submission/index.ts';
-import { createTasksFilter } from '@features/tasks-filter/index.ts';
 import { createTasksList } from '@features/tasks-list/index.ts';
 
 import './styles/globals.css';
