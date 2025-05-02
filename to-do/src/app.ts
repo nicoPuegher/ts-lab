@@ -1,5 +1,6 @@
 import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
+import { createTodoFiltersLayout } from '@/layouts/todo-filters.ts';
 import { Search, Trash, X, createIcons } from 'lucide';
 
 import { createCalendarCarousel } from '@features/calendar-carousel/index.ts';
@@ -13,7 +14,7 @@ const app = document.querySelector<HTMLDivElement>('#app');
 app.appendChild(createCalendarCarousel());
 scrollToToday();
 addCarouselGradient();
-app.appendChild(createTasksFilter());
+app.appendChild(createTodoFiltersLayout());
 app.appendChild(createTasksList());
 app.appendChild(createTaskSubmission());
 
