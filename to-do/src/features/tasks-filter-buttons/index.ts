@@ -2,9 +2,9 @@ import { stateManager } from '@state/index.ts';
 
 import { createButtonComponent } from '@components/button.ts';
 
-export function createTasksFilter(): HTMLDivElement {
+export function createTasksFilterButtons(): HTMLDivElement {
     const container = document.createElement('div');
-    container.classList.add('filters-container');
+    container.classList.add('filter-buttons-container');
 
     const allButton = createButtonComponent('All', 'filter');
     const activeButton = createButtonComponent('Active', 'filter');
@@ -14,10 +14,7 @@ export function createTasksFilter(): HTMLDivElement {
     activeButton.addEventListener('click', () => stateManager.setFilter('active'));
     completedButton.addEventListener('click', () => stateManager.setFilter('completed'));
 
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.classList.add('filter-buttons');
-    buttonsContainer.append(allButton, createSeparator(), activeButton, createSeparator(), completedButton);
-    container.append(buttonsContainer);
+    container.append(allButton, createSeparator(), activeButton, createSeparator(), completedButton);
 
     return container;
 }

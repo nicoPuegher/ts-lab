@@ -81,6 +81,12 @@ input[type='text']::placeholder {
     color: var(--gray100);
 }
 
+input[type='search'] {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
 ul {
     width: 100%;
     height: 100%;
@@ -89,6 +95,18 @@ ul {
     flex-direction: column;
     gap: 0.375rem;
     overflow-y: scroll;
+}
+
+label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip-path: 'insert(50%)';
+    white-space: 'nowrap';
+    overflow: hidden;
 }
 
 form {
@@ -137,12 +155,34 @@ button {
 .filters-container {
     width: 100%;
     margin-top: 16px;
+    display: flex;
+    align-items: center;
 }
 
-.filter-buttons {
+.filter-buttons-container {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.todo-filters-container {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+}
+
+.search-container {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--gray10);
 }
 
 .task {
@@ -227,6 +267,14 @@ button {
 
 .calendar-carousel.at-end {
     --right-fade: 0%;
+}
+
+.close-icon {
+    visibility: hidden;
+}
+
+.show-close-icon {
+    visibility: visible;
 }
 
 @media (prefers-color-scheme: light) {

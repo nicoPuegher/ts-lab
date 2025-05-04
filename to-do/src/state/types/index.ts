@@ -10,4 +10,5 @@ export type AppState = {
         [date: string]: Todo[];
     };
     currentFilter: string;
+    searchTerm: string;
 };
