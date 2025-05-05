@@ -16,7 +16,7 @@ export function createTasksFilterSearch(): HTMLDivElement {
     closeIcon.setAttribute('data-lucide', 'x');
     closeIcon.classList.add('close-icon');
 
-    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 200);
+    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
     const searchInput = createSearchInputComponent();
     searchInput.addEventListener('input', (event) => {
