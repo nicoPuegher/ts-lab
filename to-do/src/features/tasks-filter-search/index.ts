@@ -52,11 +52,20 @@ function handleRemoveSearchContent(id: string) {
     searchInput.focus();
 }
 
-function debounce(callback: (arg: string) => void, delay: number): (arg: string) => void {
+function debounce(callback: (arg: string) => void, delay: number) {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-    return (arg: string) => {
+    const debounced = (arg: string) => {
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(() => callback(arg), delay);
     };
+
+    debounced.cancel = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+    };
+
+    return debounced;
 }
