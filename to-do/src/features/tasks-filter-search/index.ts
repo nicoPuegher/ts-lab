@@ -16,7 +16,7 @@ export function createTasksFilterSearch(): HTMLDivElement {
     closeIcon.setAttribute('data-lucide', 'x');
     closeIcon.classList.add('close-icon');
 
-    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 200);
+    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
     const searchInput = createSearchInputComponent();
     searchInput.addEventListener('input', (event) => {
@@ -28,6 +28,7 @@ export function createTasksFilterSearch(): HTMLDivElement {
             debouncedCallback(trimmedValue);
             closeIcon?.classList.add('show-close-icon');
         } else {
+            debouncedCallback.cancel();
             stateManager.setSearchTerm('');
             closeIcon?.classList.remove('show-close-icon');
         }
@@ -52,11 +53,20 @@ function handleRemoveSearchContent(id: string) {
     searchInput.focus();
 }
 
-function debounce(callback: (arg: string) => void, delay: number): (arg: string) => void {
+function debounce(callback: (arg: string) => void, delay: number) {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-    return (arg: string) => {
+    const debounced = (arg: string) => {
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(() => callback(arg), delay);
     };
+
+    debounced.cancel = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+    };
+
+    return debounced;
 }
