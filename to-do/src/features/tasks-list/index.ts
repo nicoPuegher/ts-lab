@@ -1,3 +1,5 @@
+import { Search, Trash, X, createIcons } from 'lucide';
+
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
@@ -43,6 +45,8 @@ function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
 
         ul.replaceChildren(fragment);
     }
+
+    createIcons({ icons: { Search, X, Trash } });
 }
 
 function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
