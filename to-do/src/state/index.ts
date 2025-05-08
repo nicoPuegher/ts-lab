@@ -96,6 +96,8 @@ class StateManager {
 
         if (todos.length == 1) {
             delete this.state.todosByDate[dateKey];
+            this.saveState();
+            return;
         }
 
         this.state.todosByDate[dateKey] = todos.filter((t) => t.id !== id);
