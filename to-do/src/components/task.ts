@@ -1,3 +1,5 @@
+import { Trash, createElement } from 'lucide';
+
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
@@ -20,9 +22,8 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     const iconContainer: HTMLDivElement = document.createElement('div');
     iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
     iconContainer.classList.toggle('removed', todo.completed);
-    const icon: HTMLElement = document.createElement('i');
+    const icon = createElement(Trash);
     icon.classList.add('icon');
-    icon.setAttribute('data-lucide', 'trash');
 
     iconContainer.appendChild(icon);
     li.append(checkbox, paragraph, iconContainer);
