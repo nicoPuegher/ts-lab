@@ -39,11 +39,6 @@ export function createTasksFilterSearch(): HTMLDivElement {
 
     searchContainer.append(searchIcon, label, searchInput, closeIcon);
 
-    requestAnimationFrame(() => {
-        const renderedCloseIcon = document.getElementById('close-icon');
-        renderedCloseIcon.addEventListener('click', () => handleRemoveSearchContent(searchInput.id));
-    });
-
     return searchContainer;
 }
 
