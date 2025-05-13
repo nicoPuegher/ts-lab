@@ -1,3 +1,5 @@
+import { Search, X, createElement } from 'lucide';
+
 import { stateManager } from '@state/index.ts';
 
 import { createLabelComponent } from '@components/label';
@@ -7,14 +9,13 @@ export function createTasksFilterSearch(): HTMLDivElement {
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('search-container');
 
-    const searchIcon = document.createElement('i');
-    searchIcon.setAttribute('data-lucide', 'search');
+    const searchIcon = createElement(Search);
     searchIcon.classList.add('search-icon');
 
-    const closeIcon = document.createElement('i');
+    const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
-    closeIcon.setAttribute('data-lucide', 'x');
     closeIcon.classList.add('close-icon');
+    closeIcon.addEventListener('click', () => handleRemoveSearchContent(searchInput.id));
 
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
@@ -26,22 +27,17 @@ export function createTasksFilterSearch(): HTMLDivElement {
 
         if (trimmedValue !== '') {
             debouncedCallback(trimmedValue);
-            closeIcon?.classList.add('show-close-icon');
+            closeIcon.classList.add('show-close-icon');
         } else {
             debouncedCallback.cancel();
             stateManager.setSearchTerm('');
-            closeIcon?.classList.remove('show-close-icon');
+            closeIcon.classList.remove('show-close-icon');
         }
     });
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
 
     searchContainer.append(searchIcon, label, searchInput, closeIcon);
-
-    requestAnimationFrame(() => {
-        const renderedCloseIcon = document.getElementById('close-icon');
-        renderedCloseIcon.addEventListener('click', () => handleRemoveSearchContent(searchInput.id));
-    });
 
     return searchContainer;
 }

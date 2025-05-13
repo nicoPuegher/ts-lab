@@ -1,7 +1,6 @@
 import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
 import { createTodoFiltersLayout } from '@/layouts/todo-filters.ts';
-import { Search, Trash, X, createIcons } from 'lucide';
 
 import { createCalendarCarousel } from '@features/calendar-carousel/index.ts';
 import { createTaskSubmission } from '@features/task-submission/index.ts';
@@ -17,8 +16,6 @@ addCarouselGradient();
 app.appendChild(createTodoFiltersLayout());
 app.appendChild(createTasksList());
 app.appendChild(createTaskSubmission());
-
-createIcons({ icons: { Search, X, Trash } });
 
 let resizeTimeout: number;
 window.addEventListener('resize', () => {
