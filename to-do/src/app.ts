@@ -11,12 +11,10 @@ import './styles/globals.css';
 const rootElement = document.querySelector('#root');
 if (!rootElement) throw new Error('The #root element does not exist.');
 
-rootElement.appendChild(createCalendarCarousel());
+rootElement.append(createCalendarCarousel(), createTodoFiltersLayout(), createTasksList(), createTaskSubmission());
+
 scrollToToday();
 addCarouselGradient();
-rootElement.appendChild(createTodoFiltersLayout());
-rootElement.appendChild(createTasksList());
-rootElement.appendChild(createTaskSubmission());
 
 let resizeTimeout: number;
 window.addEventListener('resize', () => {
