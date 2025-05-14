@@ -8,14 +8,15 @@ import { createTasksList } from '@features/tasks-list/index.ts';
 
 import './styles/globals.css';
 
-const app = document.querySelector('main');
+const rootElement = document.querySelector('#root');
+if (!rootElement) throw new Error('The #root element does not exist.');
 
-app.appendChild(createCalendarCarousel());
+rootElement.appendChild(createCalendarCarousel());
 scrollToToday();
 addCarouselGradient();
-app.appendChild(createTodoFiltersLayout());
-app.appendChild(createTasksList());
-app.appendChild(createTaskSubmission());
+rootElement.appendChild(createTodoFiltersLayout());
+rootElement.appendChild(createTasksList());
+rootElement.appendChild(createTaskSubmission());
 
 let resizeTimeout: number;
 window.addEventListener('resize', () => {
