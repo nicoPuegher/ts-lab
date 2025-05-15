@@ -4,7 +4,7 @@ import { getPreviousDates } from '@features/calendar-carousel/helpers/get-previo
 
 export function createDatePicker(): HTMLDivElement {
     const container = document.createElement('div');
-    container.classList.add('calendar-carousel');
+    container.classList.add('date-picker');
 
     const userStorage: string | null = window.localStorage.getItem('taskData');
 
