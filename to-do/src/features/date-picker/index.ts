@@ -16,3 +16,15 @@ export function createDatePicker(): HTMLDivElement {
 
     return container;
 }
+
+function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
+    dates.forEach((date) => {
+        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
+        const dayOfMonth = date.getDate();
+
+        const dateComponent = createCalendarItemComponent(weekday, dayOfMonth, date);
+        dateComponent.addEventListener('click', () => stateManager.setSelectedDate(date));
+
+        container.appendChild(dateComponent);
+    });
+}
