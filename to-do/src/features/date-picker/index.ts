@@ -6,7 +6,7 @@ export function createDatePicker(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('calendar-carousel');
 
-    const userStorage: string | null = window.localStorage.getItem('tasksList');
+    const userStorage: string | null = window.localStorage.getItem('taskData');
 
     const previousDates = getPreviousDates(userStorage);
     const currentDates = generateWeek();

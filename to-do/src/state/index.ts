@@ -12,7 +12,7 @@ class StateManager {
             searchTerm: '',
         };
 
-        const storedState = localStorage.getItem('tasksList');
+        const storedState = localStorage.getItem('taskData');
 
         if (storedState) {
             const previousState: AppState = JSON.parse(storedState);
@@ -31,7 +31,7 @@ class StateManager {
     }
 
     private saveState(): void {
-        localStorage.setItem('tasksList', JSON.stringify(this.state));
+        localStorage.setItem('taskData', JSON.stringify(this.state));
     }
 
     getState(): AppState {
