@@ -1,15 +1,15 @@
-export function createCalendarItemComponent(day: string, dateNumber: number, date: Date): HTMLDivElement {
-    const div = document.createElement('div');
-    div.setAttribute('id', date.toLocaleDateString().toString());
-    div.classList.add('calendar-item');
+export function createDateComponent(weekday: string, dayOfMonth: number, date: Date): HTMLDivElement {
+    const container = document.createElement('div');
+    container.setAttribute('id', date.toLocaleDateString().toString());
+    container.classList.add('date-component');
 
-    const dayElement = document.createElement('span');
-    dayElement.textContent = day.toUpperCase();
+    const weekdayElement = document.createElement('span');
+    weekdayElement.textContent = weekday.toUpperCase();
 
-    const dateElement = document.createElement('span');
-    dateElement.textContent = dateNumber.toString();
+    const dayOfMonthElement = document.createElement('span');
+    dayOfMonthElement.textContent = dayOfMonth.toString();
 
-    div.append(dayElement, dateElement);
+    container.append(weekdayElement, dayOfMonthElement);
 
-    return div;
+    return container;
 }
