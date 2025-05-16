@@ -2,8 +2,8 @@ import { stateManager } from '@state/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
-import { generateWeek } from '@features/calendar-carousel/helpers/generate-week.ts';
-import { getPreviousDates } from '@features/calendar-carousel/helpers/get-previous-dates.ts';
+import { generateWeek } from '@features/date-picker/helpers/generate-week.ts';
+import { getPreviousDates } from '@features/date-picker/helpers/get-previous-dates.ts';
 
 export function createDatePicker(): HTMLDivElement {
     const container = document.createElement('div');
