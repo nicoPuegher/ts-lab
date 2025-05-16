@@ -1,6 +1,6 @@
 import { stateManager } from '@state/index.ts';
 
-import { createCalendarItemComponent } from '@components/calendar-item.ts';
+import { createDateComponent } from '@components/date.ts';
 
 import { generateWeek } from '@features/calendar-carousel/helpers/generate-week.ts';
 import { getPreviousDates } from '@features/calendar-carousel/helpers/get-previous-dates.ts';
@@ -25,7 +25,7 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
         const weekday = date.toLocaleString('en-US', { weekday: 'short' });
         const dayOfMonth = date.getDate();
 
-        const dateComponent = createCalendarItemComponent(weekday, dayOfMonth, date);
+        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
         dateComponent.addEventListener('click', () => stateManager.setSelectedDate(date));
 
         container.appendChild(dateComponent);
