@@ -1,4 +1,7 @@
-import { appendCalendarItems } from '@features/calendar-carousel/helpers/append-calendar-items.ts';
+import { stateManager } from '@state/index.ts';
+
+import { createCalendarItemComponent } from '@components/calendar-item.ts';
+
 import { generateWeek } from '@features/calendar-carousel/helpers/generate-week.ts';
 import { getPreviousDates } from '@features/calendar-carousel/helpers/get-previous-dates.ts';
 
@@ -12,7 +15,7 @@ export function createDatePicker(): HTMLDivElement {
     const currentDates = generateWeek();
     const dates = [...previousDates, ...currentDates];
 
-    appendCalendarItems(dates, container);
+    appendDateComponents(dates, container);
 
     return container;
 }
