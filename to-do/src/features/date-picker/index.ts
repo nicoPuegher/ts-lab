@@ -1,9 +1,11 @@
 import { stateManager } from '@state/index.ts';
+import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
 import { generateWeek } from '@features/date-picker/helpers/generate-week.ts';
-import { getPreviousDates } from '@features/date-picker/helpers/get-previous-dates.ts';
+
+const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 
 export function createDatePicker(): HTMLDivElement {
     const container = document.createElement('div');
@@ -30,4 +32,16 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
 
         container.appendChild(dateComponent);
     });
+}
+
+export function getPreviousDates(userStorage: string | null): Date[] {
+    if (!userStorage) return [];
+
+    const todayDateString = new Date().toISOString().split('T')[0];
+    const storedState: AppState = JSON.parse(userStorage);
+
+    return Object.keys(storedState.todosByDate)
+        .filter((date) => date < todayDateString)
+        .map((date) => new Date(date + TIMEZONE_NORMALIZATION_SUFFIX))
+        .sort((a, b) => a.getTime() - b.getTime());
 }
