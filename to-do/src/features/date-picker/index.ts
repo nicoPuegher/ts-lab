@@ -45,3 +45,14 @@ export function getPreviousDates(userStorage: string | null): Date[] {
         .map((date) => new Date(date + TIMEZONE_NORMALIZATION_SUFFIX))
         .sort((a, b) => a.getTime() - b.getTime());
 }
+
+function generateDayListFromToday(): Date[] {
+    return Array.from({ length: DAYS_TO_GENERATE }, (_, i) => {
+        const date = new Date();
+        const nextDay = date.getDate() + i;
+
+        date.setDate(nextDay);
+
+        return date;
+    });
+}
