@@ -3,9 +3,8 @@ import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
-import { generateWeek } from '@features/date-picker/helpers/generate-week.ts';
-
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
+const DAYS_TO_GENERATE = 7;
 
 export function createDatePicker(): HTMLDivElement {
     const container = document.createElement('div');
@@ -13,9 +12,9 @@ export function createDatePicker(): HTMLDivElement {
 
     const userStorage: string | null = window.localStorage.getItem('taskData');
 
-    const previousDates = getPreviousDates(userStorage);
-    const currentDates = generateWeek();
-    const dates = [...previousDates, ...currentDates];
+    const storedPastDates = getStoredPastDates(userStorage);
+    const dayListFromToday = generateDayListFromToday();
+    const dates = [...storedPastDates, ...dayListFromToday];
 
     appendDateComponents(dates, container);
 
@@ -34,7 +33,7 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
     });
 }
 
-export function getPreviousDates(userStorage: string | null): Date[] {
+function getStoredPastDates(userStorage: string | null): Date[] {
     if (!userStorage) return [];
 
     const todayDateString = new Date().toISOString().split('T')[0];
