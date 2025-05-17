@@ -36,7 +36,7 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
 function getStoredPastDates(userStorage: string | null): Date[] {
     if (!userStorage) return [];
 
-    const todayDateString = new Date().toISOString().split('T')[0];
+    const todayDateString = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
     const storedState: AppState = JSON.parse(userStorage);
 
     return Object.keys(storedState.todosByDate)
