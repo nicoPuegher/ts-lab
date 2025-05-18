@@ -165,7 +165,8 @@ button {
     gap: 10px;
 }
 
-.todo-filters-container {
+/* Filter layout */
+.filter-layout {
     width: 100%;
     margin-top: 1rem;
     display: flex;

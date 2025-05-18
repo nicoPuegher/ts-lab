@@ -3,7 +3,7 @@ import { createTasksFilterSearch } from '@features/tasks-filter-search/index.ts'
 
 export function createFilterLayout(): HTMLDivElement {
     const container = document.createElement('div');
-    container.classList.add('todo-filters-container');
+    container.classList.add('filter-layout');
 
     const filterButtons = createTasksFilterButtons();
     const filterSearch = createTasksFilterSearch();
