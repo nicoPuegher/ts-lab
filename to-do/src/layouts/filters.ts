@@ -8,7 +8,7 @@ export function createFilterLayout(): HTMLDivElement {
     const filterButtons = createTasksFilterButtons();
     const filterSearch = createTasksFilterSearch();
 
-    todoFiltersContainer.append(filterButtons, filterSearch);
+    container.append(filterButtons, filterSearch);
 
-    return todoFiltersContainer;
+    return container;
 }
