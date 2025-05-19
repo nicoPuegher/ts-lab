@@ -19,6 +19,13 @@ export function createStatusFilter(): HTMLDivElement {
     return container;
 }
 
+function createFilterButtonComponent(label: string, status: string): HTMLButtonElement {
+    const button = createButtonComponent(label, 'filter');
+    button.addEventListener('click', () => stateManager.setFilter(status));
+
+    return button;
+}
+
 function createSeparator(): HTMLSpanElement {
     const separator = document.createElement('span');
     separator.textContent = '|';
