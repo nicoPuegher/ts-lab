@@ -4,7 +4,7 @@ import { createButtonComponent } from '@components/button.ts';
 
 export function createStatusFilter(): HTMLDivElement {
     const container = document.createElement('div');
-    container.classList.add('filter-buttons-container');
+    container.classList.add('status-filter');
 
     const allButton = createButtonComponent('All', 'filter');
     const activeButton = createButtonComponent('Active', 'filter');

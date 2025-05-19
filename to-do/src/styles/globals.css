@@ -159,12 +159,6 @@ button {
     align-items: center;
 }
 
-.filter-buttons-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 /* Filter layout */
 .filter-layout {
     width: 100%;
@@ -172,6 +166,12 @@ button {
     display: flex;
     justify-content: start;
     align-items: end;
+}
+
+.status-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .search-container {
