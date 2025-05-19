@@ -12,15 +12,11 @@ export function createStatusFilter(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('status-filter');
 
-    const allButton = createButtonComponent('All', 'filter');
-    const activeButton = createButtonComponent('Active', 'filter');
-    const completedButton = createButtonComponent('Completed', 'filter');
+    const all = createFilterButtonComponent(filter.ALL, filter.ALL.toLowerCase());
+    const active = createFilterButtonComponent(filter.ACTIVE, filter.ACTIVE.toLowerCase());
+    const completed = createFilterButtonComponent(filter.COMPLETED, filter.COMPLETED.toLowerCase());
 
-    allButton.addEventListener('click', () => stateManager.setFilter('all'));
-    activeButton.addEventListener('click', () => stateManager.setFilter('active'));
-    completedButton.addEventListener('click', () => stateManager.setFilter('completed'));
-
-    container.append(allButton, createSeparator(), activeButton, createSeparator(), completedButton);
+    container.append(all, createSeparator(), active, createSeparator(), completed);
 
     return container;
 }
