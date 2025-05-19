@@ -2,7 +2,7 @@ import { stateManager } from '@state/index.ts';
 
 import { createButtonComponent } from '@components/button.ts';
 
-export function createTasksFilterButtons(): HTMLDivElement {
+export function createStatusFilter(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('filter-buttons-container');
 
