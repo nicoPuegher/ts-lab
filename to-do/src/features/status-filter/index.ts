@@ -2,6 +2,12 @@ import { stateManager } from '@state/index.ts';
 
 import { createButtonComponent } from '@components/button.ts';
 
+const filter = {
+    ALL: 'All',
+    ACTIVE: 'Active',
+    COMPLETED: 'Completed',
+};
+
 export function createStatusFilter(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('status-filter');
