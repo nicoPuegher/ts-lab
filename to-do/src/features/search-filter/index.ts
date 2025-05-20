@@ -5,7 +5,7 @@ import { stateManager } from '@state/index.ts';
 import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
-export function createTasksFilterSearch(): HTMLDivElement {
+export function createSearchFilter(): HTMLDivElement {
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('search-container');
 
