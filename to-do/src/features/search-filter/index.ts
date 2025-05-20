@@ -10,7 +10,6 @@ export function createSearchFilter(): HTMLDivElement {
     container.classList.add('search-filter');
 
     const searchIcon = createElement(Search);
-    searchIcon.classList.add('search-icon');
 
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
