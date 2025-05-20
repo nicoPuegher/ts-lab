@@ -9,6 +9,8 @@ export type AppState = {
     todosByDate: {
         [date: string]: Todo[];
     };
-    currentFilter: string;
+    currentFilter: Filter;
     searchTerm: string;
 };
+
+export type Filter = 'all' | 'active' | 'completed';
