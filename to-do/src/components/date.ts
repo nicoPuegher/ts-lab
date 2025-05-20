@@ -1,6 +1,6 @@
 export function createDateComponent(weekday: string, dayOfMonth: number, date: Date): HTMLDivElement {
     const container = document.createElement('div');
-    container.setAttribute('id', date.toLocaleDateString().toString());
+    container.id = date.toLocaleDateString().toString();
     container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');
