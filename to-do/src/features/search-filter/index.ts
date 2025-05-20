@@ -6,8 +6,8 @@ import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
 export function createSearchFilter(): HTMLDivElement {
-    const searchContainer = document.createElement('div');
-    searchContainer.classList.add('search-container');
+    const container = document.createElement('div');
+    container.classList.add('search-container');
 
     const searchIcon = createElement(Search);
     searchIcon.classList.add('search-icon');
@@ -37,9 +37,9 @@ export function createSearchFilter(): HTMLDivElement {
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
 
-    searchContainer.append(searchIcon, label, searchInput, closeIcon);
+    container.append(searchIcon, label, searchInput, closeIcon);
 
-    return searchContainer;
+    return container;
 }
 
 function handleRemoveSearchContent(id: string) {
