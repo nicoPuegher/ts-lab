@@ -7,7 +7,7 @@ import { createSearchInputComponent } from '@components/search-input';
 
 export function createSearchFilter(): HTMLDivElement {
     const container = document.createElement('div');
-    container.classList.add('search-container');
+    container.classList.add('search-filter');
 
     const searchIcon = createElement(Search);
     searchIcon.classList.add('search-icon');
