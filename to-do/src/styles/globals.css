@@ -168,12 +168,14 @@ button {
     align-items: end;
 }
 
+/* Status filter */
 .status-filter {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Search filter */
 .search-filter {
     width: 100%;
     padding: 0.5rem 0.75rem;
@@ -184,6 +186,13 @@ button {
     border: none;
     border-radius: 0.375rem;
     background-color: var(--gray10);
+}
+
+.hide-icon {
+    visibility: hidden;
+}
+.show-icon {
+    visibility: visible;
 }
 
 .task {
@@ -271,14 +280,6 @@ button {
 
 .date-picker.at-end {
     --right-fade: 0%;
-}
-
-.close-icon {
-    visibility: hidden;
-}
-
-.show-close-icon {
-    visibility: visible;
 }
 
 @media (prefers-color-scheme: light) {
