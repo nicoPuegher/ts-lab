@@ -5,6 +5,8 @@ import { stateManager } from '@state/index.ts';
 import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
+const TIMER = 300;
+
 export function createSearchFilter(): HTMLDivElement {
     const container = document.createElement('div');
     container.classList.add('search-filter');
@@ -15,8 +17,6 @@ export function createSearchFilter(): HTMLDivElement {
     closeIcon.id = 'close-icon';
     closeIcon.classList.add('show-icon');
     closeIcon.addEventListener('click', handleEmptySearch);
-
-    const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
     const searchInput = createSearchInputComponent();
     searchInput.addEventListener('input', (event) => {
@@ -50,6 +50,8 @@ function handleEmptySearch(): void {
         searchInput.focus();
     }
 }
+
+const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), TIMER);
 
 function debounce(callback: (arg: string) => void, delay: number) {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
