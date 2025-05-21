@@ -14,7 +14,7 @@ export function createSearchFilter(): HTMLDivElement {
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
     closeIcon.classList.add('show-icon');
-    closeIcon.addEventListener('click', handleEmptySearchFilter);
+    closeIcon.addEventListener('click', handleEmptySearch);
 
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
@@ -41,11 +41,14 @@ export function createSearchFilter(): HTMLDivElement {
     return container;
 }
 
-function handleRemoveSearchContent(id: string) {
-    const searchInput = document.getElementById(id) as HTMLInputElement;
-    searchInput.value = '';
-    searchInput.dispatchEvent(new Event('input'));
-    searchInput.focus();
+function handleEmptySearch(): void {
+    const searchInput = document.getElementById('search-input');
+
+    if (searchInput instanceof HTMLInputElement) {
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+    }
 }
 
 function debounce(callback: (arg: string) => void, delay: number) {
