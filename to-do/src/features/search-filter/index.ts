@@ -54,6 +54,24 @@ function handleEmptySearch(id: string): void {
 
 const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), TIMER);
 
+function handleSearchTyping(event: Event, id: string): void {
+    const searchInput = event.target;
+    const closeIcon = document.getElementById(id);
+
+    if (!(searchInput instanceof HTMLInputElement)) return;
+    if (!closeIcon) return;
+
+    const trimmedValue = searchInput.value.trim();
+    closeIcon.classList.toggle('hide-icon', trimmedValue == EMPTY_STRING);
+
+    if (trimmedValue != EMPTY_STRING) {
+        debouncedCallback(trimmedValue);
+    } else {
+        debouncedCallback.cancel();
+        stateManager.setSearchTerm(EMPTY_STRING);
+    }
+}
+
 function debounce(callback: (arg: string) => void, delay: number) {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
