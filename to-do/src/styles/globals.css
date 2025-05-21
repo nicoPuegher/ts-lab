@@ -188,8 +188,8 @@ button {
     background-color: var(--gray10);
 }
 
-.show-icon {
-    visibility: visible;
+.hide-icon {
+    visibility: hidden;
 }
 
 .task {
