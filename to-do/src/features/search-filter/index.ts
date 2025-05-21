@@ -6,6 +6,7 @@ import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
 const TIMER = 300;
+const EMPTY_STRING = '';
 
 export function createSearchFilter(): HTMLDivElement {
     const container = document.createElement('div');
