@@ -20,20 +20,7 @@ export function createSearchFilter(): HTMLDivElement {
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
     const searchInput = createSearchInputComponent();
-    searchInput.addEventListener('input', (event) => {
-        const inputText = event.target as HTMLInputElement;
-        const trimmedValue = inputText.value.trim();
-        const closeIcon = document.getElementById('close-icon');
-
-        if (trimmedValue !== '') {
-            debouncedCallback(trimmedValue);
-            closeIcon.classList.add('show-close-icon');
-        } else {
-            debouncedCallback.cancel();
-            stateManager.setSearchTerm('');
-            closeIcon.classList.remove('show-close-icon');
-        }
-    });
+    searchInput.addEventListener('input', (event) => handleSearchTyping(event, closeIcon.id));
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
 
