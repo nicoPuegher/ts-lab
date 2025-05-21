@@ -13,8 +13,8 @@ export function createSearchFilter(): HTMLDivElement {
 
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
-    closeIcon.classList.add('close-icon');
-    closeIcon.addEventListener('click', () => handleRemoveSearchContent(searchInput.id));
+    closeIcon.classList.add('show-icon');
+    closeIcon.addEventListener('click', handleEmptySearchFilter);
 
     const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), 300);
 
