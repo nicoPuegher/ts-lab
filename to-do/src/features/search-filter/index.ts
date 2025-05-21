@@ -53,9 +53,9 @@ function handleSearchTyping(event: Event, id: string): void {
     closeIcon.classList.toggle('hide-icon', trimmedValue == EMPTY_STRING);
 
     if (trimmedValue != EMPTY_STRING) {
-        debouncedCallback(trimmedValue);
+        debouncedSearch(trimmedValue);
     } else {
-        debouncedCallback.cancel();
+        debouncedSearch.cancel();
         stateManager.setSearchTerm(EMPTY_STRING);
     }
 }
