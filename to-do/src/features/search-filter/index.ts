@@ -17,7 +17,7 @@ export function createSearchFilter(): HTMLDivElement {
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
     closeIcon.classList.add('hide-icon');
-    closeIcon.addEventListener('click', handleEmptySearch);
+    closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
     const searchInput = createSearchInputComponent();
     searchInput.addEventListener('input', (event) => {
@@ -42,11 +42,11 @@ export function createSearchFilter(): HTMLDivElement {
     return container;
 }
 
-function handleEmptySearch(): void {
-    const searchInput = document.getElementById('search-input');
+function handleEmptySearch(id: string): void {
+    const searchInput = document.getElementById(id);
 
     if (searchInput instanceof HTMLInputElement) {
-        searchInput.value = '';
+        searchInput.value = EMPTY_STRING;
         searchInput.dispatchEvent(new Event('input'));
         searchInput.focus();
     }
