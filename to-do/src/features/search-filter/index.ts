@@ -5,6 +5,9 @@ import { stateManager } from '@state/index.ts';
 import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
+type SearchTermCallback = (term: string) => void;
+type DebouncedSearch = SearchTermCallback & { cancel: () => void };
+
 const TIMER = 300;
 const EMPTY_STRING = '';
 
