@@ -42,8 +42,6 @@ function handleEmptySearch(id: string): void {
     }
 }
 
-const debouncedCallback = debounce((term: string) => stateManager.setSearchTerm(term), TIMER);
-
 function handleSearchTyping(event: Event, id: string): void {
     const searchInput = event.target;
     const closeIcon = document.getElementById(id);
@@ -62,7 +60,11 @@ function handleSearchTyping(event: Event, id: string): void {
     }
 }
 
-function debounce(callback: (arg: string) => void, delay: number) {
+const debouncedSearch: DebouncedSearch = debounce(function (term: string) {
+    stateManager.setSearchTerm(term);
+}, TIMER);
+
+function debounce(callback: SearchTermCallback, delay: number): DebouncedSearch {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const debounced = (arg: string) => {
