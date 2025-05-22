@@ -4,14 +4,14 @@ import { createFilterLayout } from '@/layouts/filters.ts';
 
 import { createDatePicker } from '@features/date-picker/index.ts';
 import { createTaskSubmission } from '@features/task-submission/index.ts';
-import { createTasksList } from '@features/tasks-list/index.ts';
+import { createTodoList } from '@features/todo-list/index.ts';
 
 import './styles/globals.css';
 
 const rootElement = document.querySelector('#root');
 if (!rootElement) throw new Error('The #root element does not exist.');
 
-rootElement.append(createDatePicker(), createFilterLayout(), createTasksList(), createTaskSubmission());
+rootElement.append(createDatePicker(), createFilterLayout(), createTodoList(), createTaskSubmission());
 
 scrollToToday();
 addCarouselGradient();

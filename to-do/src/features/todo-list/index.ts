@@ -3,12 +3,12 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTaskComponent } from '@components/task';
 
-import { scrollToLast } from '@features/tasks-list/helpers/scroll-to-last.ts';
+import { scrollToLast } from '@features/todo-list/helpers/scroll-to-last.ts';
 
 type TodoFilters = 'all' | 'active' | 'completed';
 
 let scrollTimeout: number | null = null;
-export function createTasksList(): HTMLUListElement {
+export function createTodoList(): HTMLUListElement {
     const ul = document.createElement('ul');
 
     stateManager.subscribeStateChange((newTodo?: Todo) => {

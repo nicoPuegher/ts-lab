@@ -1,6 +1,6 @@
 import { createTaskComponent } from '@components/task.ts';
 
-import type { newTodoProps } from '@features/tasks-list/types/index.ts';
+import type { newTodoProps } from '@features/todo-list/types/index.ts';
 
 export function setNewTodo(props: newTodoProps): void {
     const li: HTMLLIElement = createTaskComponent(props.todo.id, props.todo.text);

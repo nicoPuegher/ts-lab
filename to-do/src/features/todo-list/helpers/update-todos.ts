@@ -1,4 +1,4 @@
-import type { extendedTodoProps } from '@features/tasks-list/types/index.ts';
+import type { extendedTodoProps } from '@features/todo-list/types/index.ts';
 
 export function updateTodos(props: extendedTodoProps): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
