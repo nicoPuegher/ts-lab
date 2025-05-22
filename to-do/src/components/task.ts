@@ -9,7 +9,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     li.classList.add('task', 'shared');
     li.classList.toggle('completed', todo.completed);
 
-    const checkbox: HTMLInputElement = document.createElement('input');
+    const checkbox = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
