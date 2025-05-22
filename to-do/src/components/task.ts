@@ -4,7 +4,7 @@ import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
 export function createTaskComponent(todo: Todo): HTMLLIElement {
-    const li: HTMLLIElement = document.createElement('li');
+    const li = document.createElement('li');
     li.id = todo.id;
     li.classList.add('task', 'shared');
     li.classList.toggle('completed', todo.completed);
