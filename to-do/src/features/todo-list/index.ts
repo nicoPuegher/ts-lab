@@ -12,7 +12,7 @@ export function createTodoList(): HTMLUListElement {
     const ul = document.createElement('ul');
 
     stateManager.subscribeStateChange((newTodo?: Todo) => {
-        appendTasks(ul, newTodo);
+        appendTodos(ul, newTodo);
 
         if (newTodo) {
             if (scrollTimeout) clearTimeout(scrollTimeout);
@@ -20,12 +20,12 @@ export function createTodoList(): HTMLUListElement {
         }
     });
 
-    appendTasks(ul);
+    appendTodos(ul);
 
     return ul;
 }
 
-function appendTasks(ul: HTMLUListElement, newTodo?: Todo): void {
+function appendTodos(ul: HTMLUListElement, newTodo?: Todo): void {
     const state = stateManager.getState();
 
     if (newTodo) {
