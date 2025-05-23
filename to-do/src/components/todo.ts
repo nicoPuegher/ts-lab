@@ -3,7 +3,7 @@ import { Trash, createElement } from 'lucide';
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
-export function createTaskComponent(todo: Todo): HTMLLIElement {
+export function createTodoComponent(todo: Todo): HTMLLIElement {
     const li = document.createElement('li');
     li.id = todo.id;
     li.classList.add('task', 'shared');

@@ -1,9 +1,9 @@
-import { createTaskComponent } from '@components/task.ts';
+import { createTodoComponent } from '@components/todo.ts';
 
 import type { newTodoProps } from '@features/todo-list/types/index.ts';
 
 export function setNewTodo(props: newTodoProps): void {
-    const li: HTMLLIElement = createTaskComponent(props.todo.id, props.todo.text);
+    const li: HTMLLIElement = createTodoComponent(props.todo.id, props.todo.text);
     if (props.todo.completed) {
         li.classList.add('completed');
         li.lastElementChild.classList.add('removed');

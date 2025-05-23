@@ -1,7 +1,7 @@
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
-import { createTaskComponent } from '@components/task';
+import { createTodoComponent } from '@components/todo.ts';
 
 import { scrollToLast } from '@features/todo-list/helpers/scroll-to-last.ts';
 
@@ -29,7 +29,7 @@ function appendTodos(ul: HTMLUListElement, newTodo?: Todo): void {
     const state = stateManager.getState();
 
     if (newTodo) {
-        const li = createTaskComponent(newTodo);
+        const li = createTodoComponent(newTodo);
         ul.appendChild(li);
     } else {
         const currentTodos = state.todosByDate[state.selectedDate] || [];
@@ -37,7 +37,7 @@ function appendTodos(ul: HTMLUListElement, newTodo?: Todo): void {
 
         const filteredTodos = filterTodos(currentTodos, state.currentFilter as TodoFilters);
         filteredTodos.forEach((todo) => {
-            const li = createTaskComponent(todo);
+            const li = createTodoComponent(todo);
             fragment.appendChild(li);
         });
 
