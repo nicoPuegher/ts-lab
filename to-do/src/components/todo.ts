@@ -32,8 +32,10 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     return li;
 }
 
-function handleCheckboxChange(id: string, task: HTMLLIElement, event: Event): void {
-    const checkbox = event.target as HTMLInputElement;
+function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): void {
+    const checkbox = event.target;
+
+    if (!(checkbox instanceof HTMLInputElement)) return;
 
     if (checkbox.checked) {
         task.classList.add('completed');
