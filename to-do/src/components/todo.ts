@@ -6,7 +6,7 @@ import type { Todo } from '@state/types/index.ts';
 export function createTodoComponent(todo: Todo): HTMLLIElement {
     const li = document.createElement('li');
     li.id = todo.id;
-    li.classList.add('task', 'shared');
+    li.classList.add('todo', 'surface');
     li.classList.toggle('completed', todo.completed);
 
     const checkbox = document.createElement('input');
@@ -24,7 +24,7 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
 
     const icon = createElement(Trash);
-    icon.classList.add('icon');
+    icon.classList.add('todo-icon');
 
     iconContainer.appendChild(icon);
     li.append(checkbox, paragraph, iconContainer);
