@@ -20,8 +20,9 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     paragraph.textContent = todo.text;
 
     const iconContainer = document.createElement('div');
-    iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
     iconContainer.classList.toggle('removed', todo.completed);
+    iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
+
     const icon = createElement(Trash);
     icon.classList.add('icon');
 
