@@ -7,7 +7,7 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     const li = document.createElement('li');
     li.id = todo.id;
     li.classList.add('todo', 'surface');
-    li.classList.toggle('completed', todo.completed);
+    li.classList.toggle('todo-completed', todo.completed);
 
     const checkbox = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
