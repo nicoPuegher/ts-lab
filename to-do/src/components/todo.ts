@@ -14,7 +14,7 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
-    checkbox.addEventListener('change', (event: Event) => handleCheckboxChange(todo.id, li, event));
+    checkbox.addEventListener('change', (event) => handleCheckboxChange(todo.id, li, event));
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
