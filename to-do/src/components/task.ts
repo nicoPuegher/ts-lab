@@ -16,7 +16,7 @@ export function createTaskComponent(todo: Todo): HTMLLIElement {
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
     checkbox.addEventListener('change', (event: Event) => handleCheckboxChange(todo.id, li, event));
 
-    const paragraph: HTMLParagraphElement = document.createElement('p');
+    const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
 
     const iconContainer: HTMLDivElement = document.createElement('div');
