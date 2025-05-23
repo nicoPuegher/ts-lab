@@ -192,21 +192,22 @@ button {
     visibility: hidden;
 }
 
-.task {
+/* Todo list */
+.todo {
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
-.task input {
+.todo input {
     margin-right: 1rem;
 }
 
-.task p {
+.todo p {
     flex-grow: 1;
 }
 
-.icon {
+.todo-icon {
     width: 1.1rem;
     height: 1.1rem;
     color: var(--gray100);
