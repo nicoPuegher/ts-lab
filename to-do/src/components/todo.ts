@@ -20,7 +20,7 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     paragraph.textContent = todo.text;
 
     const iconContainer = document.createElement('div');
-    iconContainer.classList.toggle('removed', todo.completed);
+    iconContainer.classList.toggle('hide-element', todo.completed);
     iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
 
     const icon = createElement(Trash);
@@ -39,10 +39,10 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
 
     if (checkbox.checked) {
         todo.classList.add('todo-completed');
-        todo.lastElementChild?.classList.add('removed');
+        todo.lastElementChild?.classList.add('hide-element');
     } else {
         todo.classList.remove('todo-completed');
-        todo.lastElementChild?.classList.remove('removed');
+        todo.lastElementChild?.classList.remove('hide-element');
     }
 
     stateManager.toggleTodo(id);

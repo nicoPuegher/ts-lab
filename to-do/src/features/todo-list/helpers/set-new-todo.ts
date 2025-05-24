@@ -6,7 +6,7 @@ export function setNewTodo(props: newTodoProps): void {
     const li: HTMLLIElement = createTodoComponent(props.todo.id, props.todo.text);
     if (props.todo.completed) {
         li.classList.add('completed');
-        li.lastElementChild.classList.add('removed');
+        li.lastElementChild.classList.add('hide-element');
     }
 
     const checkbox: HTMLInputElement = li.querySelector('input[type="checkbox"]');

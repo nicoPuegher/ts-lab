@@ -16,7 +16,7 @@ export function updateExistingTodo(props: updateExistingTodoProps): void {
         if (oldTodo.completed != props.todo.completed) {
             checkbox.checked = props.todo.completed;
             props.existingLi.classList.toggle('completed', props.todo.completed);
-            props.existingLi.lastElementChild.classList.toggle('removed', props.todo.completed);
+            props.existingLi.lastElementChild.classList.toggle('hide-element', props.todo.completed);
         }
     }
 }
