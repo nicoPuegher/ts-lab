@@ -64,7 +64,5 @@ function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
 }
 
 function scrollToLastTodo(ul: HTMLUListElement): void {
-    const lastTask = ul.lastElementChild;
-
-    if (lastTask) lastTask.scrollIntoView({ behavior: 'smooth' });
+    ul.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
 }
