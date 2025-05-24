@@ -37,13 +37,8 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
 
     if (!(checkbox instanceof HTMLInputElement)) return;
 
-    if (checkbox.checked) {
-        todo.classList.add('todo-completed');
-        todo.lastElementChild?.classList.add('hide-element');
-    } else {
-        todo.classList.remove('todo-completed');
-        todo.lastElementChild?.classList.remove('hide-element');
-    }
+    todo.classList.toggle('todo-completed', checkbox.checked);
+    todo.lastElementChild?.classList.toggle('hide-element', checkbox.checked);
 
     stateManager.toggleTodo(id);
 }
