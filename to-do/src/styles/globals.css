@@ -226,7 +226,7 @@ button {
     background-color: var(--gray10);
 }
 
-.removed {
+.hide-element {
     display: none;
 }
 
