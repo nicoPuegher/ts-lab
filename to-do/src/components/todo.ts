@@ -39,10 +39,10 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
 
     if (checkbox.checked) {
         todo.classList.add('completed');
-        todo.lastElementChild.classList.add('removed');
+        todo.lastElementChild?.classList.add('removed');
     } else {
         todo.classList.remove('completed');
-        todo.lastElementChild.classList.remove('removed');
+        todo.lastElementChild?.classList.remove('removed');
     }
 
     stateManager.toggleTodo(id);
