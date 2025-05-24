@@ -43,8 +43,10 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
     stateManager.toggleTodo(id);
 }
 
-function handleDeleteTodo(id: string) {
+function handleDeleteTodo(id: string): void {
     const li = document.getElementById(id);
+
+    if (!li) return;
 
     stateManager.deleteTodo(id);
     li.remove();
