@@ -3,8 +3,6 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTodoComponent } from '@components/todo.ts';
 
-import { scrollToLast } from '@features/todo-list/helpers/scroll-to-last.ts';
-
 type TodoFilters = 'all' | 'active' | 'completed';
 
 let scrollTimeout: number | null = null;
