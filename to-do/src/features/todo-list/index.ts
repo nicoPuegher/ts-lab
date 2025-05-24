@@ -14,7 +14,7 @@ export function createTodoList(): HTMLUListElement {
 
         if (newTodo) {
             if (scrollTimeout) clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => scrollToLast(ul), 10);
+            scrollTimeout = setTimeout(() => scrollToLastTodo(ul), 10);
         }
     });
 
