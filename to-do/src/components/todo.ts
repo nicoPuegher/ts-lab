@@ -38,10 +38,10 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
     if (!(checkbox instanceof HTMLInputElement)) return;
 
     if (checkbox.checked) {
-        todo.classList.add('completed');
+        todo.classList.add('todo-completed');
         todo.lastElementChild?.classList.add('removed');
     } else {
-        todo.classList.remove('completed');
+        todo.classList.remove('todo-completed');
         todo.lastElementChild?.classList.remove('removed');
     }
 
