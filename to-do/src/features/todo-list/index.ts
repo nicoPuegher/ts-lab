@@ -35,11 +35,10 @@ function appendTodos(ul: HTMLUListElement, newTodo?: Todo): void {
         const currentTodos = state.todosByDate[state.selectedDate] || [];
         const fragment = document.createDocumentFragment();
 
-        const filteredTodos = filterTodos(currentTodos, state.currentFilter);
-        filteredTodos.forEach((todo) => {
-            const li = createTodoComponent(todo);
-            fragment.appendChild(li);
-        });
+function appendNewTodo(ul: HTMLUListElement, newTodo: Todo): void {
+    const li = createTodoComponent(newTodo);
+    ul.appendChild(li);
+}
 
         ul.replaceChildren(fragment);
     }
