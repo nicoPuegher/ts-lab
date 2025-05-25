@@ -5,16 +5,16 @@ import { createTodoComponent } from '@components/todo.ts';
 
 type TodoFilters = 'all' | 'active' | 'completed';
 
-let scrollTimeout: number | null = null;
 export function createTodoList(): HTMLUListElement {
     const ul = document.createElement('ul');
+    let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
     stateManager.subscribeStateChange((newTodo?: Todo) => {
         appendTodos(ul, newTodo);
 
         if (newTodo) {
-            if (scrollTimeout) clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => scrollToLastTodo(ul), 10);
+            if (scrollToLastTodoTimeout) clearTimeout(scrollToLastTodoTimeout);
+            scrollToLastTodoTimeout = setTimeout(() => scrollToLastTodo(ul), 10);
         }
     });
 
