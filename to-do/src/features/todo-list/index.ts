@@ -26,14 +26,12 @@ export function createTodoList(): HTMLUListElement {
 }
 
 function appendTodos(ul: HTMLUListElement, newTodo?: Todo): void {
-    const state = stateManager.getState();
-
     if (newTodo) {
-        const li = createTodoComponent(newTodo);
-        ul.appendChild(li);
+        appendNewTodo(ul, newTodo);
     } else {
-        const currentTodos = state.todosByDate[state.selectedDate] || [];
-        const fragment = document.createDocumentFragment();
+        replaceAllTodos(ul);
+    }
+}
 
 function appendNewTodo(ul: HTMLUListElement, newTodo: Todo): void {
     const li = createTodoComponent(newTodo);
