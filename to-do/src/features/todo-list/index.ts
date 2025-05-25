@@ -40,8 +40,15 @@ function appendNewTodo(ul: HTMLUListElement, newTodo: Todo): void {
     ul.appendChild(li);
 }
 
-        ul.replaceChildren(fragment);
-    }
+function replaceAllTodos(ul: HTMLUListElement): void {
+    const state = stateManager.getState();
+    const previousTodosInState = state.todosByDate[state.selectedDate] || [];
+    const filteredTodos = filterTodos(previousTodosInState, state.currentFilter);
+    const fragment = document.createDocumentFragment();
+
+    filteredTodos.forEach((todo) => fragment.appendChild(createTodoComponent(todo)));
+
+    ul.replaceChildren(fragment);
 }
 
 function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
