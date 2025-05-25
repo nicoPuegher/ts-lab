@@ -5,6 +5,8 @@ import { createTodoComponent } from '@components/todo.ts';
 
 type TodoFilters = 'all' | 'active' | 'completed';
 
+const DELAY = 10;
+
 export function createTodoList(): HTMLUListElement {
     const ul = document.createElement('ul');
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -14,7 +16,7 @@ export function createTodoList(): HTMLUListElement {
 
         if (newTodo) {
             if (scrollToLastTodoTimeout) clearTimeout(scrollToLastTodoTimeout);
-            scrollToLastTodoTimeout = setTimeout(() => scrollToLastTodo(ul), 10);
+            scrollToLastTodoTimeout = setTimeout(() => scrollToLastTodo(ul), DELAY);
         }
     });
 
