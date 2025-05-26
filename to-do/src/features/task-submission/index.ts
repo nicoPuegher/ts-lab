@@ -20,3 +20,7 @@ export function createTaskSubmission(): HTMLFormElement {
 
     return form;
 }
+
+function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement): void {
+    validationFeedback.textContent = '';
+}
