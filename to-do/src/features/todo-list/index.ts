@@ -41,7 +41,7 @@ function appendNewTodo(ul: HTMLUListElement, newTodo: Todo): void {
 function replaceAllTodos(ul: HTMLUListElement): void {
     const state = stateManager.getState();
     const previousTodosInState = state.todosByDate[state.selectedDate] || [];
-    const filteredTodos = filterTodos(previousTodosInState, state.currentFilter);
+    const filteredTodos = filterTodos(previousTodosInState, state.currentFilter, state.searchTerm);
     const fragment = document.createDocumentFragment();
 
     filteredTodos.forEach((todo) => fragment.appendChild(createTodoComponent(todo)));
@@ -49,8 +49,7 @@ function replaceAllTodos(ul: HTMLUListElement): void {
     ul.replaceChildren(fragment);
 }
 
-function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
-    const state = stateManager.getState();
+function filterTodos(todos: Todo[], filter: TodoFilters, searchTerm: string): Todo[] {
     let filteredTodos: Todo[] = [];
 
     switch (filter) {
@@ -64,7 +63,7 @@ function filterTodos(todos: Todo[], filter: TodoFilters): Todo[] {
             filteredTodos = todos;
     }
 
-    filteredTodos = filteredTodos.filter((todo) => todo.text.includes(state.searchTerm));
+    filteredTodos = filteredTodos.filter((todo) => todo.text.includes(searchTerm));
 
     return filteredTodos;
 }
