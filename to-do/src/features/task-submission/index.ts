@@ -4,7 +4,6 @@ import { createLabelComponent } from '@components/label.ts';
 import { createTextFeedbackComponent } from '@components/text-feedback.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
 
-import { handleInput } from './handlers/handle-input.ts';
 import { handleSubmit } from './handlers/handle-submit.ts';
 
 export function createTaskSubmission(): HTMLFormElement {
