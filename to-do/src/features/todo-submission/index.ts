@@ -6,7 +6,7 @@ import { createTextInputComponent } from '@components/text-input.ts';
 
 import { handleSubmit } from './handlers/handle-submit.ts';
 
-export function createTaskSubmission(): HTMLFormElement {
+export function createTodoSubmission(): HTMLFormElement {
     const form = createFormComponent();
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
