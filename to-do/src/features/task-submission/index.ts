@@ -11,12 +11,14 @@ export function createTaskSubmission(): HTMLFormElement {
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
     const button = createButtonComponent('Add');
-    const validationFeedback = createTextFeedbackComponent();
+    const feedbackElement = createTextFeedbackComponent();
 
-    input.addEventListener('input', (event: InputEvent) => handleInput(event as InputEvent, feedback));
-    form.addEventListener('submit', (event: SubmitEvent) => handleSubmit(event as SubmitEvent, form, input, feedback));
+    input.addEventListener('input', () => handleClearValidationFeedback(feedbackElement));
+    form.addEventListener('submit', (event: SubmitEvent) =>
+        handleSubmit(event as SubmitEvent, form, input, feedbackElement),
+    );
 
-    form.append(label, input, button, feedback);
+    form.append(label, input, button, feedbackElement);
 
     return form;
 }
