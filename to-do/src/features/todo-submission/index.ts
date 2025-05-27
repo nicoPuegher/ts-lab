@@ -52,3 +52,25 @@ function handleTodoSubmit(
 
     submitInput(sanitizeInput(value));
 }
+
+function validateTodoText(userInput: string): string | null {
+    const trimmedUserInput: string = userInput.trim();
+
+    if (trimmedUserInput.length == 0) {
+        return 'Cannot be empty.';
+    }
+
+    if (trimmedUserInput.length < 3 || trimmedUserInput.length > 25) {
+        return 'Must be between 3 and 25 characters long.';
+    }
+
+    if (!/^[a-zA-Z0-9\s]+$/.test(trimmedUserInput)) {
+        return 'Only letters, numbers, and spaces allowed.';
+    }
+
+    if (/^\d+$/.test(trimmedUserInput)) {
+        return 'Cannot contain only numbers.';
+    }
+
+    return null;
+}
