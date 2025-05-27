@@ -1,5 +1,5 @@
 export function createTextFeedbackComponent(): HTMLParagraphElement {
-    const textFeedback: HTMLParagraphElement = document.createElement('p');
+    const textFeedback = document.createElement('p');
 
     return textFeedback;
 }
