@@ -3,7 +3,7 @@ import { Trash, createElement } from 'lucide';
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
-export function createTodoComponent(todo: Todo): HTMLLIElement {
+export function createTodoComponent(todo: Todo) {
     const li = document.createElement('li');
     li.id = todo.id;
     li.classList.add('todo', 'surface');
@@ -32,7 +32,7 @@ export function createTodoComponent(todo: Todo): HTMLLIElement {
     return li;
 }
 
-function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): void {
+function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
     const checkbox = event.target;
 
     if (!(checkbox instanceof HTMLInputElement)) return;
@@ -43,7 +43,7 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event): vo
     stateManager.toggleTodo(id);
 }
 
-function handleDeleteTodo(id: string): void {
+function handleDeleteTodo(id: string) {
     const li = document.getElementById(id);
 
     if (!li) return;
