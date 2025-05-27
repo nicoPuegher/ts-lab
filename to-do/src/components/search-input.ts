@@ -1,4 +1,4 @@
-export function createSearchInputComponent(): HTMLInputElement {
+export function createSearchInputComponent() {
     const searchInput = document.createElement('input');
     searchInput.id = 'search-input';
     searchInput.type = 'search';
