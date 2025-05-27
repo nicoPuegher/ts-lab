@@ -8,7 +8,7 @@ const filter = {
     COMPLETED: 'Completed',
 };
 
-export function createStatusFilter(): HTMLDivElement {
+export function createStatusFilter() {
     const container = document.createElement('div');
     container.classList.add('status-filter');
 
@@ -21,14 +21,14 @@ export function createStatusFilter(): HTMLDivElement {
     return container;
 }
 
-function createFilterButtonComponent(label: string, status: string): HTMLButtonElement {
+function createFilterButtonComponent(label: string, status: string) {
     const button = createButtonComponent(label, 'filter');
     button.addEventListener('click', () => stateManager.setFilter(status));
 
     return button;
 }
 
-function createSeparator(): HTMLSpanElement {
+function createSeparator() {
     const separator = document.createElement('span');
     separator.textContent = '|';
 
