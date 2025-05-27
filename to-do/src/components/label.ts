@@ -1,4 +1,4 @@
-export function createLabelComponent(id: string, textContent: string): HTMLLabelElement {
+export function createLabelComponent(id: string, textContent: string) {
     const label = document.createElement('label');
     label.htmlFor = id;
     label.textContent = textContent;
