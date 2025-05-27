@@ -6,7 +6,7 @@ import { createDateComponent } from '@components/date.ts';
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 const DAYS_TO_GENERATE = 7;
 
-export function createDatePicker(): HTMLDivElement {
+export function createDatePicker() {
     const container = document.createElement('div');
     container.classList.add('date-picker');
 
@@ -21,7 +21,7 @@ export function createDatePicker(): HTMLDivElement {
     return container;
 }
 
-function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
+function appendDateComponents(dates: Date[], container: HTMLDivElement) {
     dates.forEach((date) => {
         const weekday = date.toLocaleString('en-US', { weekday: 'short' });
         const dayOfMonth = date.getDate();
@@ -33,7 +33,7 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement): void {
     });
 }
 
-function getStoredPastDates(userStorage: string | null): Date[] {
+function getStoredPastDates(userStorage: string | null) {
     if (!userStorage) return [];
 
     const todayDateString = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -45,7 +45,7 @@ function getStoredPastDates(userStorage: string | null): Date[] {
         .sort((a, b) => a.getTime() - b.getTime());
 }
 
-function generateDayListFromToday(): Date[] {
+function generateDayListFromToday() {
     return Array.from({ length: DAYS_TO_GENERATE }, (_, i) => {
         const date = new Date();
         const nextDay = date.getDate() + i;
