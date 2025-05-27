@@ -5,13 +5,10 @@ import { stateManager } from '@state/index.ts';
 import { createLabelComponent } from '@components/label';
 import { createSearchInputComponent } from '@components/search-input';
 
-type SearchTermCallback = (term: string) => void;
-type DebouncedSearch = SearchTermCallback & { cancel: () => void };
-
 const TIMER = 300;
 const EMPTY_STRING = '';
 
-export function createSearchFilter(): HTMLDivElement {
+export function createSearchFilter() {
     const container = document.createElement('div');
     container.classList.add('search-filter');
 
@@ -32,7 +29,7 @@ export function createSearchFilter(): HTMLDivElement {
     return container;
 }
 
-function handleEmptySearch(id: string): void {
+function handleEmptySearch(id: string) {
     const searchInput = document.getElementById(id);
 
     if (searchInput instanceof HTMLInputElement) {
@@ -42,7 +39,7 @@ function handleEmptySearch(id: string): void {
     }
 }
 
-function handleSearchTyping(event: Event, id: string): void {
+function handleSearchTyping(event: Event, id: string) {
     const searchInput = event.target;
     const closeIcon = document.getElementById(id);
 
@@ -60,11 +57,11 @@ function handleSearchTyping(event: Event, id: string): void {
     }
 }
 
-const debouncedSearch: DebouncedSearch = debounce(function (term: string) {
+const debouncedSearch = debounce(function (term: string) {
     stateManager.setSearchTerm(term);
 }, TIMER);
 
-function debounce(callback: SearchTermCallback, delay: number): DebouncedSearch {
+function debounce(callback: (arg: string) => void, delay: number) {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const debounced = (arg: string) => {
