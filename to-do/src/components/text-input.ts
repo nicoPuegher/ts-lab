@@ -1,4 +1,4 @@
-export function createTextInputComponent(): HTMLInputElement {
+export function createTextInputComponent() {
     const textInput = document.createElement('input');
     textInput.id = 'text-input-id';
     textInput.type = 'text';
