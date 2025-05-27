@@ -9,7 +9,7 @@ import { showErrorFeedback } from '@features/todo-submission/helpers/show-error-
 import { submitInput } from '@features/todo-submission/helpers/submit-input.ts';
 import { validateInput } from '@features/todo-submission/helpers/validate-input.ts';
 
-export function createTodoSubmission(): HTMLFormElement {
+export function createTodoSubmission() {
     const form = createFormComponent();
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
@@ -26,7 +26,7 @@ export function createTodoSubmission(): HTMLFormElement {
     return form;
 }
 
-function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement): void {
+function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement) {
     validationFeedback.textContent = '';
 }
 
@@ -34,8 +34,8 @@ function handleTodoSubmit(
     event: SubmitEvent,
     form: HTMLFormElement,
     input: HTMLInputElement,
-    feedback: HTMLParagraphElement,
-): void {
+    feedbackElement: HTMLParagraphElement,
+) {
     event.preventDefault();
 
     const data: FormData = new FormData(event.target as HTMLFormElement);
@@ -53,7 +53,7 @@ function handleTodoSubmit(
     submitInput(sanitizeInput(value));
 }
 
-function validateTodoText(userInput: string): string | null {
+function validateTodoText(userInput: string) {
     const trimmedUserInput: string = userInput.trim();
 
     if (trimmedUserInput.length == 0) {
