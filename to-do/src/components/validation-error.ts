@@ -1,5 +1,3 @@
-export function createTextFeedbackComponent(): HTMLParagraphElement {
-    const textFeedback = document.createElement('p');
-
-    return textFeedback;
+export function createValidationErrorComponent() {
+    return document.createElement('p');
 }
