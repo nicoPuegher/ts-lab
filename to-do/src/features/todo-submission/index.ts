@@ -1,7 +1,7 @@
 import { createButtonComponent } from '@components/button.ts';
+import { createErrorMessageComponent } from '@components/error-message.ts';
 import { createFormComponent } from '@components/form.ts';
 import { createLabelComponent } from '@components/label.ts';
-import { createTextFeedbackComponent } from '@components/text-feedback.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
 
 export function createTodoSubmission() {
@@ -9,7 +9,7 @@ export function createTodoSubmission() {
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
     const button = createButtonComponent('Add');
-    const feedbackElement = createTextFeedbackComponent();
+    const errorMessage = createErrorMessageComponent();
 
     input.addEventListener('input', () => handleClearValidationFeedback(feedbackElement));
     form.addEventListener('submit', (event: SubmitEvent) =>
