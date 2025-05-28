@@ -1,5 +1,5 @@
 import { createButtonComponent } from '@components/button.ts';
-import { createErrorMessageComponent } from '@components/error-message.ts';
+import { createErrorComponent } from '@components/error.ts';
 import { createFormComponent } from '@components/form.ts';
 import { createLabelComponent } from '@components/label.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
@@ -9,14 +9,12 @@ export function createTodoSubmission() {
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
     const button = createButtonComponent('Add');
-    const errorMessage = createErrorMessageComponent();
+    const errorElement = createErrorComponent();
 
-    input.addEventListener('input', () => handleClearValidationFeedback(feedbackElement));
-    form.addEventListener('submit', (event: SubmitEvent) =>
-        handleTodoSubmit(event as SubmitEvent, form, input, feedbackElement),
-    );
+    input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
+    form.addEventListener('submit', (event) => handleTodoSubmit(event, form, input, errorElement));
 
-    form.append(label, input, button, feedbackElement);
+    form.append(label, input, button, errorElement);
 
     return form;
 }
@@ -29,7 +27,7 @@ function handleTodoSubmit(
     event: SubmitEvent,
     form: HTMLFormElement,
     input: HTMLInputElement,
-    feedbackElement: HTMLParagraphElement,
+    errorElement: HTMLParagraphElement,
 ) {
     event.preventDefault();
 
@@ -70,7 +68,7 @@ function validateTodoText(userInput: string) {
     return null;
 }
 
-function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagraphElement, errorMessage: string){
+function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagraphElement, errorMessage: string) {
     errorElement.textContent = errorMessage;
     textInput.focus();
 }
