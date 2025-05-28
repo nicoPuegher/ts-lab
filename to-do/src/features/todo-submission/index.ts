@@ -4,11 +4,6 @@ import { createLabelComponent } from '@components/label.ts';
 import { createTextFeedbackComponent } from '@components/text-feedback.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
 
-import { sanitizeInput } from '@features/todo-submission/helpers/sanitize-input.ts';
-import { showErrorFeedback } from '@features/todo-submission/helpers/show-error-feedback.ts';
-import { submitInput } from '@features/todo-submission/helpers/submit-input.ts';
-import { validateInput } from '@features/todo-submission/helpers/validate-input.ts';
-
 export function createTodoSubmission() {
     const form = createFormComponent();
     const input = createTextInputComponent();
