@@ -31,8 +31,7 @@ function handleTodoSubmission(
 ) {
     event.preventDefault();
 
-    const data: FormData = new FormData(event.target as HTMLFormElement);
-    const value: string = data.get(input.name) as string;
+    if (!(event.target instanceof HTMLFormElement)) return;
 
     const errorMessage: string = validateInput(value);
     if (errorMessage) {
