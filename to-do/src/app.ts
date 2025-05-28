@@ -16,8 +16,10 @@ rootElement.append(createDatePicker(), createFilterLayout(), createTodoList(), c
 scrollToToday();
 addCarouselGradient();
 
-let resizeTimeout: number;
+let resizeWindowEventTimeout: ReturnType<typeof setTimeout> | null = null;
 window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(scrollToToday, 200);
+    if (resizeWindowEventTimeout) {
+        clearTimeout(resizeWindowEventTimeout);
+    }
+    resizeWindowEventTimeout = setTimeout(scrollToToday, 200);
 });
