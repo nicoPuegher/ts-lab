@@ -80,3 +80,7 @@ function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagra
 function sanitizeUserInput(value: string) {
     return value.trim().replace(/\s+/g, ' ');
 }
+
+function submitTodo(todo: string) {
+    stateManager.addTodo(todo);
+}
