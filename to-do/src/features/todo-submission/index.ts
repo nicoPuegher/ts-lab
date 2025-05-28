@@ -12,7 +12,7 @@ export function createTodoSubmission() {
     const errorElement = createErrorComponent();
 
     input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
-    form.addEventListener('submit', (event) => handleTodoSubmit(event, form, input, errorElement));
+    form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
 
     form.append(label, input, button, errorElement);
 
@@ -23,7 +23,7 @@ function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement)
     validationFeedback.textContent = '';
 }
 
-function handleTodoSubmit(
+function handleTodoSubmission(
     event: SubmitEvent,
     form: HTMLFormElement,
     input: HTMLInputElement,
