@@ -76,3 +76,7 @@ function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagra
     errorElement.textContent = errorMessage;
     textInput.focus();
 }
+
+function sanitizeUserInput(value: string) {
+    return value.trim().replace(/\s+/g, ' ');
+}
