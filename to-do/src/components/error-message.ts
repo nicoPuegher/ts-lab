@@ -1,3 +1,3 @@
-export function createValidationErrorComponent() {
+export function createErrorMessageComponent() {
     return document.createElement('p');
 }
