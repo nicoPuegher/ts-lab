@@ -43,6 +43,11 @@ function handleTodoSubmission(
         showErrorMessage(input, errorElement, errorMessage);
         return;
     }
+
+    form.reset();
+    input.focus();
+
+    submitTodo(sanitizeUserInput(userInput));
 }
 
 function validateTodoText(userInput: string) {
