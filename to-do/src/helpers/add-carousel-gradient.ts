@@ -1,10 +1,12 @@
-export function addCarouselGradient() {
+export function addDatePickerOutOfBoundGradient() {
     let isScrolling = false;
 
     document.addEventListener('DOMContentLoaded', () => {
-        const carousel = document.querySelector('.calendar-carousel');
+        const datePicker = document.querySelector('.date-picker');
 
-        carousel.addEventListener('scroll', () => {
+        if (!(datePicker instanceof HTMLDivElement)) return;
+
+        datePicker.addEventListener('scroll', () => {
             if (!isScrolling) {
                 window.requestAnimationFrame(() => {
                     updateScrollState();
@@ -21,16 +23,18 @@ export function addCarouselGradient() {
 }
 
 function updateScrollState() {
-    const carousel: HTMLDivElement = document.querySelector('.calendar-carousel');
+    const datePicker = document.querySelector('.date-picker');
 
-    const scrollLeft = carousel.scrollLeft;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    if (!(datePicker instanceof HTMLDivElement)) return;
+
+    const scrollLeft = datePicker.scrollLeft;
+    const maxScroll = datePicker.scrollWidth - datePicker.clientWidth;
     const fadeDistance = 30;
 
     const leftFade = Math.min((scrollLeft / fadeDistance) * 10, 10);
-    carousel.style.setProperty('--left-fade', `${leftFade}%`);
+    datePicker.style.setProperty('--left-fade', `${leftFade}%`);
 
     const remainingScroll = maxScroll - scrollLeft;
     const rightFade = Math.min((remainingScroll / fadeDistance) * 10, 10);
-    carousel.style.setProperty('--right-fade', `${rightFade}%`);
+    datePicker.style.setProperty('--right-fade', `${rightFade}%`);
 }
