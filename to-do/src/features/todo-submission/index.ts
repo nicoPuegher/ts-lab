@@ -33,16 +33,10 @@ function handleTodoSubmission(
 
     if (!(event.target instanceof HTMLFormElement)) return;
 
-    const errorMessage: string = validateInput(value);
-    if (errorMessage) {
-        showErrorFeedback(input, feedback, errorMessage);
-        return;
-    }
+    const formData = new FormData(event.target);
+    const userInput = formData.get(input.name);
 
-    form.reset();
-    input.focus();
-
-    submitInput(sanitizeInput(value));
+    if (typeof userInput != 'string') return;
 }
 
 function validateTodoText(userInput: string) {
