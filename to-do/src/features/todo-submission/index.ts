@@ -37,6 +37,12 @@ function handleTodoSubmission(
     const userInput = formData.get(input.name);
 
     if (typeof userInput != 'string') return;
+
+    const errorMessage = validateTodoText(userInput);
+    if (errorMessage) {
+        showErrorMessage(input, errorElement, errorMessage);
+        return;
+    }
 }
 
 function validateTodoText(userInput: string) {
