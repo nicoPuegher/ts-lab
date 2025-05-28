@@ -1,3 +1,5 @@
+import { stateManager } from '@state/index.ts';
+
 import { createButtonComponent } from '@components/button.ts';
 import { createErrorComponent } from '@components/error.ts';
 import { createFormComponent } from '@components/form.ts';
