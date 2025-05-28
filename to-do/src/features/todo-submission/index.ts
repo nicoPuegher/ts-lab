@@ -74,3 +74,8 @@ function validateTodoText(userInput: string) {
 
     return null;
 }
+
+function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagraphElement, errorMessage: string){
+    errorElement.textContent = errorMessage;
+    textInput.focus();
+}
