@@ -1,5 +1,7 @@
 import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
+const STORAGE_KEY = 'taskData';
+
 class StateManager {
     private state: AppState;
     private stateChangeSubscribers: ((newTodo?: Todo) => void)[] = [];
