@@ -13,4 +13,6 @@ export type AppState = {
     searchTerm: string;
 };
 
+export type AppChangeSubscribers = ((newTodo?: Todo) => void)[];
+
 export type Filter = 'all' | 'active' | 'completed';
