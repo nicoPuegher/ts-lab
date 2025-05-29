@@ -1,4 +1,4 @@
-import type { AppState, Todo } from '@state/types/index.ts';
+import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
 class StateManager {
     private state: AppState;
