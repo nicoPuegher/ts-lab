@@ -107,4 +107,8 @@ class StateManager {
     }
 }
 
+function generateCurrentDate() {
+    return new Date().toISOString().split('T')[0];
+}
+
 export const stateManager = new StateManager();
