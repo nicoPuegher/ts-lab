@@ -111,4 +111,13 @@ function generateCurrentDate() {
     return new Date().toISOString().split('T')[0];
 }
 
+function generateInitialState(): AppState {
+    return {
+        selectedDate: generateCurrentDate(),
+        todosByDate: {},
+        currentFilter: 'all',
+        searchTerm: '',
+    };
+}
+
 export const stateManager = new StateManager();
