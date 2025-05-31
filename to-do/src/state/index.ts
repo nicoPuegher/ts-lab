@@ -17,6 +17,7 @@ class StateManager {
         }
 
         this.state = initialState;
+        this.stateChangeSubscribers = [];
     }
 
     subscribeStateChange(callback: (newTodo?: Todo) => void): void {
