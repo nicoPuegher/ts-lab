@@ -7,12 +7,7 @@ class StateManager {
     private stateChangeSubscribers: AppChangeSubscribers;
 
     constructor() {
-        const initialState: AppState = {
-            selectedDate: new Date().toISOString().split('T')[0],
-            todosByDate: {},
-            currentFilter: 'all',
-            searchTerm: '',
-        };
+        const initialState = generateInitialState();
 
         const storedState = localStorage.getItem('taskData');
 
