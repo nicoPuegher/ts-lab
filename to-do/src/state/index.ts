@@ -9,7 +9,7 @@ class StateManager {
     constructor() {
         const initialState = generateInitialState();
 
-        const storedState = localStorage.getItem('taskData');
+        const storedState = localStorage.getItem(STORAGE_KEY);
 
         if (storedState) {
             const previousState: AppState = JSON.parse(storedState);
@@ -29,7 +29,7 @@ class StateManager {
     }
 
     private saveState() {
-        localStorage.setItem('taskData', JSON.stringify(this.state));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
     }
 
     getState() {
