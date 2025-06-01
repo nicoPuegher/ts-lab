@@ -20,23 +20,23 @@ class StateManager {
         this.stateChangeSubscribers = [];
     }
 
-    subscribeStateChange(callback: (newTodo?: Todo) => void): void {
+    subscribeStateChange(callback: (newTodo?: Todo) => void) {
         this.stateChangeSubscribers.push(callback);
     }
 
-    private notifyStateChangeSubscribers(newTodo?: Todo): void {
+    private notifyStateChangeSubscribers(newTodo?: Todo) {
         this.stateChangeSubscribers.forEach((callback) => callback(newTodo));
     }
 
-    private saveState(): void {
+    private saveState() {
         localStorage.setItem('taskData', JSON.stringify(this.state));
     }
 
-    getState(): AppState {
+    getState() {
         return this.state;
     }
 
-    setSelectedDate(date: Date): void {
+    setSelectedDate(date: Date) {
         const dateKey = date.toISOString().split('T')[0];
 
         if (this.state.selectedDate == dateKey) return;
@@ -46,21 +46,21 @@ class StateManager {
         this.notifyStateChangeSubscribers();
     }
 
-    setFilter(filter: string): void {
+    setFilter(filter: Filter) {
         if (this.state.currentFilter == filter) return;
 
         this.state.currentFilter = filter;
         this.notifyStateChangeSubscribers();
     }
 
-    setSearchTerm(term: string): void {
+    setSearchTerm(term: string) {
         if (this.state.searchTerm == term) return;
 
         this.state.searchTerm = term;
         this.notifyStateChangeSubscribers();
     }
 
-    addTodo(text: string): void {
+    addTodo(text: string) {
         const newTodo: Todo = {
             id: Date.now().toString(),
             text,
@@ -77,7 +77,7 @@ class StateManager {
         this.notifyStateChangeSubscribers(newTodo);
     }
 
-    toggleTodo(id: string): void {
+    toggleTodo(id: string) {
         const dateKey = this.state.selectedDate;
         const todos = this.state.todosByDate[dateKey] || [];
         const todo = todos.find((t) => t.id === id);
@@ -88,7 +88,7 @@ class StateManager {
         }
     }
 
-    deleteTodo(id: string): void {
+    deleteTodo(id: string) {
         const dateKey = this.state.selectedDate;
         const todos = this.state.todosByDate[dateKey] || [];
 
