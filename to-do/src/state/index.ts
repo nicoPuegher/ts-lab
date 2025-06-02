@@ -52,7 +52,10 @@ class StateManager {
     setFilter(filter: Filter) {
         if (this.state.currentFilter == filter) return;
 
-        this.state.currentFilter = filter;
+        this.state = {
+            ...this.state,
+            currentFilter: filter,
+        };
         this.notifyStateChangeSubscribers();
     }
 
