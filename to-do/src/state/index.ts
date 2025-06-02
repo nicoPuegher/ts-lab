@@ -62,7 +62,10 @@ class StateManager {
     setSearchTerm(term: string) {
         if (this.state.searchTerm == term) return;
 
-        this.state.searchTerm = term;
+        this.state = {
+            ...this.state,
+            searchTerm: term,
+        };
         this.notifyStateChangeSubscribers();
     }
 
