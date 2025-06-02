@@ -41,7 +41,10 @@ class StateManager {
 
         if (this.state.selectedDate == dateKey) return;
 
-        this.state.selectedDate = dateKey;
+        this.state = {
+            ...this.state,
+            selectedDate: dateKey,
+        };
         this.saveState();
         this.notifyStateChangeSubscribers();
     }
