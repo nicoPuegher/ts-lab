@@ -57,7 +57,7 @@ class StateManager {
 
     setSelectedDate(date: Date) {
         const { selectedDate } = this.state;
-        const newDate = date.toISOString().split('T')[0];
+        const newDate = formatDateForStorage(date);
 
         if (selectedDate == newDate) return;
 
