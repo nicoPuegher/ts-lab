@@ -92,13 +92,16 @@ class StateManager {
 
     toggleTodo(id: string) {
         const dateKey = this.state.selectedDate;
-        const todos = this.state.todosByDate[dateKey] || [];
-        const todo = todos.find((t) => t.id === id);
+        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
 
-        if (todo) {
-            todo.completed = !todo.completed;
-            this.saveState();
-        }
+        this.state = {
+            ...this.state,
+            todosByDate: {
+                ...this.state.todosByDate,
+                [dateKey]: currentTodosByDate.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
+            },
+        };
+        this.saveState();
     }
 
     deleteTodo(id: string) {
