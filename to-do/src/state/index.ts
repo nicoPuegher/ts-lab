@@ -125,10 +125,6 @@ class StateManager {
     }
 }
 
-function generateCurrentDate() {
-    return new Date().toISOString().split('T')[0];
-}
-
 function generateInitialState(): AppState {
     return {
         selectedDate: generateCurrentDate(),
@@ -136,6 +132,14 @@ function generateInitialState(): AppState {
         currentFilter: 'all',
         searchTerm: '',
     };
+}
+
+function generateCurrentDate() {
+    return formatDateForStorage(new Date());
+}
+
+function formatDateForStorage(date: Date) {
+    return date.toISOString().split('T')[0];
 }
 
 export const stateManager = new StateManager();
