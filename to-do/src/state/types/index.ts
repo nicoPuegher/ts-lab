@@ -1,9 +1,3 @@
-export type Todo = {
-    id: string;
-    text: string;
-    completed: boolean;
-};
-
 export type AppState = {
     selectedDate: string;
     todosByDate: {
@@ -13,6 +7,12 @@ export type AppState = {
     searchTerm: string;
 };
 
-export type AppChangeSubscribers = ((newTodo?: Todo) => void)[];
+export type Todo = {
+    id: string;
+    text: string;
+    completed: boolean;
+};
 
 export type Filter = 'all' | 'active' | 'completed';
+
+export type AppChangeSubscribers = ((newTodo?: Todo) => void)[];
