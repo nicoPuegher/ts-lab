@@ -37,20 +37,23 @@ class StateManager {
     }
 
     setSelectedDate(date: Date) {
-        const dateKey = date.toISOString().split('T')[0];
+        const { selectedDate } = this.state;
+        const newDate = date.toISOString().split('T')[0];
 
-        if (this.state.selectedDate == dateKey) return;
+        if (selectedDate == newDate) return;
 
         this.state = {
             ...this.state,
-            selectedDate: dateKey,
+            selectedDate: newDate,
         };
         this.saveState();
         this.notifyStateChangeSubscribers();
     }
 
     setFilter(filter: Filter) {
-        if (this.state.currentFilter == filter) return;
+        const { currentFilter } = this.state;
+
+        if (currentFilter == filter) return;
 
         this.state = {
             ...this.state,
@@ -60,7 +63,9 @@ class StateManager {
     }
 
     setSearchTerm(term: string) {
-        if (this.state.searchTerm == term) return;
+        const { searchTerm } = this.state;
+
+        if (searchTerm == term) return;
 
         this.state = {
             ...this.state,
@@ -76,14 +81,14 @@ class StateManager {
             completed: false,
         };
 
-        const dateKey = this.state.selectedDate;
-        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
+        const { selectedDate, todosByDate } = this.state;
+        const currentTodosByDate = todosByDate[selectedDate] || [];
 
         this.state = {
             ...this.state,
             todosByDate: {
                 ...this.state.todosByDate,
-                [dateKey]: [...currentTodosByDate, newTodo],
+                [selectedDate]: [...currentTodosByDate, newTodo],
             },
         };
         this.saveState();
@@ -91,28 +96,28 @@ class StateManager {
     }
 
     toggleTodo(id: string) {
-        const dateKey = this.state.selectedDate;
-        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
+        const { selectedDate, todosByDate } = this.state;
+        const currentTodosByDate = todosByDate[selectedDate] || [];
 
         this.state = {
             ...this.state,
             todosByDate: {
                 ...this.state.todosByDate,
-                [dateKey]: currentTodosByDate.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
+                [selectedDate]: currentTodosByDate.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
             },
         };
         this.saveState();
     }
 
     deleteTodo(id: string) {
-        const dateKey = this.state.selectedDate;
-        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
+        const { selectedDate, todosByDate } = this.state;
+        const currentTodosByDate = todosByDate[selectedDate] || [];
 
         this.state = {
             ...this.state,
             todosByDate: {
                 ...this.state.todosByDate,
-                [dateKey]: currentTodosByDate.filter((t) => t.id !== id),
+                [selectedDate]: currentTodosByDate.filter((t) => t.id !== id),
             },
         };
         this.saveState();
