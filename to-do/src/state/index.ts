@@ -77,11 +77,15 @@ class StateManager {
         };
 
         const dateKey = this.state.selectedDate;
-        if (!this.state.todosByDate[dateKey]) {
-            this.state.todosByDate[dateKey] = [];
-        }
+        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
 
-        this.state.todosByDate[dateKey].push(newTodo);
+        this.state = {
+            ...this.state,
+            todosByDate: {
+                ...this.state.todosByDate,
+                [dateKey]: [...currentTodosByDate, newTodo],
+            },
+        };
         this.saveState();
         this.notifyStateChangeSubscribers(newTodo);
     }
