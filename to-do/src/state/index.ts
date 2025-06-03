@@ -11,9 +11,14 @@ class StateManager {
 
         const storedState = localStorage.getItem(STORAGE_KEY);
 
-        if (storedState) {
-            const previousState: AppState = JSON.parse(storedState);
-            initialState.todosByDate = previousState.todosByDate;
+        try {
+            if (storedState) {
+                const previousState: AppState = JSON.parse(storedState);
+                initialState.todosByDate = previousState.todosByDate;
+            }
+        } catch (error) {
+            console.error('Failed to parse stored state', error);
+            localStorage.removeItem(STORAGE_KEY);
         }
 
         this.state = initialState;
