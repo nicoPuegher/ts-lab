@@ -37,6 +37,20 @@ class StateManager {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
     }
 
+    private updateTodos(callback: (todos: Todo[]) => Todo[]) {
+        const { selectedDate, todosByDate } = this.state;
+        const currentTodos = todosByDate[selectedDate] || [];
+
+        this.state = {
+            ...this.state,
+            todosByDate: {
+                ...todosByDate,
+                [selectedDate]: callback(currentTodos),
+            },
+        };
+        this.saveState();
+    }
+
     getState() {
         return this.state;
     }
