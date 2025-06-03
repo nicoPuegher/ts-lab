@@ -25,32 +25,6 @@ class StateManager {
         this.stateChangeSubscribers = [];
     }
 
-    subscribeStateChange(callback: (newTodo?: Todo) => void) {
-        this.stateChangeSubscribers.push(callback);
-    }
-
-    private notifyStateChangeSubscribers(newTodo?: Todo) {
-        this.stateChangeSubscribers.forEach((callback) => callback(newTodo));
-    }
-
-    private saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
-    }
-
-    private updateTodos(callback: (todos: Todo[]) => Todo[]) {
-        const { selectedDate, todosByDate } = this.state;
-        const currentTodos = todosByDate[selectedDate] || [];
-
-        this.state = {
-            ...this.state,
-            todosByDate: {
-                ...todosByDate,
-                [selectedDate]: callback(currentTodos),
-            },
-        };
-        this.saveState();
-    }
-
     getState() {
         return this.state;
     }
@@ -122,6 +96,32 @@ class StateManager {
 
     deleteTodo(id: string) {
         this.updateTodos((todos) => todos.filter((todo) => todo.id !== id));
+    }
+
+    subscribeStateChange(callback: (newTodo?: Todo) => void) {
+        this.stateChangeSubscribers.push(callback);
+    }
+
+    private notifyStateChangeSubscribers(newTodo?: Todo) {
+        this.stateChangeSubscribers.forEach((callback) => callback(newTodo));
+    }
+
+    private saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
+    }
+
+    private updateTodos(callback: (todos: Todo[]) => Todo[]) {
+        const { selectedDate, todosByDate } = this.state;
+        const currentTodos = todosByDate[selectedDate] || [];
+
+        this.state = {
+            ...this.state,
+            todosByDate: {
+                ...todosByDate,
+                [selectedDate]: callback(currentTodos),
+            },
+        };
+        this.saveState();
     }
 }
 
