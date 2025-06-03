@@ -106,15 +106,15 @@ class StateManager {
 
     deleteTodo(id: string) {
         const dateKey = this.state.selectedDate;
-        const todos = this.state.todosByDate[dateKey] || [];
+        const currentTodosByDate = this.state.todosByDate[dateKey] || [];
 
-        if (todos.length == 1) {
-            delete this.state.todosByDate[dateKey];
-            this.saveState();
-            return;
-        }
-
-        this.state.todosByDate[dateKey] = todos.filter((t) => t.id !== id);
+        this.state = {
+            ...this.state,
+            todosByDate: {
+                ...this.state.todosByDate,
+                [dateKey]: currentTodosByDate.filter((t) => t.id !== id),
+            },
+        };
         this.saveState();
     }
 }
