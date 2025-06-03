@@ -115,31 +115,13 @@ class StateManager {
     }
 
     toggleTodo(id: string) {
-        const { selectedDate, todosByDate } = this.state;
-        const currentTodosByDate = todosByDate[selectedDate] || [];
-
-        this.state = {
-            ...this.state,
-            todosByDate: {
-                ...this.state.todosByDate,
-                [selectedDate]: currentTodosByDate.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
-            },
-        };
-        this.saveState();
+        this.updateTodos((todos) =>
+            todos.map((todo) => (todo.id == id ? { ...todo, completed: !todo.completed } : todo)),
+        );
     }
 
     deleteTodo(id: string) {
-        const { selectedDate, todosByDate } = this.state;
-        const currentTodosByDate = todosByDate[selectedDate] || [];
-
-        this.state = {
-            ...this.state,
-            todosByDate: {
-                ...this.state.todosByDate,
-                [selectedDate]: currentTodosByDate.filter((t) => t.id !== id),
-            },
-        };
-        this.saveState();
+        this.updateTodos((todos) => todos.filter((todo) => todo.id !== id));
     }
 }
 
