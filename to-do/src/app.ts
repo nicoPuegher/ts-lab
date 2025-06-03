@@ -1,4 +1,5 @@
 import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
+import { scrollOnResize } from '@/helpers/scroll-on-resize.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
 import { createFilterLayout } from '@/layouts/filters.ts';
 
@@ -15,11 +16,4 @@ rootElement.append(createDatePicker(), createFilterLayout(), createTodoList(), c
 
 scrollToToday();
 addCarouselGradient();
-
-let resizeWindowEventTimeout: ReturnType<typeof setTimeout> | null = null;
-window.addEventListener('resize', () => {
-    if (resizeWindowEventTimeout) {
-        clearTimeout(resizeWindowEventTimeout);
-    }
-    resizeWindowEventTimeout = setTimeout(scrollToToday, 200);
-});
+scrollOnResize();
