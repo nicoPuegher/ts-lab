@@ -56,6 +56,23 @@ function generateDayListFromToday() {
     });
 }
 
+function setupScrollHandler(container: HTMLDivElement) {
+    let isScrolling = false;
+
+    function scrollHandler() {
+        if (!isScrolling) {
+            isScrolling = true;
+
+            requestAnimationFrame(() => {
+                checkVisibleDates(container);
+                isScrolling = false;
+            });
+        }
+    }
+
+    container.addEventListener('scroll', scrollHandler);
+}
+
 function checkVisibleDates(container: HTMLDivElement) {
     const { firstElementChild, lastElementChild } = container;
 
