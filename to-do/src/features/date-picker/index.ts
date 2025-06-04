@@ -17,6 +17,7 @@ export function createDatePicker() {
     const dates = [...storedPastDates, ...dayListFromToday];
 
     appendDateComponents(dates, container);
+    setupScrollHandler(container);
 
     return container;
 }
