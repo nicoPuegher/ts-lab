@@ -1,4 +1,3 @@
-import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
 import { scrollOnResize } from '@/helpers/scroll-on-resize.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
 import { createFilterLayout } from '@/layouts/filters.ts';
@@ -15,5 +14,4 @@ if (!rootElement) throw new Error('The #root element does not exist.');
 rootElement.append(createDatePicker(), createFilterLayout(), createTodoList(), createTodoSubmission());
 
 scrollToToday();
-addCarouselGradient();
 scrollOnResize();
