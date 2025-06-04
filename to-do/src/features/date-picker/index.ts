@@ -55,3 +55,17 @@ function generateDayListFromToday() {
         return date;
     });
 }
+
+function checkVisibleDates(container: HTMLDivElement) {
+    const { firstElementChild, lastElementChild } = container;
+
+    if (!firstElementChild || !lastElementChild) return;
+
+    const containerRect = container.getBoundingClientRect();
+
+    const firstVisible = firstElementChild.getBoundingClientRect().left >= containerRect.left;
+    const lastVisible = lastElementChild.getBoundingClientRect().right <= containerRect.right;
+
+    container.classList.toggle('at-start', firstVisible);
+    container.classList.toggle('at-end', lastVisible);
+}
