@@ -1,4 +1,4 @@
-import { stateManager } from '@state/index.ts';
+import { STORAGE_KEY, stateManager } from '@state/index.ts';
 import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
@@ -10,7 +10,7 @@ export function createDatePicker() {
     const container = document.createElement('div');
     container.classList.add('date-picker');
 
-    const userStorage: string | null = window.localStorage.getItem('taskData');
+    const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
     const storedPastDates = getStoredPastDates(userStorage);
     const dayListFromToday = generateDayListFromToday();

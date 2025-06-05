@@ -1,6 +1,6 @@
 import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
-const STORAGE_KEY = 'todoData';
+export const STORAGE_KEY = 'todoData';
 
 class StateManager {
     private state: AppState;
