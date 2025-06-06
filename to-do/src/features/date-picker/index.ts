@@ -19,6 +19,8 @@ export function createDatePicker() {
     appendDateComponents(dates, container);
     setupScrollHandler(container);
 
+    setTimeout(() => checkVisibleDates(container), 0);
+
     return container;
 }
 
