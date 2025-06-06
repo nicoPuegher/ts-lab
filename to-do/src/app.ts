@@ -1,24 +1,17 @@
-import { addCarouselGradient } from '@/helpers/add-carousel-gradient.ts';
+import { scrollOnResize } from '@/helpers/scroll-on-resize.ts';
 import { scrollToToday } from '@/helpers/scroll-to-today.ts';
-import { createTodoFiltersLayout } from '@/layouts/todo-filters.ts';
+import { createFilterLayout } from '@/layouts/filters.ts';
 
-import { createCalendarCarousel } from '@features/calendar-carousel/index.ts';
-import { createTaskSubmission } from '@features/task-submission/index.ts';
-import { createTasksList } from '@features/tasks-list/index.ts';
+import { createDatePicker } from '@features/date-picker/index.ts';
+import { createTodoList } from '@features/todo-list/index.ts';
+import { createTodoSubmission } from '@features/todo-submission/index.ts';
 
 import './styles/globals.css';
 
-const app = document.querySelector<HTMLDivElement>('#app');
+const rootElement = document.querySelector('#root');
+if (!rootElement) throw new Error('The #root element does not exist.');
 
-app.appendChild(createCalendarCarousel());
+rootElement.append(createDatePicker(), createFilterLayout(), createTodoList(), createTodoSubmission());
+
 scrollToToday();
-addCarouselGradient();
-app.appendChild(createTodoFiltersLayout());
-app.appendChild(createTasksList());
-app.appendChild(createTaskSubmission());
-
-let resizeTimeout: number;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(scrollToToday, 200);
-});
+scrollOnResize();

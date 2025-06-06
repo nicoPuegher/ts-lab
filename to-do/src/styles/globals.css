@@ -1,3 +1,4 @@
+/* Typography */
 @font-face {
     font-family: 'Montserrat';
     src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
@@ -14,6 +15,7 @@
     font-display: block;
 }
 
+/* Base styles */
 :root {
     --ff: 'Montserrat', serif;
     font-synthesis: none;
@@ -56,7 +58,7 @@ body {
     font-family: var(--ff);
 }
 
-#app {
+#root {
     min-width: 320px;
     max-width: 1200px;
     height: 100dvh;
@@ -68,25 +70,27 @@ body {
     align-items: center;
 }
 
-input[type='text'] {
+/* Buttons */
+button {
     height: 2.5rem;
-}
-
-input[type='checkbox'] {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-input[type='text']::placeholder {
-    color: var(--gray100);
-}
-
-input[type='search'] {
-    width: 100%;
+    padding: 0.5rem 1rem;
     border: none;
-    background-color: transparent;
 }
 
+.primary {
+    border-radius: 0.375rem;
+    color: var(--gray0);
+    background-color: var(--gray100);
+}
+
+.filter {
+    padding: 0;
+    margin: 0;
+    color: var(--gray100);
+    background: none;
+}
+
+/* Todo list feature */
 ul {
     width: 100%;
     height: 100%;
@@ -97,6 +101,7 @@ ul {
     overflow-y: scroll;
 }
 
+/* Todo submission feature */
 label {
     position: absolute;
     width: 1px;
@@ -120,6 +125,14 @@ form input {
     flex: 1;
 }
 
+input[type='text'] {
+    height: 2.5rem;
+}
+
+input[type='text']::placeholder {
+    color: var(--gray100);
+}
+
 form button {
     margin-left: 0.5rem;
     flex-shrink: 0;
@@ -133,39 +146,8 @@ form p {
     color: var(--error);
 }
 
-button {
-    height: 2.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-}
-
-.primary {
-    border-radius: 0.375rem;
-    color: var(--gray0);
-    background-color: var(--gray100);
-}
-
-.filter {
-    padding: 0;
-    margin: 0;
-    color: var(--gray100);
-    background: none;
-}
-
-.filters-container {
-    width: 100%;
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-}
-
-.filter-buttons-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.todo-filters-container {
+/* Filter layout */
+.filter-layout {
     width: 100%;
     margin-top: 1rem;
     display: flex;
@@ -173,7 +155,15 @@ button {
     align-items: end;
 }
 
-.search-container {
+/* Status filter */
+.status-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Search filter */
+.search-filter {
     width: 100%;
     padding: 0.5rem 0.75rem;
     margin-left: 10px;
@@ -185,43 +175,63 @@ button {
     background-color: var(--gray10);
 }
 
-.task {
+input[type='search'] {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.hide-icon {
+    visibility: hidden;
+}
+
+/* Todo list */
+.todo {
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
-.task input {
+.todo input {
     margin-right: 1rem;
 }
 
-.task p {
+input[type='checkbox'] {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: green;
+    background: red !important;
+}
+
+.todo p {
     flex-grow: 1;
 }
 
-.icon {
+.todo-completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.todo-icon {
     width: 1.1rem;
     height: 1.1rem;
     color: var(--gray100);
 }
 
-.shared {
+/*Reusable classes*/
+.surface {
     padding: 0.5rem 0.75rem;
     border: none;
     border-radius: 0.375rem;
     background-color: var(--gray10);
 }
 
-.completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-}
-
-.removed {
+.hide-element {
     display: none;
 }
 
-.calendar-item {
+/* Date picker */
+.date-component {
     min-width: 5rem;
     padding: 1rem;
     display: flex;
@@ -232,7 +242,7 @@ button {
     border-radius: 0.375rem;
 }
 
-.calendar-carousel {
+.date-picker {
     width: 100%;
     height: 7rem;
     display: flex;
@@ -245,6 +255,7 @@ button {
     transition:
         mask 0.4s ease,
         -webkit-mask 0.4s ease;
+
     -webkit-mask: linear-gradient(
         to right,
         transparent 0%,
@@ -252,6 +263,7 @@ button {
         var(--gray0) calc(100% - var(--right-fade)),
         transparent 100%
     );
+
     mask: linear-gradient(
         to right,
         transparent 0%,
@@ -261,22 +273,15 @@ button {
     );
 }
 
-.calendar-carousel.at-start {
+.date-picker.at-start {
     --left-fade: 0%;
 }
 
-.calendar-carousel.at-end {
+.date-picker.at-end {
     --right-fade: 0%;
 }
 
-.close-icon {
-    visibility: hidden;
-}
-
-.show-close-icon {
-    visibility: visible;
-}
-
+/* Light theme */
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);
