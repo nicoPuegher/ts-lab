@@ -22,6 +22,14 @@ In v1.0.0, users should be able to:
 - [x] Submit valid data
 - [x] Get stored data from the browser
 
+In v2.0.0, users should be able to:
+
+- [x] Select a different date
+- [x] View previous dates used before
+- [x] Filter by status
+- [x] Filter by search
+- [x] View gradient visual feedback for out of bound date items
+
 ### Link
 
 [To-do app](https://nicopuegher.github.io/ts-lab/to-do/) (Right-click and select "Open in new tab")
