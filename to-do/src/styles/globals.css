@@ -1,23 +1,21 @@
+/* Typography */
 @font-face {
     font-family: 'Montserrat';
-    src:
-        url('/fonts/Montserrat-Regular.woff2') format('woff2'),
-        url('/fonts/Montserrat-Regular.woff') format('woff');
+    src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src:
-        url('/fonts/Montserrat-Bold.woff2') format('woff2'),
-        url('/fonts/Montserrat-Bold.woff') format('woff');
+    src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
+/* Base styles */
 :root {
     --ff: 'Montserrat', serif;
     font-synthesis: none;
@@ -25,10 +23,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    --h1: bold 1.125rem/1.4em var(--ff);
-    --h2: bold 1rem/1.4em var(--ff);
-    --p: normal 1rem/1.4em var(--ff);
-    --p2: normal 0.875rem/1.4em var(--ff);
+    --text-xlarge-bold: bold 1.25rem/1.3em var(--ff);
+    --text-xlarge: normal 1.25rem/1.3em var(--ff);
+    --text-large-bold: bold 1.125rem/1.333em var(--ff);
+    --text-large: normal 1.125rem/1.333em var(--ff);
+    --text-normal-bold: bold 1rem/1.375em var(--ff);
+    --text-normal: normal 1rem/1.375em var(--ff);
+    --text-small-bold: bold 0.875rem/1.428em var(--ff);
+    --text-small: normal 0.875rem/1.428em var(--ff);
+    --text-xsmall-bold: bold 0.75rem/1.5em var(--ff);
+    --text-xsmall: normal 0.75rem/1.5em var(--ff);
 
     --gray100: hsl(0deg, 0%, 100%);
     --gray70: hsl(0deg, 0%, 70%);
@@ -44,43 +48,70 @@
 }
 
 * {
-    font: var(--p);
+    font: var(--text-normal);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-#app {
+body {
+    font-family: var(--ff);
+}
+
+#root {
     min-width: 320px;
+    max-width: 1200px;
     height: 100dvh;
     padding: 1.25rem 1rem;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-input[type='text'] {
+/* Buttons */
+button {
     height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
 }
 
-input[type='checkbox'] {
-    width: 1.5rem;
-    height: 1.5rem;
+.primary {
+    border-radius: 0.375rem;
+    color: var(--gray0);
+    background-color: var(--gray100);
 }
 
-input[type='text']::placeholder {
+.filter {
+    padding: 0;
+    margin: 0;
     color: var(--gray100);
+    background: none;
 }
 
+/* Todo list feature */
 ul {
     width: 100%;
     height: 100%;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
     overflow-y: scroll;
+}
+
+/* Todo submission feature */
+label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip-path: 'insert(50%)';
+    white-space: 'nowrap';
+    overflow: hidden;
 }
 
 form {
@@ -92,6 +123,14 @@ form {
 
 form input {
     flex: 1;
+}
+
+input[type='text'] {
+    height: 2.5rem;
+}
+
+input[type='text']::placeholder {
+    color: var(--gray100);
 }
 
 form button {
@@ -107,51 +146,142 @@ form p {
     color: var(--error);
 }
 
-button {
-    height: 2.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.375rem;
-    color: var(--gray0);
-    background-color: var(--gray100);
+/* Filter layout */
+.filter-layout {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: end;
 }
 
-.task {
+/* Status filter */
+.status-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Search filter */
+.search-filter {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--gray10);
+}
+
+input[type='search'] {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.hide-icon {
+    visibility: hidden;
+}
+
+/* Todo list */
+.todo {
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
-.task input {
+.todo input {
     margin-right: 1rem;
 }
 
-.task p {
+input[type='checkbox'] {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: green;
+    background: red !important;
+}
+
+.todo p {
     flex-grow: 1;
 }
 
-.icon {
+.todo-completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.todo-icon {
     width: 1.1rem;
     height: 1.1rem;
     color: var(--gray100);
 }
 
-.shared {
+/*Reusable classes*/
+.surface {
     padding: 0.5rem 0.75rem;
     border: none;
     border-radius: 0.375rem;
     background-color: var(--gray10);
 }
 
-.completed {
-    text-decoration: line-through;
-    opacity: 0.5;
-}
-
-.removed {
+.hide-element {
     display: none;
 }
 
+/* Date picker */
+.date-component {
+    min-width: 5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--gray10);
+    border-radius: 0.375rem;
+}
+
+.date-picker {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+
+    --left-fade: 10%;
+    --right-fade: 10%;
+
+    transition:
+        mask 0.4s ease,
+        -webkit-mask 0.4s ease;
+
+    -webkit-mask: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        transparent 100%
+    );
+
+    mask: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        transparent 100%
+    );
+}
+
+.date-picker.at-start {
+    --left-fade: 0%;
+}
+
+.date-picker.at-end {
+    --right-fade: 0%;
+}
+
+/* Light theme */
 @media (prefers-color-scheme: light) {
     :root {
         --gray100: hsl(0deg, 0%, 0%);

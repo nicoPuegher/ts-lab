@@ -1,6 +1,7 @@
-export function createButtonComponent(textContent: string): HTMLButtonElement {
-    const button: HTMLButtonElement = document.createElement('button');
+export function createButtonComponent(textContent: string, variant: string = 'primary') {
+    const button = document.createElement('button');
     button.textContent = textContent;
+    button.classList.add(variant);
 
     return button;
 }

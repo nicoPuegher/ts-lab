@@ -1,6 +1,6 @@
 # To-do app
 
-A simple and intuitive Todo application built with **Vanilla TypeScript**. This application allows you to manage your tasks efficiently with features like adding, completing, and removing tasks. It also includes input validation and persists your todo list in the browser's local storage.
+A simple and intuitive Todo application built with **Vanilla TypeScript**. This application allows you to manage your lists efficiently with features like adding, completing, and removing todos. It also includes input validation and persists your data in the browser's local storage.
 
 ## Table of contents
 
@@ -16,11 +16,19 @@ A simple and intuitive Todo application built with **Vanilla TypeScript**. This 
 
 In v1.0.0, users should be able to:
 
-- [x] Add a task
-- [x] Complete a task
-- [x] Delete a task
+- [x] Add a todo
+- [x] Complete a todo
+- [x] Delete a todo
 - [x] Submit valid data
-- [x] View persistence data
+- [x] Get stored data from the browser
+
+In v2.0.0, users should be able to:
+
+- [x] Select a different date
+- [x] View previous dates used before
+- [x] Filter by status
+- [x] Filter by search
+- [x] View gradient visual feedback for out of bound date items
 
 ### Link
 
@@ -31,6 +39,7 @@ In v1.0.0, users should be able to:
 - Setup a TypeScript project
 - Create a custom state with subscribers
 - Dynamically adjust mobile view port
+- Dynamically add and remove gradient style.
 
 ## How to run the application
 
