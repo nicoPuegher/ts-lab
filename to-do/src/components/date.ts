@@ -7,7 +7,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     const formattedDate = formatDate(date);
 
     const container = document.createElement('div');
-    container.id = date.toLocaleDateString().toString();
+    container.id = formattedDate;
     container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');
