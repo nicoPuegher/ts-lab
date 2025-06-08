@@ -8,6 +8,10 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
 
     const container = document.createElement('div');
     container.id = formattedDate;
+
+    if (selectedDateFromState == formattedDate) {
+        container.classList.add('selected-date');
+    }
     container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');
