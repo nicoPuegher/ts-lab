@@ -1,3 +1,5 @@
+import { formatDate } from '@/utils/format-date.ts';
+
 import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
 export const STORAGE_KEY = 'todoData';
