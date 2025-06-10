@@ -33,7 +33,7 @@ class StateManager {
 
     setSelectedDate(date: Date) {
         const { selectedDate } = this.state;
-        const newDate = formatDateForStorage(date);
+        const newDate = formatDate(date);
 
         if (selectedDate == newDate) return;
 
