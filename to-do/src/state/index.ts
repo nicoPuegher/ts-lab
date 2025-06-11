@@ -136,8 +136,4 @@ function generateInitialState(): AppState {
     };
 }
 
-function generateCurrentDate() {
-    return formatDateForStorage(new Date());
-}
-
 export const stateManager = new StateManager();
