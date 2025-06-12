@@ -129,7 +129,7 @@ class StateManager {
 
 function generateInitialState(): AppState {
     return {
-        selectedDate: generateCurrentDate(),
+        selectedDate: formatDate(new Date()),
         todosByDate: {},
         currentFilter: 'all',
         searchTerm: '',
