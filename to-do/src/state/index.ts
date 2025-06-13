@@ -7,6 +7,7 @@ export const STORAGE_KEY = 'todoData';
 class StateManager {
     private state: AppState;
     private stateChangeSubscribers: AppChangeSubscribers;
+    private previousSelectedDate: string;
 
     constructor() {
         const initialState = generateInitialState();
