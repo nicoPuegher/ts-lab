@@ -40,6 +40,7 @@ class StateManager {
         if (selectedDate == newDate) return;
 
         document.getElementById(this.previousSelectedDate).classList.remove('selected-date');
+        this.previousSelectedDate = newDate;
 
         this.state = {
             ...this.state,
