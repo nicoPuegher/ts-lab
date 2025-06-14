@@ -39,6 +39,8 @@ class StateManager {
 
         if (selectedDate == newDate) return;
 
+        document.getElementById(this.previousSelectedDate).classList.remove('selected-date');
+
         this.state = {
             ...this.state,
             selectedDate: newDate,
