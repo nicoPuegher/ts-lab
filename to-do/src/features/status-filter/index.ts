@@ -22,6 +22,8 @@ export function createStatusFilter() {
 }
 
 function createFilterButtonComponent(label: string, status: string) {
+    const currentFilterFromState = stateManager.getState().currentFilter;
+
     const button = createButtonComponent(label, 'filter');
     button.addEventListener('click', () => stateManager.setFilter(status));
 
