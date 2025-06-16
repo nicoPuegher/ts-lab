@@ -27,6 +27,8 @@ function createFilterButtonComponent(label: string, status: string) {
     const button = createButtonComponent(label, 'filter');
     button.id = status;
     button.addEventListener('click', () => {
+        button.classList.add('current-filter');
+
         if (status == 'all' || status == 'active' || status == 'completed') {
             stateManager.setFilter(status);
         }
