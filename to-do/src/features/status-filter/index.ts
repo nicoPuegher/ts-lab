@@ -34,6 +34,10 @@ function createFilterButtonComponent(label: string, status: string) {
         }
     });
 
+    if (currentFilterFromState == status) {
+        button.classList.add('current-filter');
+    }
+
     return button;
 }
 
