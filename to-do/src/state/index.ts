@@ -28,6 +28,7 @@ class StateManager {
         this.state = initialState;
         this.stateChangeSubscribers = [];
         this.previousSelectedDate = initialState.selectedDate;
+        this.previousCurrentFilter = initialState.currentFilter;
     }
 
     getState() {
