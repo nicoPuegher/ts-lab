@@ -8,6 +8,7 @@ class StateManager {
     private state: AppState;
     private stateChangeSubscribers: AppChangeSubscribers;
     private previousSelectedDate: string;
+    private previousCurrentFilter: string;
 
     constructor() {
         const initialState = generateInitialState();
