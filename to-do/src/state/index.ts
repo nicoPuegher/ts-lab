@@ -57,6 +57,8 @@ class StateManager {
 
         if (currentFilter == filter) return;
 
+        document.getElementById(this.previousCurrentFilter).classList.remove('current-filter');
+
         this.state = {
             ...this.state,
             currentFilter: filter,
