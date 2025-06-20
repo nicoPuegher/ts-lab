@@ -162,6 +162,10 @@ form p {
     gap: 10px;
 }
 
+.current-filter {
+    font: var(--text-normal-bold);
+}
+
 /* Search filter */
 .search-filter {
     width: 100%;
