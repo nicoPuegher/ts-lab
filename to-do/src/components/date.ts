@@ -1,6 +1,17 @@
+import { formatDate } from '@/utils/format-date.ts';
+
+import { stateManager } from '@state/index.ts';
+
 export function createDateComponent(weekday: string, dayOfMonth: number, date: Date) {
+    const selectedDateFromState = stateManager.getState().selectedDate;
+    const formattedDate = formatDate(date);
+
     const container = document.createElement('div');
-    container.id = date.toLocaleDateString().toString();
+    container.id = formattedDate;
+
+    if (selectedDateFromState == formattedDate) {
+        container.classList.add('selected-date');
+    }
     container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');

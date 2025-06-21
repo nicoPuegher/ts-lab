@@ -1,3 +1,5 @@
+import { formatDate } from '@/utils/format-date.ts';
+
 import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
 export const STORAGE_KEY = 'todoData';
@@ -5,6 +7,8 @@ export const STORAGE_KEY = 'todoData';
 class StateManager {
     private state: AppState;
     private stateChangeSubscribers: AppChangeSubscribers;
+    private previousSelectedDate: string;
+    private previousCurrentFilter: string;
 
     constructor() {
         const initialState = generateInitialState();
@@ -23,6 +27,8 @@ class StateManager {
 
         this.state = initialState;
         this.stateChangeSubscribers = [];
+        this.previousSelectedDate = initialState.selectedDate;
+        this.previousCurrentFilter = initialState.currentFilter;
     }
 
     getState() {
@@ -31,9 +37,12 @@ class StateManager {
 
     setSelectedDate(date: Date) {
         const { selectedDate } = this.state;
-        const newDate = formatDateForStorage(date);
+        const newDate = formatDate(date);
 
         if (selectedDate == newDate) return;
+
+        document.getElementById(this.previousSelectedDate).classList.remove('selected-date');
+        this.previousSelectedDate = newDate;
 
         this.state = {
             ...this.state,
@@ -47,6 +56,9 @@ class StateManager {
         const { currentFilter } = this.state;
 
         if (currentFilter == filter) return;
+
+        document.getElementById(this.previousCurrentFilter).classList.remove('current-filter');
+        this.previousCurrentFilter = filter;
 
         this.state = {
             ...this.state,
@@ -127,19 +139,11 @@ class StateManager {
 
 function generateInitialState(): AppState {
     return {
-        selectedDate: generateCurrentDate(),
+        selectedDate: formatDate(new Date()),
         todosByDate: {},
         currentFilter: 'all',
         searchTerm: '',
     };
-}
-
-function generateCurrentDate() {
-    return formatDateForStorage(new Date());
-}
-
-function formatDateForStorage(date: Date) {
-    return date.toISOString().split('T')[0];
 }
 
 export const stateManager = new StateManager();
