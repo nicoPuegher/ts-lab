@@ -1,10 +1,10 @@
 export type AppState = {
     selectedDate: string;
+    selectedFilter: Filter;
+    searchTerm: string;
     todosByDate: {
         [date: string]: Todo[];
     };
-    currentFilter: Filter;
-    searchTerm: string;
 };
 
 export type Todo = {
