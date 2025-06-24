@@ -41,7 +41,7 @@ function appendNewTodo(ul: HTMLUListElement, newTodo: Todo) {
 function replaceAllTodos(ul: HTMLUListElement) {
     const state = stateManager.getState();
     const previousTodosInState = state.todosByDate[state.selectedDate] || [];
-    const filteredTodos = filterTodos(previousTodosInState, state.currentFilter, state.searchTerm);
+    const filteredTodos = filterTodos(previousTodosInState, state.selectedFilter, state.searchTerm);
     const fragment = document.createDocumentFragment();
 
     filteredTodos.forEach((todo) => fragment.appendChild(createTodoComponent(todo)));

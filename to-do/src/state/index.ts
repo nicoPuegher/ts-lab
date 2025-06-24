@@ -8,7 +8,7 @@ class StateManager {
     private state: AppState;
     private stateChangeSubscribers: AppChangeSubscribers;
     private previousSelectedDate: string;
-    private previousCurrentFilter: string;
+    private previousSelectedFilter: string;
 
     constructor() {
         const initialState = generateInitialState();
@@ -28,7 +28,7 @@ class StateManager {
         this.state = initialState;
         this.stateChangeSubscribers = [];
         this.previousSelectedDate = initialState.selectedDate;
-        this.previousCurrentFilter = initialState.currentFilter;
+        this.previousSelectedFilter = initialState.selectedFilter;
     }
 
     getState() {
@@ -53,16 +53,16 @@ class StateManager {
     }
 
     setFilter(filter: Filter) {
-        const { currentFilter } = this.state;
+        const { selectedFilter } = this.state;
 
-        if (currentFilter == filter) return;
+        if (selectedFilter == filter) return;
 
-        document.getElementById(this.previousCurrentFilter).classList.remove('current-filter');
-        this.previousCurrentFilter = filter;
+        document.getElementById(this.previousSelectedFilter).classList.remove('selected-filter');
+        this.previousSelectedFilter = filter;
 
         this.state = {
             ...this.state,
-            currentFilter: filter,
+            selectedFilter: filter,
         };
         this.notifyStateChangeSubscribers();
     }
@@ -140,9 +140,9 @@ class StateManager {
 function generateInitialState(): AppState {
     return {
         selectedDate: formatDate(new Date()),
-        todosByDate: {},
-        currentFilter: 'all',
+        selectedFilter: 'all',
         searchTerm: '',
+        todosByDate: {},
     };
 }
 

@@ -162,7 +162,7 @@ form p {
     gap: 10px;
 }
 
-.current-filter {
+.selected-filter {
     font: var(--text-normal-bold);
 }
 

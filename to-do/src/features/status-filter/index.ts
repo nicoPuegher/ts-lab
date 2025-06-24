@@ -22,20 +22,20 @@ export function createStatusFilter() {
 }
 
 function createFilterButtonComponent(label: string, status: string) {
-    const currentFilterFromState = stateManager.getState().currentFilter;
+    const selectedFilterFromState = stateManager.getState().selectedFilter;
 
     const button = createButtonComponent(label, 'filter');
     button.id = status;
     button.addEventListener('click', () => {
-        button.classList.add('current-filter');
+        button.classList.add('selected-filter');
 
         if (status == 'all' || status == 'active' || status == 'completed') {
             stateManager.setFilter(status);
         }
     });
 
-    if (currentFilterFromState == status) {
-        button.classList.add('current-filter');
+    if (selectedFilterFromState == status) {
+        button.classList.add('selected-filter');
     }
 
     return button;
