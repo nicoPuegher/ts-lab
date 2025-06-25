@@ -281,6 +281,8 @@ input[type='checkbox'] {
         var(--gray0) calc(100% - var(--right-fade)),
         transparent 100%
     );
+
+    mask-composite: exclude;
 }
 
 .date-picker.at-start {
