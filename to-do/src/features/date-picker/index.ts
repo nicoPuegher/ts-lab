@@ -72,34 +72,3 @@ function generateDayListFromToday() {
         return date;
     });
 }
-
-function setupScrollHandler(container: HTMLDivElement) {
-    let isScrolling = false;
-
-    function scrollHandler() {
-        if (!isScrolling) {
-            isScrolling = true;
-
-            requestAnimationFrame(() => {
-                checkVisibleDates(container);
-                isScrolling = false;
-            });
-        }
-    }
-
-    container.addEventListener('scroll', scrollHandler);
-}
-
-function checkVisibleDates(container: HTMLDivElement) {
-    const { firstElementChild, lastElementChild } = container;
-
-    if (!firstElementChild || !lastElementChild) return;
-
-    const containerRect = container.getBoundingClientRect();
-
-    const firstVisible = firstElementChild.getBoundingClientRect().left >= containerRect.left;
-    const lastVisible = lastElementChild.getBoundingClientRect().right <= containerRect.right;
-
-    container.classList.toggle('at-start', firstVisible);
-    container.classList.toggle('at-end', lastVisible);
-}
