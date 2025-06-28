@@ -28,6 +28,8 @@ export function createDatePicker() {
         startClass: 'at-start',
         endClass: 'at-end',
     };
+    setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+    setTimeout(() => checkContainerBounds(containerBounds), 0);
 
     return container;
 }
