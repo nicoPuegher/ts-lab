@@ -22,7 +22,12 @@ export function createDatePicker() {
 
     appendDateComponents(dates, container);
 
-    setTimeout(() => checkVisibleDates(container), 0);
+    const containerBounds: ContainerBounds = {
+        container,
+        axis: 'horizontal',
+        startClass: 'at-start',
+        endClass: 'at-end',
+    };
 
     return container;
 }
