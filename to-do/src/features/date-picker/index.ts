@@ -21,7 +21,6 @@ export function createDatePicker() {
     const dates = [...storedPastDates, ...dayListFromToday];
 
     appendDateComponents(dates, container);
-    setupScrollHandler(container);
 
     setTimeout(() => checkVisibleDates(container), 0);
 
