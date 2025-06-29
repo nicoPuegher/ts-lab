@@ -29,6 +29,9 @@ export function createTodoList() {
             if (scrollToLastTodoTimeout) clearTimeout(scrollToLastTodoTimeout);
             scrollToLastTodoTimeout = setTimeout(() => scrollToLastTodo(ul), DELAY);
         }
+
+        setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+        setTimeout(() => checkContainerBounds(containerBounds), 0);
     });
 
     appendTodos(ul);
