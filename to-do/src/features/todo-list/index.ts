@@ -36,6 +36,9 @@ export function createTodoList() {
 
     appendTodos(ul);
 
+    setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+    setTimeout(() => checkContainerBounds(containerBounds), 0);
+
     return ul;
 }
 
