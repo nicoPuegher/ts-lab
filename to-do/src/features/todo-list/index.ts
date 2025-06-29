@@ -15,6 +15,13 @@ export function createTodoList() {
     const ul = document.createElement('ul');
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
+    const containerBounds: ContainerBounds = {
+        container: ul,
+        axis: 'vertical',
+        startClass: 'at-top',
+        endClass: 'at-bottom',
+    };
+
     stateManager.subscribeStateChange((newTodo?: Todo) => {
         appendTodos(ul, newTodo);
 
