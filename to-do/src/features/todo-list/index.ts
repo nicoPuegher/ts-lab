@@ -1,3 +1,7 @@
+import { checkContainerBounds } from '@/helpers/check-container-bounds.ts';
+import type { ContainerBounds } from '@/helpers/check-container-bounds.ts';
+import { setupScrollBoundsHandler } from '@/helpers/setup-scroll-bounds-handler.ts';
+
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
