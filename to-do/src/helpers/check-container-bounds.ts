@@ -20,7 +20,9 @@ export function checkContainerBounds(props: ContainerBounds) {
             : Math.floor(firstRect.top) >= Math.floor(containerRect.top);
 
     const endVisible =
-        props.axis === 'horizontal' ? lastRect.right <= containerRect.right : lastRect.bottom <= containerRect.bottom;
+        props.axis === 'horizontal'
+            ? Math.floor(lastRect.right) <= Math.floor(containerRect.right)
+            : Math.floor(lastRect.bottom) <= Math.floor(containerRect.bottom);
 
     props.container.classList.toggle(props.startClass, startVisible);
     props.container.classList.toggle(props.endClass, endVisible);
