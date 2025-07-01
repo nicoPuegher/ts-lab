@@ -15,7 +15,9 @@ export function checkContainerBounds(props: ContainerBounds) {
     const lastRect = lastElementChild.getBoundingClientRect();
 
     const startVisible =
-        props.axis === 'horizontal' ? firstRect.left >= containerRect.left : firstRect.top >= containerRect.top;
+        props.axis === 'horizontal'
+            ? Math.floor(firstRect.left) >= Math.floor(containerRect.left)
+            : Math.floor(firstRect.top) >= Math.floor(containerRect.top);
 
     const endVisible =
         props.axis === 'horizontal' ? lastRect.right <= containerRect.right : lastRect.bottom <= containerRect.bottom;
