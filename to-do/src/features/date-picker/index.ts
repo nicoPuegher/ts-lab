@@ -1,3 +1,7 @@
+import { checkContainerBounds } from '@/helpers/check-container-bounds.ts';
+import type { ContainerBounds } from '@/helpers/check-container-bounds.ts';
+import { setupScrollBoundsHandler } from '@/helpers/setup-scroll-bounds-handler.ts';
+
 import { STORAGE_KEY, stateManager } from '@state/index.ts';
 import type { AppState } from '@state/types/index.ts';
 
@@ -17,9 +21,15 @@ export function createDatePicker() {
     const dates = [...storedPastDates, ...dayListFromToday];
 
     appendDateComponents(dates, container);
-    setupScrollHandler(container);
 
-    setTimeout(() => checkVisibleDates(container), 0);
+    const containerBounds: ContainerBounds = {
+        container,
+        axis: 'horizontal',
+        startClass: 'at-start',
+        endClass: 'at-end',
+    };
+    setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+    setTimeout(() => checkContainerBounds(containerBounds), 0);
 
     return container;
 }
@@ -61,35 +71,4 @@ function generateDayListFromToday() {
 
         return date;
     });
-}
-
-function setupScrollHandler(container: HTMLDivElement) {
-    let isScrolling = false;
-
-    function scrollHandler() {
-        if (!isScrolling) {
-            isScrolling = true;
-
-            requestAnimationFrame(() => {
-                checkVisibleDates(container);
-                isScrolling = false;
-            });
-        }
-    }
-
-    container.addEventListener('scroll', scrollHandler);
-}
-
-function checkVisibleDates(container: HTMLDivElement) {
-    const { firstElementChild, lastElementChild } = container;
-
-    if (!firstElementChild || !lastElementChild) return;
-
-    const containerRect = container.getBoundingClientRect();
-
-    const firstVisible = firstElementChild.getBoundingClientRect().left >= containerRect.left;
-    const lastVisible = lastElementChild.getBoundingClientRect().right <= containerRect.right;
-
-    container.classList.toggle('at-start', firstVisible);
-    container.classList.toggle('at-end', lastVisible);
 }

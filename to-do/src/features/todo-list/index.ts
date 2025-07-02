@@ -1,3 +1,7 @@
+import { checkContainerBounds } from '@/helpers/check-container-bounds.ts';
+import type { ContainerBounds } from '@/helpers/check-container-bounds.ts';
+import { setupScrollBoundsHandler } from '@/helpers/setup-scroll-bounds-handler.ts';
+
 import { stateManager } from '@state/index.ts';
 import type { Todo } from '@state/types/index.ts';
 
@@ -11,6 +15,13 @@ export function createTodoList() {
     const ul = document.createElement('ul');
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
+    const containerBounds: ContainerBounds = {
+        container: ul,
+        axis: 'vertical',
+        startClass: 'at-top',
+        endClass: 'at-bottom',
+    };
+
     stateManager.subscribeStateChange((newTodo?: Todo) => {
         appendTodos(ul, newTodo);
 
@@ -18,9 +29,15 @@ export function createTodoList() {
             if (scrollToLastTodoTimeout) clearTimeout(scrollToLastTodoTimeout);
             scrollToLastTodoTimeout = setTimeout(() => scrollToLastTodo(ul), DELAY);
         }
+
+        setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+        setTimeout(() => checkContainerBounds(containerBounds), 0);
     });
 
     appendTodos(ul);
+
+    setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+    setTimeout(() => checkContainerBounds(containerBounds), 0);
 
     return ul;
 }
@@ -69,5 +86,24 @@ function filterTodos(todos: Todo[], filter: TodoFilters, searchTerm: string) {
 }
 
 function scrollToLastTodo(ul: HTMLUListElement) {
-    ul.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
+    const lastChild = ul.lastElementChild;
+    if (!lastChild || !(lastChild instanceof HTMLElement)) return;
+
+    const start = ul.scrollTop;
+    const end = lastChild.offsetTop;
+    const duration = 500;
+    let startTime: number | null = null;
+
+    const animateScroll = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        ul.scrollTop = start + (end - start) * progress;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    };
+
+    requestAnimationFrame(animateScroll);
 }
