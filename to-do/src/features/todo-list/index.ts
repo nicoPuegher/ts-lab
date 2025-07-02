@@ -88,4 +88,9 @@ function filterTodos(todos: Todo[], filter: TodoFilters, searchTerm: string) {
 function scrollToLastTodo(ul: HTMLUListElement) {
     const lastChild = ul.lastElementChild;
     if (!lastChild || !(lastChild instanceof HTMLElement)) return;
+
+    const start = ul.scrollTop;
+    const end = lastChild.offsetTop;
+    const duration = 500;
+    let startTime: number | null = null;
 }
