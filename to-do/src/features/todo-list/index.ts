@@ -104,4 +104,6 @@ function scrollToLastTodo(ul: HTMLUListElement) {
             requestAnimationFrame(animateScroll);
         }
     };
+
+    requestAnimationFrame(animateScroll);
 }
