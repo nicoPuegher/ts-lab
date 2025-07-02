@@ -93,4 +93,15 @@ function scrollToLastTodo(ul: HTMLUListElement) {
     const end = lastChild.offsetTop;
     const duration = 500;
     let startTime: number | null = null;
+
+    const animateScroll = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        ul.scrollTop = start + (end - start) * progress;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    };
 }
