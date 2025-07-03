@@ -310,8 +310,8 @@ input[type='checkbox'] {
     gap: 16px;
     overflow-x: auto;
 
-    --left-fade: 10%;
-    --right-fade: 10%;
+    --left-fade: 20%;
+    --right-fade: 20%;
 
     transition:
         mask 0.4s ease,
