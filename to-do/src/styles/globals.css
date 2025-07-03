@@ -299,6 +299,10 @@ input[type='checkbox'] {
     color: var(--gray70);
 }
 
+.date-component.selected-date .day-of-month {
+    color: var(--gray0);
+}
+
 .date-picker {
     width: 100%;
     height: 7rem;
