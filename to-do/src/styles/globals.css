@@ -328,10 +328,10 @@ input[type='checkbox'] {
 
     mask: linear-gradient(
         to right,
-        transparent 0%,
+        var(--fade-color) 0%,
         var(--gray0) var(--left-fade),
         var(--gray0) calc(100% - var(--right-fade)),
-        transparent 100%
+        var(--fade-color) 100%
     );
 
     mask-composite: exclude;
