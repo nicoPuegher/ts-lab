@@ -279,7 +279,7 @@ input[type='checkbox'] {
     border-radius: 0.375rem;
 }
 
-.selected-date {
+.date-component.selected-date {
     border-color: var(--gray100);
     color: var(--gray0);
     background-color: var(--gray100);
