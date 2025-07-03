@@ -312,6 +312,7 @@ input[type='checkbox'] {
 
     --left-fade: 20%;
     --right-fade: 20%;
+    --fade-color: rgba(255, 255, 255, 0.4);
 
     transition:
         mask 0.4s ease,
