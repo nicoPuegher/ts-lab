@@ -292,6 +292,11 @@ input[type='checkbox'] {
     background-color: var(--gray100);
 }
 
+.date-component.selected-date:hover {
+    border-color: var(--gray70);
+    background-color: var(--gray70);
+}
+
 .date-component .weekday {
     font: var(--text-small);
     color: var(--gray70);
