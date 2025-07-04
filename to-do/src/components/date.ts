@@ -16,6 +16,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
+    weekdayElement.classList.add('weekday');
 
     const dayOfMonthElement = document.createElement('span');
     dayOfMonthElement.textContent = dayOfMonth.toString();
