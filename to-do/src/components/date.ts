@@ -20,6 +20,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
 
     const dayOfMonthElement = document.createElement('span');
     dayOfMonthElement.textContent = dayOfMonth.toString();
+    dayOfMonthElement.classList.add('day-of-month');
 
     container.append(weekdayElement, dayOfMonthElement);
 
