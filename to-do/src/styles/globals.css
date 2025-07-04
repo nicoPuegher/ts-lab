@@ -313,6 +313,7 @@ input[type='checkbox'] {
 .date-picker {
     width: 100%;
     height: calc(7.5rem + var(--scroll-padding));
+    padding-bottom: var(--scroll-padding);
     display: flex;
     gap: 16px;
     overflow-x: auto;
