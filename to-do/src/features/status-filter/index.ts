@@ -24,7 +24,7 @@ export function createStatusFilter() {
 function createFilterButtonComponent(label: string, status: string) {
     const selectedFilterFromState = stateManager.getState().selectedFilter;
 
-    const button = createButtonComponent(label, 'filter');
+    const button = createButtonComponent(label, 'secondary');
     button.id = status;
     button.addEventListener('click', () => {
         button.classList.add('selected-filter');
