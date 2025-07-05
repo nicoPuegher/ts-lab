@@ -16,7 +16,7 @@ export function createStatusFilter() {
     const active = createFilterButtonComponent(filter.ACTIVE, filter.ACTIVE.toLowerCase());
     const completed = createFilterButtonComponent(filter.COMPLETED, filter.COMPLETED.toLowerCase());
 
-    container.append(all, createSeparator(), active, createSeparator(), completed);
+    container.append(all, active, completed);
 
     return container;
 }
