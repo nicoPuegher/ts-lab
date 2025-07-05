@@ -40,10 +40,3 @@ function createFilterButtonComponent(label: string, status: string) {
 
     return button;
 }
-
-function createSeparator() {
-    const separator = document.createElement('span');
-    separator.textContent = '|';
-
-    return separator;
-}
