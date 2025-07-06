@@ -57,9 +57,13 @@ class StateManager {
 
         if (selectedFilter == filter) return;
 
-        document.getElementById(this.previousSelectedFilter).classList.remove('selected-filter');
-        this.previousSelectedFilter = filter;
+        const previouslySelectedFilterButton = document.getElementById(this.previousSelectedFilter);
+        if (previouslySelectedFilterButton) {
+            previouslySelectedFilterButton.classList.remove('primary');
+            previouslySelectedFilterButton.classList.add('secondary');
+        }
 
+        this.previousSelectedFilter = filter;
         this.state = {
             ...this.state,
             selectedFilter: filter,
