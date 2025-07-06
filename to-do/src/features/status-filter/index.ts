@@ -27,7 +27,8 @@ function createFilterButtonComponent(label: string, status: string) {
     const button = createButtonComponent(label, 'secondary');
     button.id = status;
     button.addEventListener('click', () => {
-        button.classList.add('selected-filter');
+        button.classList.remove('secondary');
+        button.classList.add('primary');
 
         if (status == 'all' || status == 'active' || status == 'completed') {
             stateManager.setFilter(status);
