@@ -36,7 +36,8 @@ function createFilterButtonComponent(label: string, status: string) {
     });
 
     if (selectedFilterFromState == status) {
-        button.classList.add('selected-filter');
+        button.classList.remove('secondary');
+        button.classList.add('primary');
     }
 
     return button;
