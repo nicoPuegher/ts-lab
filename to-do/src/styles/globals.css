@@ -102,6 +102,10 @@ button {
     background-color: transparent;
 }
 
+.secondary:hover {
+    background-color: var(--gray10);
+}
+
 /* Todo list feature */
 ul {
     width: 100%;
