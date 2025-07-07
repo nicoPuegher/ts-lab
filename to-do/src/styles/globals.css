@@ -226,8 +226,8 @@ form p {
 /* Search filter */
 .search-filter {
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    margin-left: 10px;
+    height: 2.5rem;
+    padding-inline: 0.75rem;
     display: flex;
     align-items: center;
     gap: 11px;
