@@ -13,9 +13,11 @@ export function createSearchFilter() {
     container.classList.add('search-filter');
 
     const searchIcon = createElement(Search);
+    searchIcon.classList.add('icons');
 
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
+    closeIcon.classList.add('icons');
     closeIcon.classList.add('hide-icon');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
