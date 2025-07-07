@@ -110,6 +110,12 @@ button {
     background-color: transparent;
 }
 
+.icons {
+    width: 20px;
+    height: 20px;
+    color: var(--gray50);
+}
+
 /* Todo list feature */
 ul {
     width: 100%;
