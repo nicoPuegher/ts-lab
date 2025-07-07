@@ -16,7 +16,7 @@ export function createStatusFilter() {
     const active = createFilterButtonComponent(filter.ACTIVE, filter.ACTIVE.toLowerCase());
     const completed = createFilterButtonComponent(filter.COMPLETED, filter.COMPLETED.toLowerCase());
 
-    container.append(all, createSeparator(), active, createSeparator(), completed);
+    container.append(all, active, completed);
 
     return container;
 }
@@ -24,10 +24,11 @@ export function createStatusFilter() {
 function createFilterButtonComponent(label: string, status: string) {
     const selectedFilterFromState = stateManager.getState().selectedFilter;
 
-    const button = createButtonComponent(label, 'filter');
+    const button = createButtonComponent(label, 'secondary');
     button.id = status;
     button.addEventListener('click', () => {
-        button.classList.add('selected-filter');
+        button.classList.remove('secondary');
+        button.classList.add('primary');
 
         if (status == 'all' || status == 'active' || status == 'completed') {
             stateManager.setFilter(status);
@@ -35,15 +36,9 @@ function createFilterButtonComponent(label: string, status: string) {
     });
 
     if (selectedFilterFromState == status) {
-        button.classList.add('selected-filter');
+        button.classList.remove('secondary');
+        button.classList.add('primary');
     }
 
     return button;
-}
-
-function createSeparator() {
-    const separator = document.createElement('span');
-    separator.textContent = '|';
-
-    return separator;
 }

@@ -74,22 +74,46 @@ body {
 
 /* Buttons */
 button {
+    text-transform: uppercase;
     height: 2.5rem;
     padding: 0.5rem 1rem;
     border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
 }
 
 .primary {
-    border-radius: 0.375rem;
+    font: var(--text-small-bold);
     color: var(--gray0);
     background-color: var(--gray100);
 }
 
-.filter {
-    padding: 0;
-    margin: 0;
-    color: var(--gray100);
-    background: none;
+.primary:hover {
+    background-color: var(--gray70);
+}
+
+.primary:focus {
+    background-color: var(--gray100);
+}
+
+.secondary {
+    font: var(--text-small);
+    border: 2px solid var(--gray10);
+    background-color: transparent;
+}
+
+.secondary:hover {
+    background-color: var(--gray10);
+}
+
+.secondary:focus {
+    background-color: transparent;
+}
+
+.icons {
+    width: 20px;
+    height: 20px;
+    color: var(--gray50);
 }
 
 /* Todo list feature */
@@ -185,27 +209,25 @@ form p {
 .filter-layout {
     width: 100%;
     margin-top: 1rem;
-    display: flex;
-    justify-content: start;
-    align-items: end;
 }
 
 /* Status filter */
 .status-filter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
-.selected-filter {
-    font: var(--text-normal-bold);
+.status-filter button {
+    padding: 0.5rem 0;
 }
 
 /* Search filter */
 .search-filter {
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    margin-left: 10px;
+    height: 2.5rem;
+    padding-inline: 0.75rem;
     display: flex;
     align-items: center;
     gap: 11px;
@@ -216,8 +238,18 @@ form p {
 
 input[type='search'] {
     width: 100%;
+    height: 100%;
     border: none;
     background-color: transparent;
+}
+
+input[type='search']::placeholder {
+    font: var(--text-small);
+    color: var(--gray50);
+}
+
+input[type='search']::-webkit-search-cancel-button {
+    display: none;
 }
 
 .hide-icon {
