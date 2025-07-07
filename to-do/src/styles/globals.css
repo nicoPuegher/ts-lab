@@ -243,6 +243,11 @@ input[type='search'] {
     background-color: transparent;
 }
 
+input[type='search']::placeholder {
+    font: var(--text-small);
+    color: var(--gray50);
+}
+
 .hide-icon {
     visibility: hidden;
 }
