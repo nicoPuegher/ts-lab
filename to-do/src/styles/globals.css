@@ -96,6 +96,12 @@ button {
     background-color: var(--gray100);
 }
 
+.secondary {
+    font: var(--text-small);
+    border: 2px solid var(--gray10);
+    background-color: transparent;
+}
+
 /* Todo list feature */
 ul {
     width: 100%;
