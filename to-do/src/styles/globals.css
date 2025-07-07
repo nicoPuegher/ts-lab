@@ -219,8 +219,8 @@ form p {
     gap: 16px;
 }
 
-.selected-filter {
-    font: var(--text-normal-bold);
+.status-filter button {
+    padding: 0.5rem 0;
 }
 
 /* Search filter */
