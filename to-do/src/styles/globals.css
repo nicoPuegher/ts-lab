@@ -83,7 +83,7 @@ button {
 }
 
 .primary {
-    border-radius: 0.375rem;
+    font: var(--text-small-bold);
     color: var(--gray0);
     background-color: var(--gray100);
 }
