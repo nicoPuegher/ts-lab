@@ -106,6 +106,10 @@ button {
     background-color: var(--gray10);
 }
 
+.secondary:focus {
+    background-color: transparent;
+}
+
 /* Todo list feature */
 ul {
     width: 100%;
