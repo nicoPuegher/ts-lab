@@ -213,9 +213,10 @@ form p {
 
 /* Status filter */
 .status-filter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
 .selected-filter {
