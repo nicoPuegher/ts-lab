@@ -40,6 +40,7 @@
     --gray10: hsl(0deg, 0%, 10%);
     --gray0: hsl(0deg, 0%, 0%);
 
+    --success: hsl(122deg, 40%, 50%);
     --error: hsl(360deg, 100%, 70%);
 
     --scroll-padding: 10px;
