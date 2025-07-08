@@ -311,10 +311,9 @@ input[type='checkbox']:checked::before {
     opacity: 0.5;
 }
 
-.todo-icon {
-    width: 1.1rem;
-    height: 1.1rem;
-    color: var(--gray100);
+.trash-icon {
+    width: 15px;
+    height: auto;
 }
 
 /*Reusable classes*/
