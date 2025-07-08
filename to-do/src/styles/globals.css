@@ -285,6 +285,11 @@ input[type='checkbox'] {
     -webkit-appearance: none;
 }
 
+input[type='checkbox']:checked {
+    border-color: var(--success);
+    background-color: var(--success);
+}
+
 .todo p {
     flex-grow: 1;
 }
