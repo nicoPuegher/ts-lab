@@ -19,15 +19,12 @@ export function createTodoComponent(todo: Todo) {
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
 
-    const iconContainer = document.createElement('div');
-    iconContainer.classList.toggle('hide-element', todo.completed);
-    iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
-
     const icon = createElement(Trash);
-    icon.classList.add('todo-icon');
+    icon.classList.add('icons', 'clickeable', 'trash-icon');
+    icon.classList.toggle('hide-element', todo.completed);
+    icon.addEventListener('click', () => handleDeleteTodo(todo.id));
 
-    iconContainer.appendChild(icon);
-    li.append(checkbox, paragraph, iconContainer);
+    li.append(checkbox, paragraph, icon);
 
     return li;
 }
