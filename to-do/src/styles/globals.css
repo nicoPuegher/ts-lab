@@ -112,8 +112,8 @@ button {
 }
 
 .icons {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: auto;
     color: var(--gray50);
 }
 
