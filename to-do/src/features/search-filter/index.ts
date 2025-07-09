@@ -17,8 +17,7 @@ export function createSearchFilter() {
 
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
-    closeIcon.classList.add('icons');
-    closeIcon.classList.add('hide-icon');
+    closeIcon.classList.add('icons', 'clickeable', 'hide-icon');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
     const searchInput = createSearchInputComponent();
