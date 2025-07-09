@@ -24,8 +24,7 @@ export function createTodoComponent(todo: Todo) {
     icon.classList.toggle('hide-element', todo.completed);
     icon.addEventListener('click', () => handleDeleteTodo(todo.id));
 
-    iconContainer.appendChild(icon);
-    li.append(checkbox, paragraph, iconContainer);
+    li.append(checkbox, paragraph, icon);
 
     return li;
 }
