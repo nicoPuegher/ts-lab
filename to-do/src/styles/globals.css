@@ -205,10 +205,6 @@ form input {
     flex: 1;
 }
 
-input[type='text'] {
-    height: 2.5rem;
-}
-
 input[type='text']::placeholder {
     color: var(--gray100);
 }
