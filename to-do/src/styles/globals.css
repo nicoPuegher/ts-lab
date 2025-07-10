@@ -258,11 +258,7 @@ form p {
 }
 
 input[type='search'] {
-    width: 100%;
-    height: 100%;
     padding: 0;
-    border: none;
-    background-color: transparent;
 }
 
 input[type='search']::placeholder {
