@@ -3,10 +3,10 @@ export function createTextInputComponent() {
     textInput.id = 'text-input-id';
     textInput.type = 'text';
     textInput.name = 'text-input';
-    textInput.placeholder = 'Write a todo...';
+    textInput.placeholder = 'Write a to-do...';
     textInput.autocomplete = 'off';
     textInput.required = true;
-    textInput.classList.add('surface');
+    textInput.classList.add('typing-input');
 
     return textInput;
 }
