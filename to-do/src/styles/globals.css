@@ -84,7 +84,7 @@ button {
 }
 
 .primary {
-    font: var(--text-small-bold);
+    font: var(--text-xsmall-bold);
     color: var(--gray0);
     background-color: var(--gray100);
 }
