@@ -41,7 +41,8 @@ function appendDateComponents(dates: Date[], container: HTMLDivElement) {
 
         const dateComponent = createDateComponent(weekday, dayOfMonth, date);
         dateComponent.addEventListener('click', () => {
-            dateComponent.classList.add('selected-date');
+            dateComponent.classList.remove('secondary');
+            dateComponent.classList.add('primary');
 
             stateManager.setSelectedDate(date);
         });
