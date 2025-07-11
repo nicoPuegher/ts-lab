@@ -6,8 +6,9 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     const selectedDateFromState = stateManager.getState().selectedDate;
     const formattedDate = formatDate(date);
 
-    const container = document.createElement('div');
+    const container = document.createElement('button');
     container.id = formattedDate;
+    container.classList.add('date-component', 'secondary');
 
     if (selectedDateFromState == formattedDate) {
         container.classList.add('selected-date');
