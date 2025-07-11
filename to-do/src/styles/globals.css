@@ -98,8 +98,9 @@ button {
 }
 
 .secondary {
-    font: var(--text-small);
+    font: var(--text-xsmall);
     border: 2px solid var(--gray10);
+    color: var(--gray70);
     background-color: transparent;
 }
 
