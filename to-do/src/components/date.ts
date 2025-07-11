@@ -11,9 +11,9 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     container.classList.add('date-component', 'secondary');
 
     if (selectedDateFromState == formattedDate) {
-        container.classList.add('selected-date');
+        container.classList.remove('secondary');
+        container.classList.add('primary');
     }
-    container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
