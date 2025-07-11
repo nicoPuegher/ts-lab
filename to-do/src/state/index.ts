@@ -41,9 +41,13 @@ class StateManager {
 
         if (selectedDate == newDate) return;
 
-        document.getElementById(this.previousSelectedDate).classList.remove('selected-date');
-        this.previousSelectedDate = newDate;
+        const previouslySelectedDateButton = document.getElementById(this.previousSelectedDate);
+        if (previouslySelectedDateButton) {
+            previouslySelectedDateButton.classList.remove('primary');
+            previouslySelectedDateButton.classList.add('secondary');
+        }
 
+        this.previousSelectedDate = newDate;
         this.state = {
             ...this.state,
             selectedDate: newDate,
