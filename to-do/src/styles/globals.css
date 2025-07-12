@@ -340,9 +340,8 @@ input[type='checkbox']:checked::before {
     align-items: center;
 }
 
-.date-component:hover {
-    cursor: pointer;
-    background-color: var(--gray10);
+.date-component .weekday {
+    font: var(--text-xsmall);
 }
 
 .date-component.selected-date {
