@@ -348,9 +348,8 @@ input[type='checkbox']:checked::before {
     font: var(--text-xsmall-bold);
 }
 
-.date-component.selected-date:hover {
-    border-color: var(--gray70);
-    background-color: var(--gray70);
+.date-component .day-of-month {
+    font: var(--text-small);
 }
 
 .date-component .weekday {
