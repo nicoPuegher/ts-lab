@@ -352,9 +352,8 @@ input[type='checkbox']:checked::before {
     font: var(--text-small);
 }
 
-.date-component .weekday {
-    font: var(--text-small);
-    color: var(--gray70);
+.date-component.primary .day-of-month {
+    font: var(--text-small-bold);
 }
 
 .date-component.selected-date .weekday {
