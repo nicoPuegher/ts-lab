@@ -374,7 +374,7 @@ input[type='checkbox']:checked::before {
     height: calc(9rem + var(--scroll-padding));
     padding-bottom: var(--scroll-padding);
     display: flex;
-    gap: 16px;
+    gap: 0.5rem;
     overflow-x: auto;
 
     --left-fade: 20%;
