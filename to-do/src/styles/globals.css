@@ -43,6 +43,7 @@
     --success: hsl(122deg, 40%, 50%);
     --error: hsl(360deg, 100%, 70%);
 
+    --component-gap: 0.5rem;
     --scroll-padding: 10px;
 
     color-scheme: light dark;
