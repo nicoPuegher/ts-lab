@@ -357,10 +357,6 @@ input[type='checkbox']:checked::before {
     font: var(--text-small-bold);
 }
 
-.date-component.selected-date .weekday {
-    color: var(--gray0);
-}
-
 .date-picker {
     width: 100%;
     height: calc(9rem + var(--scroll-padding));
