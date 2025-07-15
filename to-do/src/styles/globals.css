@@ -366,10 +366,6 @@ input[type='checkbox']:checked::before {
     color: var(--gray70);
 }
 
-.date-component.selected-date .day-of-month {
-    color: var(--gray0);
-}
-
 .date-picker {
     width: 100%;
     height: calc(9rem + var(--scroll-padding));
