@@ -261,6 +261,7 @@ form p {
 
 input[type='search'] {
     font: var(--text-small);
+    color: var(--gray70);
     padding: 0;
 }
 
