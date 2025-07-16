@@ -225,6 +225,8 @@ form p {
 .filter-layout {
     width: 100%;
     margin-bottom: var(--margin-between-features);
+    display: grid;
+    gap: var(--space-between-elements);
 }
 
 /* Status filter */
