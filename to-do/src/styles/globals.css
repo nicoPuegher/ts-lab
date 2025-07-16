@@ -359,7 +359,7 @@ input[type='checkbox']:checked::before {
 
 .date-picker {
     width: 100%;
-    height: calc(9rem + var(--scroll-padding));
+    height: 9.5rem;
     padding-bottom: var(--scroll-padding);
     display: flex;
     gap: var(--component-gap);
