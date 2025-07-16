@@ -229,7 +229,6 @@ form p {
 
 /* Status filter */
 .status-filter {
-    margin-bottom: var(--space-between-elements);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-between-elements);
