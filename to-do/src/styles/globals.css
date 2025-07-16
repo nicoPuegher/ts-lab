@@ -45,6 +45,7 @@
 
     --space-between-elements: 0.5rem;
     --scroll-padding: 10px;
+    --margin-between-features: calc(1rem + var(--scroll-padding));
 
     color-scheme: light dark;
     color: var(--gray100);
