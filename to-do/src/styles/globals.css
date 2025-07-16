@@ -260,6 +260,7 @@ form p {
 }
 
 input[type='search'] {
+    font: var(--text-small);
     padding: 0;
 }
 
