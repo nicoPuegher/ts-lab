@@ -229,6 +229,12 @@ form p {
     gap: var(--space-between-elements);
 }
 
+@media (min-width: 1200px) {
+    .filter-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 /* Status filter */
 .status-filter {
     display: grid;
