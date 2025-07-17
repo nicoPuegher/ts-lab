@@ -144,6 +144,7 @@ button {
 ul {
     width: 100%;
     height: 100%;
+    padding-right: var(--scroll-padding);
     margin-bottom: var(--margin-between-features);
     display: flex;
     flex-direction: column;
