@@ -142,7 +142,7 @@ button {
 
 /* Todo list feature */
 ul {
-    width: 100%;
+    width: calc(100% + var(--scroll-padding));
     height: 100%;
     padding-right: var(--scroll-padding);
     margin-bottom: var(--margin-between-features);
