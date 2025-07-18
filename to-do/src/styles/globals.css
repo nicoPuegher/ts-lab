@@ -213,7 +213,7 @@ form input {
 }
 
 form button {
-    margin-left: 0.5rem;
+    margin-left: var(--space-between-elements);
     flex-shrink: 0;
 }
 
