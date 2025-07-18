@@ -238,7 +238,7 @@ form p {
 .search-filter {
     display: flex;
     align-items: center;
-    gap: 11px;
+    gap: var(--space-between-elements);
 }
 
 input[type='search'] {
