@@ -234,10 +234,6 @@ form p {
     gap: var(--space-between-elements);
 }
 
-.status-filter button {
-    padding: 0.5rem 0;
-}
-
 /* Search filter */
 .search-filter {
     width: 100%;
