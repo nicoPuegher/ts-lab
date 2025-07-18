@@ -137,7 +137,7 @@ ul {
     margin-bottom: var(--margin-between-features);
     display: flex;
     flex-direction: column;
-    gap: 0.375rem;
+    gap: var(--space-between-elements);
     overflow-y: scroll;
 
     --top-fade: 10%;
