@@ -209,7 +209,9 @@ form {
 }
 
 form input {
+    font: var(--text-small);
     flex: 1;
+    color: var(--gray70);
 }
 
 form button {
@@ -265,8 +267,8 @@ form p {
 
 input[type='search'] {
     font: var(--text-small);
-    color: var(--gray70);
     padding: 0;
+    color: var(--gray70);
 }
 
 input[type='search']::-webkit-search-cancel-button {
