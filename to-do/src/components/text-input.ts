@@ -6,7 +6,7 @@ export function createTextInputComponent() {
     textInput.placeholder = 'Write a to-do...';
     textInput.autocomplete = 'off';
     textInput.required = true;
-    textInput.classList.add('typing-input');
+    textInput.classList.add('clean-input');
 
     return textInput;
 }
