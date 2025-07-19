@@ -79,7 +79,7 @@ body {
     min-width: 320px;
     max-width: 1200px;
     height: 100dvh;
-    padding: 1.25rem 1rem;
+    padding: var(--size-600) var(--size-500);
     margin-inline: auto;
     display: flex;
     flex-direction: column;
