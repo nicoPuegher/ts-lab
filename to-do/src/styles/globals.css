@@ -92,9 +92,8 @@ button {
     text-transform: uppercase;
     min-width: var(--size-900);
     height: var(--size-800);
-    padding: 0.5rem 1rem;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--size-200);
     cursor: pointer;
 }
 
