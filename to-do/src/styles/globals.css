@@ -226,9 +226,9 @@ form p {
 /* Filter layout */
 .filter-layout {
     width: 100%;
-    margin-bottom: var(--margin-between-features);
+    margin-bottom: var(--size-700);
     display: grid;
-    gap: var(--space-between-elements);
+    gap: var(--size-300);
 }
 
 @media (min-width: 1200px) {
