@@ -241,7 +241,7 @@ form p {
 .status-filter {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-between-elements);
+    gap: var(--size-300);
 }
 
 /* Search filter */
