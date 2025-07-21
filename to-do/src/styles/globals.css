@@ -300,8 +300,8 @@ input[type='checkbox']:checked::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 0.25rem;
-    height: 0.5rem;
+    width: var(--size-100);
+    height: var(--size-300);
     border: solid var(--gray0);
     border-width: 0 2px 2px 0;
     transform: translate(-50%, -60%) rotate(45deg) scale(1);
