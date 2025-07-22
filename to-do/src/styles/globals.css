@@ -393,7 +393,7 @@ form button {
 }
 
 form p {
-    font: var(--p2);
+    font: var(--text-small);
     position: absolute;
     bottom: -20px;
     flex-basis: 100%;
