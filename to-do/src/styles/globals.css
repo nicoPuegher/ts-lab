@@ -131,6 +131,90 @@ button {
     cursor: pointer;
 }
 
+/*Reusable classes*/
+.clean-input {
+    width: 100%;
+    height: var(--size-800);
+    padding: var(--size-300) var(--size-400);
+    border: none;
+    border-radius: var(--size-200);
+    background-color: var(--gray10);
+}
+
+.hide-element {
+    display: none;
+}
+
+/* Date picker */
+.date-component {
+    min-width: var(--size-900);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-component .weekday {
+    font: var(--text-xsmall);
+}
+
+.date-component.primary .weekday {
+    font: var(--text-xsmall-bold);
+}
+
+.date-component .day-of-month {
+    font: var(--text-small);
+}
+
+.date-component.primary .day-of-month {
+    font: var(--text-small-bold);
+}
+
+.date-picker {
+    width: 100%;
+    height: 9.5rem;
+    padding-bottom: var(--size-400);
+    margin-bottom: var(--size-500);
+    display: flex;
+    gap: var(--size-300);
+    overflow-x: auto;
+
+    --left-fade: 20%;
+    --right-fade: 20%;
+    --fade-color: rgba(255, 255, 255, 0.4);
+
+    transition:
+        mask 0.4s ease,
+        -webkit-mask 0.4s ease;
+
+    -webkit-mask: linear-gradient(
+        to right,
+        var(--fade-color) 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        var(--fade-color) 100%
+    );
+
+    mask: linear-gradient(
+        to right,
+        var(--fade-color) 0%,
+        var(--gray0) var(--left-fade),
+        var(--gray0) calc(100% - var(--right-fade)),
+        var(--fade-color) 100%
+    );
+
+    mask-composite: exclude;
+}
+
+.date-picker.at-start {
+    --left-fade: 0%;
+}
+
+.date-picker.at-end {
+    --right-fade: 0%;
+}
+
 /* Todo list feature */
 ul {
     position: relative;
@@ -176,45 +260,6 @@ ul.at-top {
 
 ul.at-bottom {
     --bottom-fade: 0%;
-}
-
-/* Todo submission feature */
-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    border: 0;
-    clip-path: 'insert(50%)';
-    white-space: 'nowrap';
-    overflow: hidden;
-}
-
-form {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-form input {
-    font: var(--text-small);
-    flex: 1;
-    color: var(--gray70);
-}
-
-form button {
-    margin-left: var(--space-between-elements);
-    flex-shrink: 0;
-}
-
-form p {
-    font: var(--p2);
-    position: absolute;
-    bottom: -20px;
-    flex-basis: 100%;
-    color: var(--error);
 }
 
 /* Filter layout */
@@ -315,88 +360,43 @@ input[type='checkbox']:checked::before {
     height: auto;
 }
 
-/*Reusable classes*/
-.clean-input {
+/* Todo submission feature */
+label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip-path: 'insert(50%)';
+    white-space: 'nowrap';
+    overflow: hidden;
+}
+
+form {
+    position: relative;
     width: 100%;
-    height: var(--size-800);
-    padding: var(--size-300) var(--size-400);
-    border: none;
-    border-radius: var(--size-200);
-    background-color: var(--gray10);
-}
-
-.hide-element {
-    display: none;
-}
-
-/* Date picker */
-.date-component {
-    min-width: var(--size-900);
-    height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-.date-component .weekday {
-    font: var(--text-xsmall);
-}
-
-.date-component.primary .weekday {
-    font: var(--text-xsmall-bold);
-}
-
-.date-component .day-of-month {
+form input {
     font: var(--text-small);
+    flex: 1;
+    color: var(--gray70);
 }
 
-.date-component.primary .day-of-month {
-    font: var(--text-small-bold);
+form button {
+    margin-left: var(--space-between-elements);
+    flex-shrink: 0;
 }
 
-.date-picker {
-    width: 100%;
-    height: 9.5rem;
-    padding-bottom: var(--size-400);
-    margin-bottom: var(--size-500);
-    display: flex;
-    gap: var(--size-300);
-    overflow-x: auto;
-
-    --left-fade: 20%;
-    --right-fade: 20%;
-    --fade-color: rgba(255, 255, 255, 0.4);
-
-    transition:
-        mask 0.4s ease,
-        -webkit-mask 0.4s ease;
-
-    -webkit-mask: linear-gradient(
-        to right,
-        var(--fade-color) 0%,
-        var(--gray0) var(--left-fade),
-        var(--gray0) calc(100% - var(--right-fade)),
-        var(--fade-color) 100%
-    );
-
-    mask: linear-gradient(
-        to right,
-        var(--fade-color) 0%,
-        var(--gray0) var(--left-fade),
-        var(--gray0) calc(100% - var(--right-fade)),
-        var(--fade-color) 100%
-    );
-
-    mask-composite: exclude;
-}
-
-.date-picker.at-start {
-    --left-fade: 0%;
-}
-
-.date-picker.at-end {
-    --right-fade: 0%;
+form p {
+    font: var(--p2);
+    position: absolute;
+    bottom: -20px;
+    flex-basis: 100%;
+    color: var(--error);
 }
 
 /* Light theme */
