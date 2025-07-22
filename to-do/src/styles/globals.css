@@ -53,12 +53,6 @@
     --success: hsl(122deg, 40%, 50%);
     --error: hsl(360deg, 100%, 70%);
 
-    --element-height: 2.5rem;
-    --border-radius: 0.375rem;
-    --space-between-elements: 0.5rem;
-    --scroll-padding: 10px;
-    --margin-between-features: calc(1rem + var(--scroll-padding));
-
     color-scheme: light dark;
     color: var(--gray100);
     background-color: var(--gray0);
