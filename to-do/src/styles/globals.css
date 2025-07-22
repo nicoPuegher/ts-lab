@@ -134,7 +134,8 @@ button {
 /*Reusable classes*/
 .clean-input {
     width: 100%;
-    height: var(--size-800);
+    min-height: var(--size-800);
+    max-height: var(--size-800);
     padding: var(--size-300) var(--size-400);
     border: none;
     border-radius: var(--size-200);
