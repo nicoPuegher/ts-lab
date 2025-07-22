@@ -387,7 +387,7 @@ form input {
 }
 
 form button {
-    margin-left: var(--space-between-elements);
+    margin-left: var(--size-300);
     flex-shrink: 0;
 }
 
