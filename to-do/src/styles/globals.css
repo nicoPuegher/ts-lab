@@ -337,7 +337,7 @@ input[type='checkbox']:checked::before {
 
 /* Date picker */
 .date-component {
-    min-width: 6rem;
+    min-width: var(--size-900);
     height: auto;
     display: flex;
     flex-direction: column;
