@@ -324,10 +324,10 @@ input[type='checkbox']:checked::before {
 /*Reusable classes*/
 .clean-input {
     width: 100%;
-    height: var(--element-height);
-    padding: 0.5rem 0.75rem;
+    height: var(--size-800);
+    padding: var(--size-300) var(--size-400);
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--size-200);
     background-color: var(--gray10);
 }
 
