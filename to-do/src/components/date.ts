@@ -6,13 +6,14 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     const selectedDateFromState = stateManager.getState().selectedDate;
     const formattedDate = formatDate(date);
 
-    const container = document.createElement('div');
+    const container = document.createElement('button');
     container.id = formattedDate;
+    container.classList.add('date-component', 'secondary');
 
     if (selectedDateFromState == formattedDate) {
-        container.classList.add('selected-date');
+        container.classList.remove('secondary');
+        container.classList.add('primary');
     }
-    container.classList.add('date-component');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();

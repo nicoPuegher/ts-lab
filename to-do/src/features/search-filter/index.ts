@@ -10,7 +10,7 @@ const EMPTY_STRING = '';
 
 export function createSearchFilter() {
     const container = document.createElement('div');
-    container.classList.add('search-filter', 'typing-input');
+    container.classList.add('search-filter', 'clean-input');
 
     const searchIcon = createElement(Search);
     searchIcon.classList.add('icons');
@@ -21,7 +21,7 @@ export function createSearchFilter() {
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
     const searchInput = createSearchInputComponent();
-    searchInput.classList.add('typing-input');
+    searchInput.classList.add('clean-input');
     searchInput.addEventListener('input', (event) => handleSearchTyping(event, closeIcon.id));
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
