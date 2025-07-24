@@ -108,6 +108,10 @@ class StateManager {
         this.notifyStateChangeSubscribers(newTodo);
     }
 
+    editTodo(id: string, text: string) {
+        this.updateTodos((todos) => todos.map((todo) => (todo.id == id ? { ...todo, text } : todo)));
+    }
+
     toggleTodo(id: string) {
         this.updateTodos((todos) =>
             todos.map((todo) => (todo.id == id ? { ...todo, completed: !todo.completed } : todo)),
