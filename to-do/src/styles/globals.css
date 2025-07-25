@@ -313,8 +313,11 @@ input[type='search']::-webkit-search-cancel-button {
     gap: var(--size-400);
 }
 
-.todo input {
-    margin-right: var(--size-500);
+.todo p {
+    height: 90%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 input[type='checkbox'] {
