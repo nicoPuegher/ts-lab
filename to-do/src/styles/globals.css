@@ -320,6 +320,12 @@ input[type='search']::-webkit-search-cancel-button {
     align-items: center;
 }
 
+.todo-edit {
+    height: 80%;
+    flex: 1;
+    border: none;
+}
+
 input[type='checkbox'] {
     position: relative;
     width: 1.1rem;
