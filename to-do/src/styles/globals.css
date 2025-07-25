@@ -360,6 +360,7 @@ input[type='checkbox']:checked::before {
 
 .todo-completed {
     text-decoration: line-through;
+    cursor: default;
     opacity: 0.5;
 }
 
