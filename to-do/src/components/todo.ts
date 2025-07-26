@@ -40,6 +40,8 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
     stateManager.toggleTodo(id);
 }
 
+function handleParagraphChange(event: MouseEvent, todo: Todo) {}
+
 function handleDeleteTodo(id: string) {
     const li = document.getElementById(id);
 
