@@ -43,6 +43,8 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
 
 function handleParagraphChange(event: MouseEvent, todo: Todo) {
     if (!(event.target instanceof HTMLParagraphElement)) return;
+
+    if (!(event.target.parentElement instanceof HTMLLIElement)) return;
 }
 
 function handleDeleteTodo(id: string) {
