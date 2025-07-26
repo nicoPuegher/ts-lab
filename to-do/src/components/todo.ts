@@ -18,6 +18,7 @@ export function createTodoComponent(todo: Todo) {
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
+    paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
     icon.classList.add('icons', 'clickeable', 'trash-icon');
