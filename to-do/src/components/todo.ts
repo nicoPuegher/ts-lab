@@ -34,6 +34,7 @@ function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     const textInput = document.createElement('input');
     textInput.type = 'text';
     textInput.value = paragraph.textContent || '';
+    textInput.classList.add('todo-edit');
 }
 
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
