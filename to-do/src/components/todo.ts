@@ -37,6 +37,7 @@ function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     textInput.classList.add('todo-edit');
 
     textInput.addEventListener('blur', (event) => handleTextInputBlur(todo, event, paragraph));
+    textInput.addEventListener('keydown', (event) => handleTextInputKeydown(todo, event, paragraph));
 }
 
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
