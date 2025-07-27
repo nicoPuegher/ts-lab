@@ -45,6 +45,8 @@ function handleParagraphChange(event: MouseEvent, todo: Todo) {
     if (!(event.target instanceof HTMLParagraphElement)) return;
 
     if (!(event.target.parentElement instanceof HTMLLIElement)) return;
+
+    if (event.target.parentElement.classList.contains('todo-completed')) return;
 }
 
 function handleDeleteTodo(id: string) {
