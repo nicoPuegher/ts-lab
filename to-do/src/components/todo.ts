@@ -33,6 +33,7 @@ export function createTodoComponent(todo: Todo) {
 function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     const textInput = document.createElement('input');
     textInput.type = 'text';
+    textInput.value = paragraph.textContent || '';
 }
 
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
