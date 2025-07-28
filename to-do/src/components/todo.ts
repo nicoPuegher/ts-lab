@@ -40,6 +40,7 @@ function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     textInput.addEventListener('keydown', (event) => handleTextInputKeydown(todo, event, paragraph));
 
     paragraph.replaceWith(textInput);
+    textInput.focus();
 }
 
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
