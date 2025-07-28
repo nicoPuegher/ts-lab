@@ -64,6 +64,8 @@ function handleParagraphChange(event: MouseEvent, todo: Todo) {
     createTextInputComponent(todo, event.target);
 }
 
+function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParagraphElement) {}
+
 function handleDeleteTodo(id: string) {
     const li = document.getElementById(id);
 
