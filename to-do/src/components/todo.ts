@@ -66,6 +66,8 @@ function handleParagraphChange(event: MouseEvent, todo: Todo) {
 
 function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParagraphElement) {
     if (!(event.target instanceof HTMLInputElement)) return;
+
+    paragraph.textContent = event.target.value;
 }
 
 function handleDeleteTodo(id: string) {
