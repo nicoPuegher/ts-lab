@@ -72,6 +72,8 @@ function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParag
     stateManager.editTodo(todo.id, paragraph.textContent);
 }
 
+function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTMLParagraphElement) {}
+
 function handleDeleteTodo(id: string) {
     const li = document.getElementById(id);
 
