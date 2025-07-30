@@ -74,6 +74,10 @@ function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParag
 
 function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTMLParagraphElement) {
     if (!(event.target instanceof HTMLInputElement)) return;
+
+    if (event.key == 'Enter') {
+        paragraph.textContent = event.target.value;
+    }
 }
 
 function handleDeleteTodo(id: string) {
