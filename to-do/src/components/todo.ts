@@ -78,6 +78,7 @@ function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTM
     if (event.key == 'Enter') {
         paragraph.textContent = event.target.value;
         event.target.replaceWith(paragraph);
+        stateManager.editTodo(todo.id, paragraph.textContent);
     }
 }
 
