@@ -79,6 +79,8 @@ function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTM
         paragraph.textContent = event.target.value;
         event.target.replaceWith(paragraph);
         stateManager.editTodo(todo.id, paragraph.textContent);
+    } else if (event.key == 'Escape') {
+        event.target.replaceWith(paragraph);
     }
 }
 
