@@ -136,7 +136,7 @@ button {
     width: 100%;
     min-height: var(--size-800);
     max-height: var(--size-800);
-    padding: var(--size-300) var(--size-400);
+    padding-inline: var(--size-400);
     border: none;
     border-radius: var(--size-200);
     background-color: var(--gray10);
@@ -310,10 +310,21 @@ input[type='search']::-webkit-search-cancel-button {
     display: flex;
     justify-content: start;
     align-items: center;
+    gap: var(--size-400);
+    cursor: pointer;
 }
 
-.todo input {
-    margin-right: var(--size-500);
+.todo p {
+    height: 90%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.todo-edit {
+    height: 80%;
+    flex: 1;
+    border: none;
 }
 
 input[type='checkbox'] {
@@ -347,12 +358,9 @@ input[type='checkbox']:checked::before {
     transform: translate(-50%, -60%) rotate(45deg) scale(1);
 }
 
-.todo p {
-    flex-grow: 1;
-}
-
 .todo-completed {
     text-decoration: line-through;
+    cursor: default;
     opacity: 0.5;
 }
 

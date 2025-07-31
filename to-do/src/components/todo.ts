@@ -18,6 +18,7 @@ export function createTodoComponent(todo: Todo) {
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
+    paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
     icon.classList.add('icons', 'clickeable', 'trash-icon');
@@ -29,6 +30,19 @@ export function createTodoComponent(todo: Todo) {
     return li;
 }
 
+function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
+    const textInput = document.createElement('input');
+    textInput.type = 'text';
+    textInput.value = paragraph.textContent || '';
+    textInput.classList.add('todo-edit');
+
+    textInput.addEventListener('blur', (event) => handleTextInputBlur(todo, event, paragraph));
+    textInput.addEventListener('keydown', (event) => handleTextInputKeydown(todo, event, paragraph));
+
+    paragraph.replaceWith(textInput);
+    textInput.focus();
+}
+
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
     const checkbox = event.target;
 
@@ -38,6 +52,36 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
     todo.lastElementChild?.classList.toggle('hide-element', checkbox.checked);
 
     stateManager.toggleTodo(id);
+}
+
+function handleParagraphChange(event: MouseEvent, todo: Todo) {
+    if (!(event.target instanceof HTMLParagraphElement)) return;
+
+    if (!(event.target.parentElement instanceof HTMLLIElement)) return;
+
+    if (event.target.parentElement.classList.contains('todo-completed')) return;
+
+    createTextInputComponent(todo, event.target);
+}
+
+function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
+    paragraph.textContent = event.target.value;
+    event.target.replaceWith(paragraph);
+    stateManager.editTodo(todo.id, paragraph.textContent);
+}
+
+function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
+    if (event.key == 'Enter') {
+        paragraph.textContent = event.target.value;
+        event.target.replaceWith(paragraph);
+        stateManager.editTodo(todo.id, paragraph.textContent);
+    } else if (event.key == 'Escape') {
+        event.target.replaceWith(paragraph);
+    }
 }
 
 function handleDeleteTodo(id: string) {
