@@ -52,6 +52,7 @@
 
     --success: hsl(122deg, 40%, 50%);
     --error: hsl(360deg, 100%, 70%);
+    --focus: hsl(212deg, 72%, 59%);
 
     color-scheme: light dark;
     color: var(--gray100);
