@@ -147,6 +147,12 @@ button {
     display: none;
 }
 
+.focusable:focus {
+    border-radius: var(--size-200);
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+}
+
 /* Date picker */
 .date-component {
     min-width: var(--size-900);
