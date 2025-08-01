@@ -12,7 +12,7 @@ const DAYS_TO_GENERATE = 7;
 
 export function createDatePicker() {
     const container = document.createElement('div');
-    container.classList.add('date-picker');
+    container.classList.add('date-picker', 'focusable');
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
