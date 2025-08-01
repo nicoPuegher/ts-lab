@@ -37,23 +37,6 @@ export function createDatePicker() {
     return container;
 }
 
-function appendDateComponents(dates: Date[], container: HTMLDivElement) {
-    dates.forEach((date) => {
-        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
-        const dayOfMonth = date.getDate();
-
-        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
-        dateComponent.addEventListener('click', () => {
-            dateComponent.classList.remove('secondary');
-            dateComponent.classList.add('primary');
-
-            stateManager.setSelectedDate(date);
-        });
-
-        container.appendChild(dateComponent);
-    });
-}
-
 function getStoredPastDates(userStorage: string | null) {
     if (!userStorage) return [];
 
@@ -74,5 +57,22 @@ function generateDayListFromToday() {
         date.setDate(nextDay);
 
         return date;
+    });
+}
+
+function appendDateComponents(dates: Date[], container: HTMLDivElement) {
+    dates.forEach((date) => {
+        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
+        const dayOfMonth = date.getDate();
+
+        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
+        dateComponent.addEventListener('click', () => {
+            dateComponent.classList.remove('secondary');
+            dateComponent.classList.add('primary');
+
+            stateManager.setSelectedDate(date);
+        });
+
+        container.appendChild(dateComponent);
     });
 }
