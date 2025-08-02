@@ -13,7 +13,7 @@ const DAYS_TO_GENERATE = 7;
 export function createDatePicker() {
     const container = document.createElement('div');
     container.classList.add('date-picker', 'focusable');
-    container.setAttribute('role', 'grid');
+    container.setAttribute('role', 'tablist');
     container.setAttribute('aria-label', 'Date picker');
     container.setAttribute('tabindex', '0');
     container.addEventListener('keydown', handleKeydown);
