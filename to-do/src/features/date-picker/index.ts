@@ -16,6 +16,7 @@ export function createDatePicker() {
     container.setAttribute('role', 'grid');
     container.setAttribute('aria-label', 'Date picker');
     container.setAttribute('tabindex', '0');
+    container.addEventListener('keydown', handleKeydown);
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
@@ -36,6 +37,8 @@ export function createDatePicker() {
 
     return container;
 }
+
+function handleKeydown() {}
 
 function getStoredPastDates(userStorage: string | null) {
     if (!userStorage) return [];
