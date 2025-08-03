@@ -10,6 +10,10 @@ import { createDateComponent } from '@components/date.ts';
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 const DAYS_TO_GENERATE = 7;
 
+type FocusState = {
+    currentFocusIndex: number | null;
+};
+
 export function createDatePicker() {
     const container = document.createElement('div');
     container.classList.add('date-picker', 'focusable');
