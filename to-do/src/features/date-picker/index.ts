@@ -15,6 +15,10 @@ type FocusState = {
 };
 
 export function createDatePicker() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const container = document.createElement('div');
     container.classList.add('date-picker', 'focusable');
     container.setAttribute('role', 'tablist');
