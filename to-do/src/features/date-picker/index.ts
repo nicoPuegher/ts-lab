@@ -20,11 +20,11 @@ export function createDatePicker() {
     };
 
     const container = document.createElement('div');
-    container.classList.add('date-picker', 'focusable');
-    container.setAttribute('role', 'tablist');
     container.setAttribute('aria-label', 'Date picker');
+    container.setAttribute('role', 'tablist');
+    container.setAttribute('aria-orientation', 'horizontal');
     container.setAttribute('tabindex', '0');
-    container.addEventListener('keydown', handleKeydown);
+    container.classList.add('date-picker', 'focusable');
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
