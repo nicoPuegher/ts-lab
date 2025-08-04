@@ -49,6 +49,9 @@ export function createDatePicker() {
 
 function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
     if (!(event.target instanceof HTMLElement)) return;
+
+    const state = stateManager.getState();
+    const dates = Array.from(event.target.children);
 }
 
 function getStoredPastDates(userStorage: string | null) {
