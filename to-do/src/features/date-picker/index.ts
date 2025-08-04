@@ -25,6 +25,7 @@ export function createDatePicker() {
     container.setAttribute('aria-orientation', 'horizontal');
     container.setAttribute('tabindex', '0');
     container.classList.add('date-picker', 'focusable');
+    container.addEventListener('keydown', (event) => handleKeydown(event, focusState, container));
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
