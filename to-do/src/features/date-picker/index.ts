@@ -47,7 +47,9 @@ export function createDatePicker() {
     return container;
 }
 
-function handleKeydown() {}
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.target instanceof HTMLElement)) return;
+}
 
 function getStoredPastDates(userStorage: string | null) {
     if (!userStorage) return [];
