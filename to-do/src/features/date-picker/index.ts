@@ -52,6 +52,10 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
 
     const state = stateManager.getState();
     const dates = Array.from(event.target.children);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = dates.findIndex((dateButton) => dateButton.id == state.selectedDate);
+    }
 }
 
 function getStoredPastDates(userStorage: string | null) {
