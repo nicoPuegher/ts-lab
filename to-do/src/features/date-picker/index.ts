@@ -61,6 +61,10 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
         case 'ArrowLeft':
         case 'ArrowRight':
             event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex = (focusState.currentFocusIndex + direction + dates.length) % dates.length;
+            const dateButton = dates[focusState.currentFocusIndex];
     }
 }
 
