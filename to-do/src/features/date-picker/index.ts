@@ -56,6 +56,12 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
     if (focusState.currentFocusIndex == null) {
         focusState.currentFocusIndex = dates.findIndex((dateButton) => dateButton.id == state.selectedDate);
     }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+    }
 }
 
 function getStoredPastDates(userStorage: string | null) {
