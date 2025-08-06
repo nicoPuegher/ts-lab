@@ -70,6 +70,8 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
                 dateButton.focus();
                 dateButton.scrollIntoView({ block: 'nearest', inline: 'center' });
             }
+
+            break;
     }
 }
 
