@@ -65,6 +65,10 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
             const direction = event.key == 'ArrowLeft' ? -1 : 1;
             focusState.currentFocusIndex = (focusState.currentFocusIndex + direction + dates.length) % dates.length;
             const dateButton = dates[focusState.currentFocusIndex];
+
+            if (dateButton instanceof HTMLButtonElement) {
+                dateButton.focus();
+            }
     }
 }
 
