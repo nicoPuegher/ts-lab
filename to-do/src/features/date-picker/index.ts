@@ -68,6 +68,7 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
 
             if (dateButton instanceof HTMLButtonElement) {
                 dateButton.focus();
+                dateButton.scrollIntoView({ block: 'nearest', inline: 'center' });
             }
     }
 }
