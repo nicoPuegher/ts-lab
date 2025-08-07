@@ -48,10 +48,7 @@ export function createDatePicker() {
 }
 
 function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
-    if (!(event.target instanceof HTMLElement)) return;
-
-    const state = stateManager.getState();
-    const dates = Array.from(event.target.children);
+    if (!(event.currentTarget instanceof HTMLElement)) return;
 
     if (focusState.currentFocusIndex == null) {
         focusState.currentFocusIndex = dates.findIndex((dateButton) => dateButton.id == state.selectedDate);
