@@ -72,6 +72,10 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
             }
 
             break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
     }
 }
 
