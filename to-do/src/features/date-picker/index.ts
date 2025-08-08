@@ -23,6 +23,7 @@ export function createDatePicker() {
     container.setAttribute('aria-label', 'Date picker');
     container.setAttribute('role', 'tablist');
     container.setAttribute('aria-orientation', 'horizontal');
+    container.setAttribute('aria-live', 'polite');
     container.setAttribute('tabindex', '0');
     container.classList.add('date-picker', 'focusable');
     container.addEventListener('keydown', (event) => handleKeydown(event, focusState));
