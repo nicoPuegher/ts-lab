@@ -5,6 +5,7 @@ import { stateManager } from '@state/index.ts';
 export function createDateComponent(weekday: string, dayOfMonth: number, date: Date) {
     const selectedDateFromState = stateManager.getState().selectedDate;
     const formattedDate = formatDate(date);
+    const isSelected = selectedDateFromState == formattedDate;
 
     const container = document.createElement('button');
     container.id = formattedDate;
