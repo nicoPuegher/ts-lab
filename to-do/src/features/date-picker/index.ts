@@ -85,6 +85,11 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
             focusState.currentFocusIndex = -1;
 
             break;
+        case 'Escape':
+            datePicker.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
         case 'Tab':
             focusState.currentFocusIndex = null;
 
