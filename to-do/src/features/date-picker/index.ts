@@ -80,6 +80,11 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
             focusState.currentFocusIndex = 0;
 
             break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
         case 'Tab':
             focusState.currentFocusIndex = null;
 
