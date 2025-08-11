@@ -9,12 +9,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
 
     const container = document.createElement('button');
     container.id = formattedDate;
-    container.classList.add('date-component', 'secondary');
-
-    if (selectedDateFromState == formattedDate) {
-        container.classList.remove('secondary');
-        container.classList.add('primary');
-    }
+    container.setAttribute('role', 'tab');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
