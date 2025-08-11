@@ -11,6 +11,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     container.id = formattedDate;
     container.setAttribute('role', 'tab');
     container.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+    isSelected && container.setAttribute('aria-current', 'date');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
