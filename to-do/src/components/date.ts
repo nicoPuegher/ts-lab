@@ -10,6 +10,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     const container = document.createElement('button');
     container.id = formattedDate;
     container.setAttribute('role', 'tab');
+    container.setAttribute('aria-selected', isSelected ? 'true' : 'false');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
