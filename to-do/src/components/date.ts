@@ -18,6 +18,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
     );
     container.setAttribute('tabindex', '-1');
     container.classList.add('date-component', 'focusable', isSelected ? 'primary' : 'secondary');
+    container.addEventListener('click', () => handleClick(container, date));
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
