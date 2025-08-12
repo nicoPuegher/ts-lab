@@ -16,6 +16,7 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
         'aria-label',
         `${weekday} ${dayOfMonth}, ${date.toLocaleString('default', { month: 'long' })}`,
     );
+    container.setAttribute('tabindex', '-1');
 
     const weekdayElement = document.createElement('span');
     weekdayElement.textContent = weekday.toUpperCase();
