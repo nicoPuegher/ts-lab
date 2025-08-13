@@ -32,3 +32,8 @@ export function createDateComponent(weekday: string, dayOfMonth: number, date: D
 
     return container;
 }
+
+function handleClick(container: HTMLButtonElement, date: Date) {
+    const previousSelectedDate = stateManager.getState().selectedDate;
+    const previousSelectedDateButton = document.getElementById(previousSelectedDate);
+}
