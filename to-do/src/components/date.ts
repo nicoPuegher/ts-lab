@@ -40,4 +40,7 @@ function handleClick(container: HTMLButtonElement, date: Date) {
     if (!(previousSelectedDateButton instanceof HTMLButtonElement)) return;
 
     previousSelectedDateButton.setAttribute('aria-selected', 'false');
+
+    container.classList.remove('secondary');
+    container.classList.add('primary');
 }
