@@ -38,4 +38,6 @@ function handleClick(container: HTMLButtonElement, date: Date) {
     const previousSelectedDateButton = document.getElementById(previousSelectedDate);
 
     if (!(previousSelectedDateButton instanceof HTMLButtonElement)) return;
+
+    previousSelectedDateButton.setAttribute('aria-selected', 'false');
 }
