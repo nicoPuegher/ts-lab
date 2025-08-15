@@ -43,4 +43,6 @@ function handleClick(container: HTMLButtonElement, date: Date) {
 
     container.classList.remove('secondary');
     container.classList.add('primary');
+
+    stateManager.setSelectedDate(date);
 }
