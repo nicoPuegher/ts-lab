@@ -45,4 +45,6 @@ function handleClick(container: HTMLButtonElement, date: Date) {
     container.classList.add('primary');
 
     stateManager.setSelectedDate(date);
+
+    container.setAttribute('aria-selected', 'true');
 }
