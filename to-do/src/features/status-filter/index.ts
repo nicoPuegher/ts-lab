@@ -18,7 +18,7 @@ export function createStatusFilter() {
     };
 
     const container = document.createElement('div');
-    container.classList.add('status-filter');
+    container.setAttribute('role', 'toolbar');
 
     const all = createFilterButtonComponent(filter.ALL, filter.ALL.toLowerCase());
     const active = createFilterButtonComponent(filter.ACTIVE, filter.ACTIVE.toLowerCase());
