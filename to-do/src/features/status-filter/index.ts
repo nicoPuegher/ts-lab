@@ -2,6 +2,10 @@ import { stateManager } from '@state/index.ts';
 
 import { createButtonComponent } from '@components/button.ts';
 
+type FocusState = {
+    currentFocusIndex: number | null;
+};
+
 const filter = {
     ALL: 'All',
     ACTIVE: 'Active',
