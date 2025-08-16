@@ -13,6 +13,10 @@ const filter = {
 };
 
 export function createStatusFilter() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const container = document.createElement('div');
     container.classList.add('status-filter');
 
