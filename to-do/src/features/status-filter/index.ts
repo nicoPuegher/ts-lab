@@ -21,6 +21,7 @@ export function createStatusFilter() {
     container.setAttribute('role', 'toolbar');
     container.setAttribute('aria-label', 'Filter to-dos by status');
     container.setAttribute('tabindex', '0');
+    container.classList.add('status-filter', 'focusable');
 
     const all = createFilterButtonComponent(filter.ALL, filter.ALL.toLowerCase());
     const active = createFilterButtonComponent(filter.ACTIVE, filter.ACTIVE.toLowerCase());
