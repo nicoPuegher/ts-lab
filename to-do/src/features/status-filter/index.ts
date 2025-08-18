@@ -28,6 +28,7 @@ export function createStatusFilter() {
     const completed = createFilterButtonComponent(filter.COMPLETED, filter.COMPLETED.toLowerCase());
 
     container.append(all, active, completed);
+    container.addEventListener('keydown', (event) => handleKeydown(event, focusState));
 
     return container;
 }
