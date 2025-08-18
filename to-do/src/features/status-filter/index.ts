@@ -54,3 +54,54 @@ function createFilterButtonComponent(label: string, status: string) {
 
     return button;
 }
+
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    const statusFilter = event.currentTarget;
+
+    const state = stateManager.getState();
+    const statusFilterButtons = Array.from(statusFilter.children);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = statusFilterButtons.findIndex(
+            (statusFilterButton) => statusFilterButton.id == state.selectedFilter,
+        );
+    }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex =
+                (focusState.currentFocusIndex + direction + statusFilterButtons.length) % statusFilterButtons.length;
+            const statusFilterButton = statusFilterButtons[focusState.currentFocusIndex];
+
+            if (statusFilterButton instanceof HTMLButtonElement) {
+                statusFilterButton.focus();
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            statusFilter.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
+}
