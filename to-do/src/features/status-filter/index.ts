@@ -39,7 +39,7 @@ function createFilterButtonComponent(label: string, status: string) {
     const button = createButtonComponent(label, 'secondary');
     button.id = status;
     button.setAttribute('aria-pressed', label.toLowerCase() == selectedFilterFromState ? 'true' : 'false');
-    });
+    button.classList.add('focusable');
 
     if (selectedFilterFromState == status) {
         button.classList.remove('secondary');
