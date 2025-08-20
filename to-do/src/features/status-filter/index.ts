@@ -99,3 +99,5 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
             break;
     }
 }
+
+function handleClick(event: MouseEvent) {}
