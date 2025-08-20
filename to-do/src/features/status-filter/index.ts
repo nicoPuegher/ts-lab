@@ -100,4 +100,6 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
     }
 }
 
-function handleClick(event: MouseEvent) {}
+function handleClick(event: MouseEvent) {
+    const previousSelectedFilter = stateManager.getState().selectedFilter;
+}
