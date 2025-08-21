@@ -103,6 +103,7 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
 function handleClick(event: MouseEvent) {
     const previousSelectedFilter = stateManager.getState().selectedFilter;
     const previousSelectedFilterButton = document.getElementById(previousSelectedFilter);
+    const filterButton = event.target;
 
     if (!(previousSelectedFilterButton instanceof HTMLButtonElement)) return;
 
