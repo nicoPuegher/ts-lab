@@ -105,4 +105,6 @@ function handleClick(event: MouseEvent) {
     const previousSelectedFilterButton = document.getElementById(previousSelectedFilter);
 
     if (!(previousSelectedFilterButton instanceof HTMLButtonElement)) return;
+
+    previousSelectedFilterButton.setAttribute('aria-pressed', 'false');
 }
