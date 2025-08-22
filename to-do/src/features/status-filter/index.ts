@@ -114,4 +114,8 @@ function handleClick(event: MouseEvent, status: string) {
 
     filterButton.classList.remove('secondary');
     filterButton.classList.add('primary');
+
+    if (status == 'all' || status == 'active' || status == 'completed') {
+        stateManager.setFilter(status);
+    }
 }
