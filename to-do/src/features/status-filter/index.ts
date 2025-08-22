@@ -40,6 +40,7 @@ function createFilterButtonComponent(label: string, status: string) {
     button.id = status;
     button.setAttribute('aria-pressed', label.toLowerCase() == selectedFilterFromState ? 'true' : 'false');
     button.classList.add('focusable');
+    button.addEventListener('click', (event) => handleClick(event, status));
 
     if (selectedFilterFromState == status) {
         button.classList.remove('secondary');
@@ -100,7 +101,7 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
     }
 }
 
-function handleClick(event: MouseEvent) {
+function handleClick(event: MouseEvent, status: string) {
     const previousSelectedFilter = stateManager.getState().selectedFilter;
     const previousSelectedFilterButton = document.getElementById(previousSelectedFilter);
     const filterButton = event.target;
