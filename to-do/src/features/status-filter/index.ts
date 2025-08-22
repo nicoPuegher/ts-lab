@@ -118,4 +118,6 @@ function handleClick(event: MouseEvent, status: string) {
     if (status == 'all' || status == 'active' || status == 'completed') {
         stateManager.setFilter(status);
     }
+
+    filterButton.setAttribute('aria-pressed', 'true');
 }
