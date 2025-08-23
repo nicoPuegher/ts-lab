@@ -7,12 +7,10 @@ import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 const DAYS_TO_GENERATE = 7;
-
-type FocusState = {
-    currentFocusIndex: number | null;
-};
 
 export function createDatePicker() {
     const focusState: FocusState = {
