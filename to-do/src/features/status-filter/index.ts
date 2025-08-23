@@ -2,9 +2,7 @@ import { stateManager } from '@state/index.ts';
 
 import { createButtonComponent } from '@components/button.ts';
 
-type FocusState = {
-    currentFocusIndex: number | null;
-};
+import type { FocusState } from '@features/types/index.ts';
 
 const filter = {
     ALL: 'All',
