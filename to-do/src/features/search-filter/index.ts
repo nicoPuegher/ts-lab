@@ -11,6 +11,7 @@ const EMPTY_STRING = '';
 export function createSearchFilter() {
     const container = document.createElement('div');
     container.setAttribute('role', 'search');
+    container.setAttribute('aria-label', 'To-do search');
     container.classList.add('search-filter', 'clean-input');
 
     const searchIcon = createElement(Search);
