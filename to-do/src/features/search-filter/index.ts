@@ -23,7 +23,7 @@ export function createSearchFilter() {
     closeIcon.setAttribute('role', 'button');
     closeIcon.setAttribute('aria-label', 'Clear search');
     closeIcon.setAttribute('tabindex', '0');
-    closeIcon.classList.add('icons', 'clickeable', 'hide-icon');
+    closeIcon.classList.add('icons', 'clickeable', 'hide-icon', 'focusable');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
     const searchInput = createSearchInputComponent();
