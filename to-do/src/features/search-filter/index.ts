@@ -21,6 +21,7 @@ export function createSearchFilter() {
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
     closeIcon.setAttribute('role', 'button');
+    closeIcon.setAttribute('aria-label', 'Clear search');
     closeIcon.classList.add('icons', 'clickeable', 'hide-icon');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
 
