@@ -15,6 +15,7 @@ export function createSearchFilter() {
     container.classList.add('search-filter', 'clean-input');
 
     const searchIcon = createElement(Search);
+    searchIcon.setAttribute('aria-hidden', 'true');
     searchIcon.classList.add('icons');
 
     const closeIcon = createElement(X);
