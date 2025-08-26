@@ -53,6 +53,13 @@ function handleEmptySearch(id: string) {
     }
 }
 
+function handleKeydown(event: KeyboardEvent, searchInputId: string) {
+    if (event.key == 'Enter' || event.key == ' ') {
+        event.preventDefault();
+        handleEmptySearch(searchInputId);
+    }
+}
+
 function handleSearchTyping(event: Event, id: string) {
     const searchInput = event.target;
     const closeIcon = document.getElementById(id);
