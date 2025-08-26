@@ -25,6 +25,12 @@ export function createSearchFilter() {
     closeIcon.setAttribute('tabindex', '0');
     closeIcon.classList.add('icons', 'clickeable', 'hide-icon', 'focusable');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
+    closeIcon.addEventListener('keydown', (e) => {
+        if (e.key == 'Enter' || e.key == ' ') {
+            e.preventDefault();
+            handleEmptySearch(searchInput.id);
+        }
+    });
 
     const searchInput = createSearchInputComponent();
     searchInput.classList.add('clean-input');
