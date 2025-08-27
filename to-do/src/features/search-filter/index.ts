@@ -29,6 +29,7 @@ export function createSearchFilter() {
 
     const searchInput = createSearchInputComponent();
     searchInput.setAttribute('aria-describedby', 'search-instructions');
+    searchInput.classList.add('clean-input', 'focusable');
     searchInput.addEventListener('input', (event) => handleSearchTyping(event, closeIcon.id));
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
