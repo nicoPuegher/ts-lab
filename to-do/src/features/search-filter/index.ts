@@ -28,7 +28,7 @@ export function createSearchFilter() {
     closeIcon.addEventListener('keydown', (event) => handleKeydown(event, searchInput.id));
 
     const searchInput = createSearchInputComponent();
-    searchInput.classList.add('clean-input');
+    searchInput.setAttribute('aria-describedby', 'search-instructions');
     searchInput.addEventListener('input', (event) => handleSearchTyping(event, closeIcon.id));
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
