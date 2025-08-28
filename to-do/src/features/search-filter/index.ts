@@ -69,6 +69,7 @@ function handleSearchTyping(event: Event, id: string) {
     if (!closeIcon) return;
 
     const trimmedValue = searchInput.value.trim();
+    closeIcon.setAttribute('aria-hidden', trimmedValue == EMPTY_STRING ? 'true' : 'false');
     closeIcon.classList.toggle('hide-icon', trimmedValue == EMPTY_STRING);
 
     if (trimmedValue != EMPTY_STRING) {
