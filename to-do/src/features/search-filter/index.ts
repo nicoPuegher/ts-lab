@@ -55,7 +55,7 @@ function handleEmptySearch(id: string) {
 }
 
 function handleKeydown(event: KeyboardEvent, searchInputId: string) {
-    if (event.key == 'Enter' || event.key == ' ') {
+    if (event.key == 'Enter' || event.key == ' ' || event.key == 'Escape') {
         event.preventDefault();
         handleEmptySearch(searchInputId);
     }
