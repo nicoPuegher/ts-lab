@@ -6,6 +6,7 @@ import type { Todo } from '@state/types/index.ts';
 export function createTodoComponent(todo: Todo) {
     const li = document.createElement('li');
     li.id = todo.id;
+    li.setAttribute('tabindex', '-1');
     li.classList.add('todo', 'clean-input', 'focusable');
     li.classList.toggle('todo-completed', todo.completed);
 
