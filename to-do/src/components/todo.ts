@@ -15,6 +15,7 @@ export function createTodoComponent(todo: Todo) {
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
+    checkbox.setAttribute('tabindex', '-1');
     checkbox.addEventListener('change', (event) => handleCheckboxChange(todo.id, li, event));
 
     const paragraph = document.createElement('p');
