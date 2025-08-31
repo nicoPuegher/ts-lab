@@ -12,7 +12,6 @@ export function createTodoComponent(todo: Todo) {
 
     const checkbox = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
-    checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
