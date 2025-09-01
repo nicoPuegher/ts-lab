@@ -20,6 +20,7 @@ export function createTodoComponent(todo: Todo) {
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
+    paragraph.setAttribute('tabindex', '-1');
     paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
