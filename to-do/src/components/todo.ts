@@ -24,6 +24,7 @@ export function createTodoComponent(todo: Todo) {
     paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
+    icon.setAttribute('tabindex', '-1');
     icon.classList.add('icons', 'clickeable', 'trash-icon');
     icon.classList.toggle('hide-element', todo.completed);
     icon.addEventListener('click', () => handleDeleteTodo(todo.id));
