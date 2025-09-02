@@ -37,7 +37,7 @@ export function createTodoComponent(todo: Todo) {
 function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     const textInput = document.createElement('input');
     textInput.setAttribute('type', 'text');
-    textInput.value = paragraph.textContent || '';
+    textInput.setAttribute('value', `${paragraph.textContent || ''}`);
     textInput.classList.add('todo-edit');
 
     textInput.addEventListener('blur', (event) => handleTextInputBlur(todo, event, paragraph));
