@@ -14,6 +14,10 @@ type TodoFilters = 'all' | 'active' | 'completed';
 const DELAY = 10;
 
 export function createTodoList() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const ul = document.createElement('ul');
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
