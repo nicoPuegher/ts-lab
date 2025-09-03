@@ -7,6 +7,8 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTodoComponent } from '@components/todo.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 type TodoFilters = 'all' | 'active' | 'completed';
 
 const DELAY = 10;
