@@ -20,6 +20,7 @@ export function createTodoList() {
 
     const ul = document.createElement('ul');
     ul.setAttribute('role', 'list');
+    ul.setAttribute('aria-label', 'To-do items');
 
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
