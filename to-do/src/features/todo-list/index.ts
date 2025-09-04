@@ -19,6 +19,8 @@ export function createTodoList() {
     };
 
     const ul = document.createElement('ul');
+    ul.setAttribute('role', 'list');
+
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const containerBounds: ContainerBounds = {
