@@ -23,6 +23,7 @@ export function createTodoList() {
     ul.setAttribute('aria-label', 'To-do items');
     ul.setAttribute('aria-live', 'polite');
     ul.setAttribute('aria-relevant', 'additions removals');
+    ul.setAttribute('aria-describedby', 'todo-instructions');
 
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
