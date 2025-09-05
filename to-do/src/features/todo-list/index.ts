@@ -24,6 +24,7 @@ export function createTodoList() {
     ul.setAttribute('aria-live', 'polite');
     ul.setAttribute('aria-relevant', 'additions removals');
     ul.setAttribute('aria-describedby', 'todo-instructions');
+    ul.setAttribute('tabindex', '0');
 
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
