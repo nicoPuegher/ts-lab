@@ -26,6 +26,7 @@ export function createTodoList() {
     ul.setAttribute('aria-describedby', 'todo-instructions');
     ul.setAttribute('tabindex', '0');
     ul.classList.add('focusable');
+    ul.addEventListener('keydown', (event) => handleKeydown(event, focusState));
 
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
