@@ -57,6 +57,53 @@ export function createTodoList() {
     return ul;
 }
 
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    const ul = event.currentTarget;
+    const todoList = Array.from(ul.children);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = 0;
+    }
+
+    switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowUp' ? -1 : 1;
+            focusState.currentFocusIndex =
+                (focusState.currentFocusIndex + direction + todoList.length) % todoList.length;
+            const todo = todoList[focusState.currentFocusIndex];
+
+            if (todo instanceof HTMLLIElement) {
+                todo.focus();
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            ul.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
+}
+
 function appendTodos(ul: HTMLUListElement, newTodo?: Todo) {
     if (newTodo) {
         appendNewTodo(ul, newTodo);
