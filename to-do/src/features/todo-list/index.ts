@@ -25,6 +25,7 @@ export function createTodoList() {
     ul.setAttribute('aria-relevant', 'additions removals');
     ul.setAttribute('aria-describedby', 'todo-instructions');
     ul.setAttribute('tabindex', '0');
+    ul.classList.add('focusable');
 
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
