@@ -108,6 +108,7 @@ function appendTodos(ul: HTMLUListElement, newTodo?: Todo) {
     const { selectedDate, todosByDate } = stateManager.getState();
     const todos = todosByDate[selectedDate] || [];
     ul.setAttribute('aria-label', `To-do items - ${todos.length} items`);
+    ul.classList.toggle('empty', todos.length === 0);
 
     if (newTodo) {
         appendNewTodo(ul, newTodo);
