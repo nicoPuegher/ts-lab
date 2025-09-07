@@ -107,6 +107,7 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
 function appendTodos(ul: HTMLUListElement, newTodo?: Todo) {
     const { selectedDate, todosByDate } = stateManager.getState();
     const todos = todosByDate[selectedDate] || [];
+    ul.setAttribute('aria-label', `To-do items - ${todos.length} items`);
 
     if (newTodo) {
         appendNewTodo(ul, newTodo);
