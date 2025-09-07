@@ -105,6 +105,8 @@ function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
 }
 
 function appendTodos(ul: HTMLUListElement, newTodo?: Todo) {
+    const { selectedDate, todosByDate } = stateManager.getState();
+
     if (newTodo) {
         appendNewTodo(ul, newTodo);
     } else {
