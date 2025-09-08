@@ -9,6 +9,10 @@ import { createTextInputComponent } from '@components/text-input.ts';
 import type { FocusState } from '@features/types/index.ts';
 
 export function createTodoSubmission() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const form = createFormComponent();
     const input = createTextInputComponent();
     const label = createLabelComponent(input.id, 'Todo item');
