@@ -6,6 +6,8 @@ import { createFormComponent } from '@components/form.ts';
 import { createLabelComponent } from '@components/label.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 export function createTodoSubmission() {
     const form = createFormComponent();
     const input = createTextInputComponent();
