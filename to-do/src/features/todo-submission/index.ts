@@ -19,6 +19,7 @@ export function createTodoSubmission() {
     const input = createTextInputComponent();
     input.setAttribute('aria-required', 'true');
     input.setAttribute('aria-invalid', 'false');
+    input.setAttribute('maxlength', '25');
 
     const label = createLabelComponent(input.id, 'Todo item');
     const button = createButtonComponent('Add');
