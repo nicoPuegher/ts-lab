@@ -17,6 +17,8 @@ export function createTodoSubmission() {
     form.setAttribute('aria-label', 'Add todo item');
 
     const input = createTextInputComponent();
+    input.setAttribute('aria-required', 'true');
+
     const label = createLabelComponent(input.id, 'Todo item');
     const button = createButtonComponent('Add');
     const errorElement = createErrorComponent();
