@@ -22,7 +22,10 @@ export function createTodoSubmission() {
     input.setAttribute('maxlength', '25');
 
     const label = createLabelComponent(input.id, 'Todo item');
+
     const button = createButtonComponent('Add');
+    button.setAttribute('type', 'submit');
+
     const errorElement = createErrorComponent();
 
     input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
