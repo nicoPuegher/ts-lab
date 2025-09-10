@@ -27,6 +27,7 @@ export function createTodoSubmission() {
     button.setAttribute('type', 'submit');
 
     const errorElement = createErrorComponent();
+    errorElement.setAttribute('role', 'alert');
 
     input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
     form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
