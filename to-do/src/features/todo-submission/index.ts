@@ -29,6 +29,7 @@ export function createTodoSubmission() {
     const errorElement = createErrorComponent();
     errorElement.setAttribute('role', 'alert');
     errorElement.setAttribute('aria-live', 'polite');
+    errorElement.setAttribute('aria-atomic', 'true');
 
     input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
     form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
