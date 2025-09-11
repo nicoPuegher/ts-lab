@@ -33,6 +33,7 @@ export function createTodoSubmission() {
 
     input.addEventListener('input', (event) => handleClearValidationFeedback(event, errorElement));
     input.addEventListener('blur', () => handleBlurValidation(input, errorElement));
+    form.addEventListener('keydown', (event) => handleKeydown(event, focusState));
     form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
 
     form.append(label, input, button, errorElement);
