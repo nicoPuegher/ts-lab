@@ -31,7 +31,8 @@ export function createTodoSubmission() {
     errorElement.setAttribute('aria-live', 'polite');
     errorElement.setAttribute('aria-atomic', 'true');
 
-    input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
+    input.addEventListener('input', (event) => handleClearValidationFeedback(event, errorElement));
+    input.addEventListener('blur', () => handleBlurValidation(input, errorElement));
     form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
 
     form.append(label, input, button, errorElement);
