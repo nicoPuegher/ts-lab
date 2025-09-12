@@ -96,6 +96,7 @@ function validateTodoText(userInput: string) {
 
 function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagraphElement, errorMessage: string) {
     errorElement.textContent = errorMessage;
+    textInput.setAttribute('aria-invalid', 'true');
     textInput.focus();
 }
 
