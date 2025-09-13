@@ -67,6 +67,8 @@ function handleTodoSubmission(
     }
 
     form.reset();
+
+    input.setAttribute('aria-invalid', 'false');
     input.focus();
 
     submitTodo(sanitizeUserInput(userInput));
