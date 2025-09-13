@@ -41,8 +41,11 @@ export function createTodoSubmission() {
     return form;
 }
 
-function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement) {
+function handleClearValidationFeedback(event: Event, validationFeedback: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
     validationFeedback.textContent = '';
+    event.target.setAttribute('aria-invalid', 'false');
 }
 
 function handleTodoSubmission(
