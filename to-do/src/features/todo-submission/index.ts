@@ -48,6 +48,16 @@ function handleClearValidationFeedback(event: Event, validationFeedback: HTMLPar
     event.target.setAttribute('aria-invalid', 'false');
 }
 
+function handleBlurValidation(input: HTMLInputElement, errorElement: HTMLParagraphElement) {
+    const value = input.value.trim();
+    if (value.length === 0) return;
+
+    const errorMessage = validateTodoText(value);
+    if (errorMessage) {
+        showErrorMessage(input, errorElement, errorMessage);
+    }
+}
+
 function handleTodoSubmission(
     event: SubmitEvent,
     form: HTMLFormElement,
