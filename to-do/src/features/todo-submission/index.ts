@@ -58,6 +58,54 @@ function handleBlurValidation(input: HTMLInputElement, errorElement: HTMLParagra
     }
 }
 
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    const form = event.currentTarget;
+
+    const formElements = Array.from(event.currentTarget.children).slice(1, 3);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = 0;
+    }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex =
+                (focusState.currentFocusIndex + direction + formElements.length) % formElements.length;
+            const element = formElements[focusState.currentFocusIndex];
+
+            if (element instanceof HTMLInputElement || element instanceof HTMLButtonElement) {
+                element.focus();
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            form.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
+}
+
 function handleTodoSubmission(
     event: SubmitEvent,
     form: HTMLFormElement,
