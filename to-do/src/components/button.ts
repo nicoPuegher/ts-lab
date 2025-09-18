@@ -2,7 +2,7 @@ export function createButtonComponent(textContent: string, variant: string = 'pr
     const button = document.createElement('button');
     button.textContent = textContent;
     button.setAttribute('tabindex', '-1');
-    button.classList.add(variant);
+    button.classList.add(variant, 'focusable');
 
     return button;
 }
