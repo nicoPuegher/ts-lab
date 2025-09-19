@@ -236,6 +236,20 @@ ul {
     gap: var(--size-300);
     overflow-y: scroll;
 
+    --top-fade: 0%;
+    --bottom-fade: 0%;
+    -webkit-mask: none;
+    mask: none;
+}
+
+ul.empty {
+    --top-fade: 0%;
+    --bottom-fade: 0%;
+    -webkit-mask: none;
+    mask: none;
+}
+
+ul:not(.empty) {
     --top-fade: 10%;
     --bottom-fade: 10%;
 
