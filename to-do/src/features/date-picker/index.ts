@@ -1,14 +1,30 @@
+import { checkContainerBounds } from '@/helpers/check-container-bounds.ts';
+import type { ContainerBounds } from '@/helpers/check-container-bounds.ts';
+import { setupScrollBoundsHandler } from '@/helpers/setup-scroll-bounds-handler.ts';
+
 import { STORAGE_KEY, stateManager } from '@state/index.ts';
 import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 const DAYS_TO_GENERATE = 7;
 
 export function createDatePicker() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const container = document.createElement('div');
-    container.classList.add('date-picker');
+    container.setAttribute('aria-label', 'Date picker');
+    container.setAttribute('role', 'tablist');
+    container.setAttribute('aria-orientation', 'horizontal');
+    container.setAttribute('aria-live', 'polite');
+    container.setAttribute('tabindex', '0');
+    container.classList.add('date-picker', 'focusable');
+    container.addEventListener('keydown', (event) => handleKeydown(event, focusState));
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
@@ -17,23 +33,66 @@ export function createDatePicker() {
     const dates = [...storedPastDates, ...dayListFromToday];
 
     appendDateComponents(dates, container);
-    setupScrollHandler(container);
 
-    setTimeout(() => checkVisibleDates(container), 0);
+    const containerBounds: ContainerBounds = {
+        container,
+        axis: 'horizontal',
+        startClass: 'at-start',
+        endClass: 'at-end',
+    };
+    setupScrollBoundsHandler(checkContainerBounds, containerBounds);
+    setTimeout(() => checkContainerBounds(containerBounds), 0);
 
     return container;
 }
 
-function appendDateComponents(dates: Date[], container: HTMLDivElement) {
-    dates.forEach((date) => {
-        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
-        const dayOfMonth = date.getDate();
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
 
-        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
-        dateComponent.addEventListener('click', () => stateManager.setSelectedDate(date));
+    const datePicker = event.currentTarget;
 
-        container.appendChild(dateComponent);
-    });
+    const state = stateManager.getState();
+    const dates = Array.from(datePicker.children);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = dates.findIndex((dateButton) => dateButton.id == state.selectedDate);
+    }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex = (focusState.currentFocusIndex + direction + dates.length) % dates.length;
+            const dateButton = dates[focusState.currentFocusIndex];
+
+            if (dateButton instanceof HTMLButtonElement) {
+                dateButton.focus();
+                dateButton.scrollIntoView({ block: 'nearest', inline: 'center' });
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            datePicker.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
 }
 
 function getStoredPastDates(userStorage: string | null) {
@@ -59,33 +118,13 @@ function generateDayListFromToday() {
     });
 }
 
-function setupScrollHandler(container: HTMLDivElement) {
-    let isScrolling = false;
+function appendDateComponents(dates: Date[], container: HTMLDivElement) {
+    dates.forEach((date) => {
+        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
+        const dayOfMonth = date.getDate();
 
-    function scrollHandler() {
-        if (!isScrolling) {
-            isScrolling = true;
+        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
 
-            requestAnimationFrame(() => {
-                checkVisibleDates(container);
-                isScrolling = false;
-            });
-        }
-    }
-
-    container.addEventListener('scroll', scrollHandler);
-}
-
-function checkVisibleDates(container: HTMLDivElement) {
-    const { firstElementChild, lastElementChild } = container;
-
-    if (!firstElementChild || !lastElementChild) return;
-
-    const containerRect = container.getBoundingClientRect();
-
-    const firstVisible = firstElementChild.getBoundingClientRect().left >= containerRect.left;
-    const lastVisible = lastElementChild.getBoundingClientRect().right <= containerRect.right;
-
-    container.classList.toggle('at-start', firstVisible);
-    container.classList.toggle('at-end', lastVisible);
+        container.appendChild(dateComponent);
+    });
 }

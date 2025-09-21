@@ -6,14 +6,34 @@ import { createFormComponent } from '@components/form.ts';
 import { createLabelComponent } from '@components/label.ts';
 import { createTextInputComponent } from '@components/text-input.ts';
 
-export function createTodoSubmission() {
-    const form = createFormComponent();
-    const input = createTextInputComponent();
-    const label = createLabelComponent(input.id, 'Todo item');
-    const button = createButtonComponent('Add');
-    const errorElement = createErrorComponent();
+import type { FocusState } from '@features/types/index.ts';
 
-    input.addEventListener('input', () => handleClearValidationFeedback(errorElement));
+export function createTodoSubmission() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
+    const form = createFormComponent();
+    form.setAttribute('aria-label', 'Add todo item');
+
+    const input = createTextInputComponent();
+    input.setAttribute('aria-required', 'true');
+    input.setAttribute('aria-invalid', 'false');
+    input.setAttribute('maxlength', '25');
+
+    const label = createLabelComponent(input.id, 'Todo item');
+
+    const button = createButtonComponent('Add');
+    button.setAttribute('type', 'submit');
+
+    const errorElement = createErrorComponent();
+    errorElement.setAttribute('role', 'alert');
+    errorElement.setAttribute('aria-live', 'polite');
+    errorElement.setAttribute('aria-atomic', 'true');
+
+    input.addEventListener('input', (event) => handleClearValidationFeedback(event, errorElement));
+    input.addEventListener('blur', () => handleBlurValidation(input, errorElement));
+    form.addEventListener('keydown', (event) => handleKeydown(event, focusState));
     form.addEventListener('submit', (event) => handleTodoSubmission(event, form, input, errorElement));
 
     form.append(label, input, button, errorElement);
@@ -21,8 +41,69 @@ export function createTodoSubmission() {
     return form;
 }
 
-function handleClearValidationFeedback(validationFeedback: HTMLParagraphElement) {
+function handleClearValidationFeedback(event: Event, validationFeedback: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
     validationFeedback.textContent = '';
+    event.target.setAttribute('aria-invalid', 'false');
+}
+
+function handleBlurValidation(input: HTMLInputElement, errorElement: HTMLParagraphElement) {
+    const value = input.value.trim();
+    if (value.length === 0) return;
+
+    const errorMessage = validateTodoText(value);
+    if (errorMessage) {
+        showErrorMessage(input, errorElement, errorMessage);
+    }
+}
+
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    const form = event.currentTarget;
+
+    const formElements = Array.from(event.currentTarget.children).slice(1, 3);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = 0;
+    }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex =
+                (focusState.currentFocusIndex + direction + formElements.length) % formElements.length;
+            const element = formElements[focusState.currentFocusIndex];
+
+            if (element instanceof HTMLInputElement || element instanceof HTMLButtonElement) {
+                element.focus();
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            form.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
 }
 
 function handleTodoSubmission(
@@ -47,6 +128,8 @@ function handleTodoSubmission(
     }
 
     form.reset();
+
+    input.setAttribute('aria-invalid', 'false');
     input.focus();
 
     submitTodo(sanitizeUserInput(userInput));
@@ -76,6 +159,8 @@ function validateTodoText(userInput: string) {
 
 function showErrorMessage(textInput: HTMLInputElement, errorElement: HTMLParagraphElement, errorMessage: string) {
     errorElement.textContent = errorMessage;
+    textInput.setAttribute('aria-invalid', 'true');
+    textInput.setAttribute('aria-describedby', errorElement.id);
     textInput.focus();
 }
 

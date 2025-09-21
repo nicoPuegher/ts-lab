@@ -6,30 +6,45 @@ import type { Todo } from '@state/types/index.ts';
 export function createTodoComponent(todo: Todo) {
     const li = document.createElement('li');
     li.id = todo.id;
-    li.classList.add('todo', 'surface');
+    li.setAttribute('tabindex', '-1');
+    li.classList.add('todo', 'clean-input', 'focusable');
     li.classList.toggle('todo-completed', todo.completed);
 
     const checkbox = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
-    checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
+    checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
+    checkbox.setAttribute('tabindex', '-1');
     checkbox.addEventListener('change', (event) => handleCheckboxChange(todo.id, li, event));
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
-
-    const iconContainer = document.createElement('div');
-    iconContainer.classList.toggle('hide-element', todo.completed);
-    iconContainer.addEventListener('click', () => handleDeleteTodo(todo.id));
+    paragraph.setAttribute('tabindex', '-1');
+    paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
-    icon.classList.add('todo-icon');
+    icon.setAttribute('tabindex', '-1');
+    icon.classList.add('icons', 'clickeable', 'trash-icon');
+    icon.classList.toggle('hide-element', todo.completed);
+    icon.addEventListener('click', () => handleDeleteTodo(todo.id));
 
-    iconContainer.appendChild(icon);
-    li.append(checkbox, paragraph, iconContainer);
+    li.append(checkbox, paragraph, icon);
 
     return li;
+}
+
+function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
+    const textInput = document.createElement('input');
+    textInput.setAttribute('type', 'text');
+    textInput.setAttribute('value', `${paragraph.textContent || ''}`);
+    textInput.classList.add('todo-edit');
+
+    textInput.addEventListener('blur', (event) => handleTextInputBlur(todo, event, paragraph));
+    textInput.addEventListener('keydown', (event) => handleTextInputKeydown(todo, event, paragraph));
+
+    paragraph.replaceWith(textInput);
+    textInput.focus();
 }
 
 function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
@@ -41,6 +56,36 @@ function handleCheckboxChange(id: string, todo: HTMLLIElement, event: Event) {
     todo.lastElementChild?.classList.toggle('hide-element', checkbox.checked);
 
     stateManager.toggleTodo(id);
+}
+
+function handleParagraphChange(event: MouseEvent, todo: Todo) {
+    if (!(event.target instanceof HTMLParagraphElement)) return;
+
+    if (!(event.target.parentElement instanceof HTMLLIElement)) return;
+
+    if (event.target.parentElement.classList.contains('todo-completed')) return;
+
+    createTextInputComponent(todo, event.target);
+}
+
+function handleTextInputBlur(todo: Todo, event: FocusEvent, paragraph: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
+    paragraph.textContent = event.target.value;
+    event.target.replaceWith(paragraph);
+    stateManager.editTodo(todo.id, paragraph.textContent);
+}
+
+function handleTextInputKeydown(todo: Todo, event: KeyboardEvent, paragraph: HTMLParagraphElement) {
+    if (!(event.target instanceof HTMLInputElement)) return;
+
+    if (event.key == 'Enter') {
+        paragraph.textContent = event.target.value;
+        event.target.replaceWith(paragraph);
+        stateManager.editTodo(todo.id, paragraph.textContent);
+    } else if (event.key == 'Escape') {
+        event.target.replaceWith(paragraph);
+    }
 }
 
 function handleDeleteTodo(id: string) {
