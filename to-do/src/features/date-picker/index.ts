@@ -7,12 +7,24 @@ import type { AppState } from '@state/types/index.ts';
 
 import { createDateComponent } from '@components/date.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 const TIMEZONE_NORMALIZATION_SUFFIX = 'T00:00:00';
 const DAYS_TO_GENERATE = 7;
 
 export function createDatePicker() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const container = document.createElement('div');
-    container.classList.add('date-picker');
+    container.setAttribute('aria-label', 'Date picker');
+    container.setAttribute('role', 'tablist');
+    container.setAttribute('aria-orientation', 'horizontal');
+    container.setAttribute('aria-live', 'polite');
+    container.setAttribute('tabindex', '0');
+    container.classList.add('date-picker', 'focusable');
+    container.addEventListener('keydown', (event) => handleKeydown(event, focusState));
 
     const userStorage: string | null = window.localStorage.getItem(STORAGE_KEY);
 
@@ -34,21 +46,53 @@ export function createDatePicker() {
     return container;
 }
 
-function appendDateComponents(dates: Date[], container: HTMLDivElement) {
-    dates.forEach((date) => {
-        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
-        const dayOfMonth = date.getDate();
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
 
-        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
-        dateComponent.addEventListener('click', () => {
-            dateComponent.classList.remove('secondary');
-            dateComponent.classList.add('primary');
+    const datePicker = event.currentTarget;
 
-            stateManager.setSelectedDate(date);
-        });
+    const state = stateManager.getState();
+    const dates = Array.from(datePicker.children);
 
-        container.appendChild(dateComponent);
-    });
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = dates.findIndex((dateButton) => dateButton.id == state.selectedDate);
+    }
+
+    switch (event.key) {
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowLeft' ? -1 : 1;
+            focusState.currentFocusIndex = (focusState.currentFocusIndex + direction + dates.length) % dates.length;
+            const dateButton = dates[focusState.currentFocusIndex];
+
+            if (dateButton instanceof HTMLButtonElement) {
+                dateButton.focus();
+                dateButton.scrollIntoView({ block: 'nearest', inline: 'center' });
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            datePicker.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
 }
 
 function getStoredPastDates(userStorage: string | null) {
@@ -71,5 +115,16 @@ function generateDayListFromToday() {
         date.setDate(nextDay);
 
         return date;
+    });
+}
+
+function appendDateComponents(dates: Date[], container: HTMLDivElement) {
+    dates.forEach((date) => {
+        const weekday = date.toLocaleString('en-US', { weekday: 'short' });
+        const dayOfMonth = date.getDate();
+
+        const dateComponent = createDateComponent(weekday, dayOfMonth, date);
+
+        container.appendChild(dateComponent);
     });
 }

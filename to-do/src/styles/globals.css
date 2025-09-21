@@ -52,6 +52,7 @@
 
     --success: hsl(122deg, 40%, 50%);
     --error: hsl(360deg, 100%, 70%);
+    --focus: hsl(212deg, 72%, 59%);
 
     color-scheme: light dark;
     color: var(--gray100);
@@ -146,6 +147,12 @@ button {
     display: none;
 }
 
+.focusable:focus {
+    border-radius: var(--size-200);
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+}
+
 /* Date picker */
 .date-component {
     min-width: var(--size-900);
@@ -229,6 +236,20 @@ ul {
     gap: var(--size-300);
     overflow-y: scroll;
 
+    --top-fade: 0%;
+    --bottom-fade: 0%;
+    -webkit-mask: none;
+    mask: none;
+}
+
+ul.empty {
+    --top-fade: 0%;
+    --bottom-fade: 0%;
+    -webkit-mask: none;
+    mask: none;
+}
+
+ul:not(.empty) {
     --top-fade: 10%;
     --bottom-fade: 10%;
 

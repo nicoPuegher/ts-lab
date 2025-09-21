@@ -6,21 +6,25 @@ import type { Todo } from '@state/types/index.ts';
 export function createTodoComponent(todo: Todo) {
     const li = document.createElement('li');
     li.id = todo.id;
-    li.classList.add('todo', 'clean-input');
+    li.setAttribute('tabindex', '-1');
+    li.classList.add('todo', 'clean-input', 'focusable');
     li.classList.toggle('todo-completed', todo.completed);
 
     const checkbox = document.createElement('input');
     checkbox.id = `checkbox-${todo.id}`;
-    checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
+    checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('aria-labelledby', `checkbox-${todo.id}`);
+    checkbox.setAttribute('tabindex', '-1');
     checkbox.addEventListener('change', (event) => handleCheckboxChange(todo.id, li, event));
 
     const paragraph = document.createElement('p');
     paragraph.textContent = todo.text;
+    paragraph.setAttribute('tabindex', '-1');
     paragraph.addEventListener('click', (event) => handleParagraphChange(event, todo));
 
     const icon = createElement(Trash);
+    icon.setAttribute('tabindex', '-1');
     icon.classList.add('icons', 'clickeable', 'trash-icon');
     icon.classList.toggle('hide-element', todo.completed);
     icon.addEventListener('click', () => handleDeleteTodo(todo.id));
@@ -32,8 +36,8 @@ export function createTodoComponent(todo: Todo) {
 
 function createTextInputComponent(todo: Todo, paragraph: HTMLParagraphElement) {
     const textInput = document.createElement('input');
-    textInput.type = 'text';
-    textInput.value = paragraph.textContent || '';
+    textInput.setAttribute('type', 'text');
+    textInput.setAttribute('value', `${paragraph.textContent || ''}`);
     textInput.classList.add('todo-edit');
 
     textInput.addEventListener('blur', (event) => handleTextInputBlur(todo, event, paragraph));

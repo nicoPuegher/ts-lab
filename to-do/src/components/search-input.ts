@@ -1,8 +1,9 @@
 export function createSearchInputComponent() {
     const searchInput = document.createElement('input');
     searchInput.id = 'search-input';
-    searchInput.type = 'search';
-    searchInput.placeholder = 'Search for a to-do...';
+    searchInput.setAttribute('type', 'search');
+    searchInput.setAttribute('placeholder', 'Search for a to-do...');
+    searchInput.setAttribute('tabindex', '0');
 
     return searchInput;
 }

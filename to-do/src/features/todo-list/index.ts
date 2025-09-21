@@ -7,12 +7,27 @@ import type { Todo } from '@state/types/index.ts';
 
 import { createTodoComponent } from '@components/todo.ts';
 
+import type { FocusState } from '@features/types/index.ts';
+
 type TodoFilters = 'all' | 'active' | 'completed';
 
 const DELAY = 10;
 
 export function createTodoList() {
+    const focusState: FocusState = {
+        currentFocusIndex: null,
+    };
+
     const ul = document.createElement('ul');
+    ul.setAttribute('role', 'list');
+    ul.setAttribute('aria-label', 'To-do items');
+    ul.setAttribute('aria-live', 'polite');
+    ul.setAttribute('aria-relevant', 'additions removals');
+    ul.setAttribute('aria-describedby', 'todo-instructions');
+    ul.setAttribute('tabindex', '0');
+    ul.classList.add('focusable');
+    ul.addEventListener('keydown', (event) => handleKeydown(event, focusState));
+
     let scrollToLastTodoTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const containerBounds: ContainerBounds = {
@@ -42,7 +57,59 @@ export function createTodoList() {
     return ul;
 }
 
+function handleKeydown(event: KeyboardEvent, focusState: FocusState) {
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    const ul = event.currentTarget;
+    const todoList = Array.from(ul.children);
+
+    if (focusState.currentFocusIndex == null) {
+        focusState.currentFocusIndex = 0;
+    }
+
+    switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+            event.preventDefault();
+
+            const direction = event.key == 'ArrowUp' ? -1 : 1;
+            focusState.currentFocusIndex =
+                (focusState.currentFocusIndex + direction + todoList.length) % todoList.length;
+            const todo = todoList[focusState.currentFocusIndex];
+
+            if (todo instanceof HTMLLIElement) {
+                todo.focus();
+            }
+
+            break;
+        case 'Home':
+            event.preventDefault();
+            focusState.currentFocusIndex = 0;
+
+            break;
+        case 'End':
+            event.preventDefault();
+            focusState.currentFocusIndex = -1;
+
+            break;
+        case 'Escape':
+            ul.focus();
+            focusState.currentFocusIndex = null;
+
+            break;
+        case 'Tab':
+            focusState.currentFocusIndex = null;
+
+            break;
+    }
+}
+
 function appendTodos(ul: HTMLUListElement, newTodo?: Todo) {
+    const { selectedDate, todosByDate } = stateManager.getState();
+    const todos = todosByDate[selectedDate] || [];
+    ul.setAttribute('aria-label', `To-do items - ${todos.length} items`);
+    ul.classList.toggle('empty', todos.length === 0);
+
     if (newTodo) {
         appendNewTodo(ul, newTodo);
     } else {
