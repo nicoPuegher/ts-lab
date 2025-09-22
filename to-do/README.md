@@ -30,6 +30,12 @@ In v2.0.0, users should be able to:
 - [x] Filter by search
 - [x] View gradient visual feedback for out of bound date items
 
+In v3.0.0, users should be able to:
+
+- [x] Edit a todo
+- [x] View gradient visual feedback for out of bound to-do items
+- [x] Navigate and use the application entirely with a keyboard
+
 ### Link
 
 [To-do app](https://nicopuegher.github.io/ts-lab/to-do/) (Right-click and select "Open in new tab")
@@ -40,6 +46,7 @@ In v2.0.0, users should be able to:
 - Create a custom state with subscribers
 - Dynamically adjust mobile view port
 - Dynamically add and remove gradient style.
+- The basics of accessibility.
 
 ## How to run the application
 
