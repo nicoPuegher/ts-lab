@@ -1,3 +1,5 @@
+import { formatDate } from '@/utils/format-date.ts';
+
 import type { AppChangeSubscribers, AppState, Filter, Todo } from '@state/types/index.ts';
 
 export const STORAGE_KEY = 'todoData';
@@ -5,6 +7,8 @@ export const STORAGE_KEY = 'todoData';
 class StateManager {
     private state: AppState;
     private stateChangeSubscribers: AppChangeSubscribers;
+    private previousSelectedDate: string;
+    private previousSelectedFilter: string;
 
     constructor() {
         const initialState = generateInitialState();
@@ -23,6 +27,8 @@ class StateManager {
 
         this.state = initialState;
         this.stateChangeSubscribers = [];
+        this.previousSelectedDate = initialState.selectedDate;
+        this.previousSelectedFilter = initialState.selectedFilter;
     }
 
     getState() {
@@ -31,10 +37,17 @@ class StateManager {
 
     setSelectedDate(date: Date) {
         const { selectedDate } = this.state;
-        const newDate = formatDateForStorage(date);
+        const newDate = formatDate(date);
 
         if (selectedDate == newDate) return;
 
+        const previouslySelectedDateButton = document.getElementById(this.previousSelectedDate);
+        if (previouslySelectedDateButton) {
+            previouslySelectedDateButton.classList.remove('primary');
+            previouslySelectedDateButton.classList.add('secondary');
+        }
+
+        this.previousSelectedDate = newDate;
         this.state = {
             ...this.state,
             selectedDate: newDate,
@@ -44,13 +57,20 @@ class StateManager {
     }
 
     setFilter(filter: Filter) {
-        const { currentFilter } = this.state;
+        const { selectedFilter } = this.state;
 
-        if (currentFilter == filter) return;
+        if (selectedFilter == filter) return;
 
+        const previouslySelectedFilterButton = document.getElementById(this.previousSelectedFilter);
+        if (previouslySelectedFilterButton) {
+            previouslySelectedFilterButton.classList.remove('primary');
+            previouslySelectedFilterButton.classList.add('secondary');
+        }
+
+        this.previousSelectedFilter = filter;
         this.state = {
             ...this.state,
-            currentFilter: filter,
+            selectedFilter: filter,
         };
         this.notifyStateChangeSubscribers();
     }
@@ -86,6 +106,10 @@ class StateManager {
         };
         this.saveState();
         this.notifyStateChangeSubscribers(newTodo);
+    }
+
+    editTodo(id: string, text: string) {
+        this.updateTodos((todos) => todos.map((todo) => (todo.id == id ? { ...todo, text } : todo)));
     }
 
     toggleTodo(id: string) {
@@ -127,19 +151,11 @@ class StateManager {
 
 function generateInitialState(): AppState {
     return {
-        selectedDate: generateCurrentDate(),
-        todosByDate: {},
-        currentFilter: 'all',
+        selectedDate: formatDate(new Date()),
+        selectedFilter: 'all',
         searchTerm: '',
+        todosByDate: {},
     };
-}
-
-function generateCurrentDate() {
-    return formatDateForStorage(new Date());
-}
-
-function formatDateForStorage(date: Date) {
-    return date.toISOString().split('T')[0];
 }
 
 export const stateManager = new StateManager();

@@ -10,17 +10,28 @@ const EMPTY_STRING = '';
 
 export function createSearchFilter() {
     const container = document.createElement('div');
-    container.classList.add('search-filter');
+    container.setAttribute('role', 'search');
+    container.setAttribute('aria-label', 'To-do search');
+    container.classList.add('search-filter', 'clean-input');
 
     const searchIcon = createElement(Search);
+    searchIcon.setAttribute('aria-hidden', 'true');
+    searchIcon.classList.add('icons');
 
     const closeIcon = createElement(X);
     closeIcon.id = 'close-icon';
-    closeIcon.classList.add('hide-icon');
+    closeIcon.setAttribute('role', 'button');
+    closeIcon.setAttribute('aria-label', 'Clear search');
+    closeIcon.setAttribute('tabindex', '0');
+    closeIcon.classList.add('icons', 'clickeable', 'hide-icon', 'focusable');
     closeIcon.addEventListener('click', () => handleEmptySearch(searchInput.id));
+    closeIcon.addEventListener('keydown', (event) => handleKeydown(event, searchInput.id));
 
     const searchInput = createSearchInputComponent();
+    searchInput.setAttribute('aria-describedby', 'search-instructions');
+    searchInput.classList.add('clean-input', 'focusable');
     searchInput.addEventListener('input', (event) => handleSearchTyping(event, closeIcon.id));
+    searchInput.addEventListener('keydown', (event) => handleKeydown(event, searchInput.id));
 
     const label = createLabelComponent(searchInput.id, 'Search todo');
 
@@ -39,6 +50,13 @@ function handleEmptySearch(id: string) {
     }
 }
 
+function handleKeydown(event: KeyboardEvent, searchInputId: string) {
+    if (event.key == 'Enter' || event.key == ' ' || event.key == 'Escape') {
+        event.preventDefault();
+        handleEmptySearch(searchInputId);
+    }
+}
+
 function handleSearchTyping(event: Event, id: string) {
     const searchInput = event.target;
     const closeIcon = document.getElementById(id);
@@ -47,6 +65,7 @@ function handleSearchTyping(event: Event, id: string) {
     if (!closeIcon) return;
 
     const trimmedValue = searchInput.value.trim();
+    closeIcon.setAttribute('aria-hidden', trimmedValue == EMPTY_STRING ? 'true' : 'false');
     closeIcon.classList.toggle('hide-icon', trimmedValue == EMPTY_STRING);
 
     if (trimmedValue != EMPTY_STRING) {
