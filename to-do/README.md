@@ -1,6 +1,6 @@
 # To-do app
 
-A simple and intuitive Todo application built with **Vanilla TypeScript**. This application allows you to manage your lists efficiently with features like adding, completing, and removing todos. It also includes input validation and persists your data in the browser's local storage.
+A feature-rich to-do application built with vanilla TypeScript that enables efficient task management. Includes adding, completing, editing, and deleting tasks with full keyboard navigation. Features date-based organization, status/search filtering, input validation, and automatic local storage persistence for seamless user experience.
 
 ## Table of contents
 
